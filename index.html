@@ -14,35 +14,20 @@
 </head>
 
 <body style="width: 400px;">
-<div class="sidebar">
-          <img src="/img/note.svg" alt="note" style="background-color: #0697f8ce;">
-          <p style="font-weight: 700;">>></p>
-          <img src="/img/whatsapp.svg" alt="whatsapp">
-</div>
+
      
-<!--slide-->
+     <!--slide-->
 <div class="slide2"></div>
 <div class="slide3"></div>
      
+
 <!-- Navbar -->
-<nav class="navbar">
-          <div class="navbar-extra">
-          <a href="#awalan" style="margin-left: 10px;">
-               <img src="/img/home.svg" alt="home">
-          </a>
-          <a href="#supplier">
-               <img src="/img/trending-down.svg" alt="penunjuk">
-          </a>
-          <a href="#order">
-               <img src="/img/shopping-cart.svg" alt="order" class="nav-order">
-          </a>
-          <a href="#faq">
-               <img src="/img/help-circle.svg" alt="faq">
-          </a>
-          <a href="#location" style="margin-right: 10px;">
-               <img src="/img/map-pin.svg" alt="location">
-          </a>
-     </div>
+<nav class="navbar-bottom" style="display: flex; flex-direction: row; gap: 20px; font-size: 12px;">
+     <a href="#faq" style="justify-content: center; align-items: center; display: flex; margin-left: 8px;">
+          <img src="/img/faq.png" alt="faq" style="width: 40px;">
+     </a>
+          <a href="#order" class="isi-form" style="display: flex; justify-content: center; align-items: center; height: 40px; border-radius: 10px; border: 2px solid black; width: 60%; color: #000000;" >Isi Pesanan</a>
+          <button id="show-section-confirm-btn" class="into-whatsapp" style="display: flex; justify-content: center; align-items: center; height: 40px; background-color: #894106; width: 70%; border-radius: 10px; color: white;" >Beli Sekarang</button>
 </nav>
 <div id="awalan" style="height: 50px;"></div>
 
@@ -93,32 +78,30 @@
                <p style="color: black; font-weight: 600;">50 Rb</p>
           </div>
      </div>
+
+<p style="color: #000000; margin-top: 40px; text-align: center;">Gratis ongkir untuk daerah:</p>
+<div class="free-ongkir" style="padding: 10px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; text-align: center; width: auto;">
+     <div class="kelurahan" style="padding-left: 5px; padding-right: 5px; border-radius: 5px;">Curug </div>
+     <div class="kelurahan"style="padding-left: 5px; padding-right: 5px; border-radius: 5px;" >Cisalak pasar</div>
+     <div class="kelurahan" style="padding-left: 5px; padding-right: 5px; border-radius: 5px;">Harjamukti</div>
+     <div class="kelurahan" style="padding-left: 5px; padding-right: 5px; border-radius: 5px;">Sukatani</div>
+     <div class="kelurahan" style="padding-left: 5px; padding-right: 5px; border-radius: 5px;">Sukamaju baru</div>
+</div>   
 </section>
 
-<p style="color: #000000; margin-top: 30px; text-align: center;">Gratis ongkir untuk daerah:</p>
-<section class="free-ongkir" style="padding: 20px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; text-align: center;">
-     <div class="kelurahan">Curug </div> 
-     <div class="kelurahan">Cisalak pasar</div>
-     <div class="kelurahan">Harjamukti</div>
-     <div class="kelurahan">Sukatani</div>
-     <div class="kelurahan">Sukamaju baru</div>
-</section>
-     
 <!--Order-->
 <section class="order" id="order">
      <div class="headline">
           <p style="font-size: 12px; color: black;">Mulai pesan sekarang!</p>
      </div>
 
-     
      <div class="choose">
           <div class="pembatas">
                <div class="garis-1" style="background-color: black; width: 260px; height: 1px; margin-top: 5px;"></div>
                <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>     
           </div>
           
-          
-          <div class="manipulation-order" data-order-index="1" style="background-color: white; border-radius: 15px; box-shadow: 0px 6px 20px #535252; ">
+          <div class="manipulation-order" data-order-index="1" style="background-color: white; border-radius: 15px; box-shadow: 0px 6px 20px #535252;">
           <div style="display: flex; flex-direction: row; gap: 20px; justify-content: center; align-items: center; margin-top: 20px;">
                <div class="jenis-ayam" id="id-jenis">
                     <div style="display: flex; flex-direction: column; gap: 1px;">
@@ -227,7 +210,7 @@
           
           <div style="display: flex; flex-direction: row;">
                <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-          <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
                <div class="nama">
                          <p style="color: black;">Nama pemesan</p>
                     </div>
@@ -241,39 +224,57 @@
 </div>
 </section>
 
-<section class="confirm" style="gap: 20px; margin-top: 40px;">
-     <div>
-          <p style="color: black; font-size: 12px; margin-left: 20px; margin-right: 20px;">Dengan ini kamu dapat memesan lewat whatsapp dengan mudah</p>
-     </div>
-     <div class="box-text-confirm" id="id-confirm"
-     style="margin: 10px; width: 90%; background-color: rgba(0, 0, 0, 0); border: 1px solid black; border-radius: 10px; color: #000000; text-align: left; font-size: 12px;"><pre>
+
+
+<!-- Modal overlay -->
+<div class="modal-overlay" id="modal-overlay">
+     <div class="modal-content">
           
-     Halo, saya [___]
+          <section class="confirm">
+               <div>
+                    <p style="color: black; font-size: 12px; margin-left: 20px; margin-right: 20px;">
+                         Dengan ini kamu dapat memesan lewat whatsapp dengan mudah
+                    </p>
+               </div>
+               <div class="box-text-confirm" id="id-confirm"
+                    style="margin: 10px; width: 90%; background-color: rgba(0, 0, 0, 0); border: 1px solid black; border-radius: 10px; color: #000000; text-align: left; font-size: 12px;">
+                    <pre>
+
+     Halo, saya *[___]*
      memesan ayam potong
      dengan rincian berikut:
-     ~ Deskripsi pesanan
-          - jenis   : [__]
-          - jumlah  : [__]
-          - Dipotong: [__]
-     ~ Pengantaran
-          - Hari    : [__]
-          - Jam     : [__]
-     dengan catatan "[__]"
+     * Deskripsi pesanan*
+       - jenis   : [__]
+       - jumlah  : [__]
+       - Dipotong: [__]
+     * Pengantaran*
+       - Hari    : [__]
+       - Jam     : [__]
+     *dengan catatan* "[__]"
+     *Total Harga : [__]*
      Terimakasih.
-     </pre> 
-     </div>
-     <div style="display: flex; flex-direction: row;" >
-          <div style="width: 150px; font-size: 12px; color: #000000; "> kirim ke</div>
-          <a href="https://wa.me/6289653531029?text=Halo,%20salam%20kenal" id="id-whatsapp"
-          style="display: flex; justify-content: center; align-items: center; width: 150px; height: 40px; background-color: rgb(8, 148, 3); border-radius: 10px; font-size: 12px; margin-top: 20px; gap: 5px; color: white;"> <img src="/img/whatsapp.svg" alt="whatsapp" style="width: 30px;">
-          whatsapp</a>
-     </div>
-</section>
 
+                    </pre>
+               </div>
+               <div style="display: flex; flex-direction: row; width: 90%; justify-content: space-between; align-items: center; ">
+                    <button class="close-btn" id="close-btn" style="display: flex; justify-content: center; align-items: center; height: 40px; background-color: rgb(219, 11, 11); border-radius: 10px; font-size: 12px; margin-top: 20px; gap: 5px; color: white;">Tutup</button>
+                    <a href="https://wa.me/6289653531029?text=Halo,%20salam%20kenal" id="id-whatsapp"
+                         style="display: flex; justify-content: center; align-items: center; width: 150px; height: 40px; background-color: rgb(8, 148, 3); border-radius: 10px; font-size: 12px; margin-top: 20px; gap: 5px; color: white;">
+                         <img src="/img/whatsapp.svg" alt="whatsapp" style="width: 30px; right: 10px;"> Kirim
+                    </a>
+               </div>
+          </section>
+     </div>
+</div>
+
+
+<div id="section-container">
+     <!-- Section akan ditambahkan di sini -->
+</div>
 <!--Frequenty Asked Question-->
 <section class="faq" id="faq">
 <div class="faq-container">
-     <h3 style="text-align: center; margin-bottom: 10px; color: #ffffff;">FAQ</h3>
+     <h3 style="text-align: center; margin-bottom: 10px; color: #ffffff;">FAQ </h3>
      <div class="faq-item">
           <div class="faq-garis"></div>
           <input type="checkbox" id="faq1">
@@ -321,7 +322,7 @@
      </div>
 </div>
 </footer>
-<div style="height: 110px;"></div>
+<div style="height: 80px;"></div>
 
 <!--javascript-->
 <script src="js/script.js"></script>

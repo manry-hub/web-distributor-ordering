@@ -186,3 +186,25 @@ document.addEventListener("click", (event) => {
         timeDropdown.style.display = "none"; // sembunyiin dropdown
     }
 });
+
+// Tombol dan elemen modal
+const showButton = document.getElementById("show-section-confirm-btn");
+const modalOverlay = document.getElementById("modal-overlay");
+const closeButton = document.getElementById("close-btn");
+
+// Fungsi untuk membuka modal
+showButton.addEventListener("click", () => {
+    modalOverlay.style.display = "flex"; // Tampilkan modal
+});
+
+// Fungsi untuk menutup modal
+closeButton.addEventListener("click", () => {
+    modalOverlay.style.display = "none"; // Sembunyikan modal
+});
+
+// Menutup modal jika klik di luar modal-content
+modalOverlay.addEventListener("click", (event) => {
+    if (event.target === modalOverlay) {
+        modalOverlay.style.display = "none";
+    }
+});
