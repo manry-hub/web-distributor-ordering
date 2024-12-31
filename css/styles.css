@@ -1,0 +1,635 @@
+/* pointer select*/
+
+:root {
+  --bg: #ffeee6;
+  --1: #dda537;
+  --2: #9e7119;
+  --3: #7d5301;
+  --4: #483002;
+  --5: #fedc99;
+  --grey: #afafaf;
+  --black: #120800;
+}
+
+* {
+  font-family: "poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "poppins", sans-serif;
+  background-color: var(--bg);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.sidebar {
+  display: flex;
+  position: fixed;
+  bottom: 180px;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+}
+.sidebar img {
+  width: 50px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #2d8113de;
+  box-shadow: 0px 7px 20px #292929;
+}
+
+.slide1 {
+  position: absolute;
+  background-color: var(--4);
+  height: 600px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 0px 0px 90px 90px;
+  z-index: -100;
+  box-shadow: 0px 10px 30px #292929;
+  opacity: 0;
+  transform: translateY(-400px);
+  transition: opacity 1s ease-out, transform 2s ease-out;
+}
+
+.slide2 {
+  position: absolute;
+  background-color: var(--2);
+  height: 1200px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 0px 0px 90px 90px;
+  z-index: -99;
+  box-shadow: 0px 10px 30px #292929;
+  opacity: 0;
+  transform: translateY(-400px);
+  transition: opacity 1s ease-out, transform 3s ease-out;
+}
+
+.slide3 {
+  position: absolute;
+  background-color: var(--1);
+  height: 450px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 0px 0px 90px 90px;
+  z-index: -98;
+  box-shadow: 0px 10px 30px #292929;
+  opacity: 0;
+  transform: translateY(-400px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar-extra {
+  cursor: pointer;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
+  background-color: #fefbfb67;
+  padding: 10px;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 7px 20px #292929;
+  bottom: 30px;
+  transition: left 5s ease;
+  width: 100%;
+  height: 80px;
+}
+
+.nav-order {
+  background-color: rgba(186, 96, 6, 0.89);
+  position: static;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.navbar-extra a:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.hero .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero .keunggulan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero .row p {
+  margin-top: 10px;
+  margin-left: 70px;
+  margin-right: 70px;
+  text-align: center;
+}
+
+.hero .row p span {
+  color: #2d8113;
+  font-weight: 700;
+}
+
+.daging-img {
+  margin: 20px;
+}
+
+.logo-img {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #463a306b;
+  padding: 8px;
+}
+
+.about {
+  margin-top: 120px;
+  margin-left: 10px;
+  margin-right: 8px;
+}
+
+.about h3 {
+  font-size: 1rem;
+  font-style: bold;
+  margin-bottom: 10px;
+  margin-left: 80px;
+  color: var(--5);
+}
+
+.about .row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.about .row p {
+  font-size: 12px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-280px * 4));
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(calc(-280px * 4));
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slider {
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 400px;
+  /* You can adjust or delete this line */
+}
+
+/* RULES: calc(${width of slide-item + margin left + margin right}px * ${(total slide)*2}) */
+.slide-track {
+  display: flex;
+  width: calc(280px * 8);
+}
+
+.slide-track.left {
+  animation: scroll-left 12s linear infinite;
+  /* You can set the time to any number of seconds */
+}
+
+.slide-track.right {
+  animation: scroll-right 12s linear infinite;
+  /* You can set the time to any number of seconds */
+}
+
+.slide-item {
+  margin-left: 20px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  transition: transform 0.5s, box-shadow 0.5s;
+  /* Added transition for smooth effect */
+}
+
+.slide-item:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.678);
+}
+
+.order {
+  height: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  .slider {
+    width: 100vw;
+  }
+}
+
+/* Styling untuk section Supplier */
+.supplier {
+  margin-top: 130px;
+  justify-content: center;
+  /* Mengatur elemen ke tengah secara horizontal */
+  align-items: center;
+  /* Mengatur elemen ke tengah secara vertikal */
+
+  text-align: center;
+  /* Mengatur teks di dalam elemen menjadi rata tengah */
+}
+
+.supplier .container {
+  margin-bottom: 70px;
+  /* Membatasi lebar container */
+  padding: 20px;
+  /* Memberikan sedikit ruang di dalam container */
+}
+
+.supplier h3 {
+  font-size: 1rem;
+  /* Ukuran font heading utama */
+  margin-bottom: 10px;
+  /* Memberikan jarak bawah */
+  color: #ffffff;
+  /* Warna teks */
+}
+
+.supplier h4 {
+  font-size: 1rem;
+  /* Ukuran font heading kedua */
+  margin-bottom: 15px;
+  /* Memberikan jarak bawah */
+  color: #ddbc81;
+}
+
+.supplier p {
+  font-size: 0.5rem;
+  /* Ukuran font paragraf */
+  color: #c17c22;
+  /* Warna teks */
+  line-height: 1.6;
+}
+
+.supplier .ayam-supplier {
+  justify-content: center;
+  display: flex;
+  gap: 20px;
+}
+
+.supplier .ayam-supplier img {
+  width: 160px;
+  height: 140px;
+  border-radius: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 10px 10px 30px #292929;
+}
+
+.kelurahan {
+  height: 30px;
+  background-color: #492b08;
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: auto;
+  display: block;
+  margin-top: 50px;
+}
+.choose {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pembatas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.jenis-ayam {
+  margin-bottom: 1rem;
+}
+
+.jenisAyam {
+  margin-right: 1rem;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid black;
+  border-radius: 50%;
+  outline: none;
+  margin: 0;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked {
+  background-color: black;
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+}
+
+.spinner input {
+  width: 70px;
+  height: 50px;
+  text-align: center;
+  font-size: 12px;
+  border: 2px solid #cccccc82;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.spinner button {
+  width: 50px;
+  height: 25px;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.spinner button:active {
+  background-color: #ffffff;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.arrow {
+  display: block;
+  width: 0;
+  height: 0;
+  margin: auto;
+  border-style: solid;
+}
+
+.arrow-up {
+  border-width: 0 15px 20px 15px;
+  border-color: transparent transparent rgb(0, 0, 0) transparent;
+}
+
+.arrow-down {
+  border-width: 20px 15px 0 15px;
+  border-color: rgb(0, 0, 0) transparent transparent transparent;
+}
+.slider-poin-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.3rem;
+  width: 18rem;
+}
+
+.slider-poin-number-1 {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.slider-1 {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: black; /* Warna track slider */
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Gaya untuk thumb (handle slider) */
+.slider-1::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: rgb(255, 255, 255); /* Warna thumb slider */
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid black;
+}
+.fill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.harga {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hari-jam {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+.hari-antar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.my-input-class {
+  width: 100%; /* w-full */
+  border: 1px solid #000000; /* border */
+  border-radius: 10px; /* rounded-md */
+  padding: 12px; /* p-3 */
+  background-color: #ffffff; /* bg-gray-100 */
+  text-align: left; /* text-left */
+  color: #000000; /* text-gray-700 */
+}
+
+.jam-antar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.catatan-tambahan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.faq {
+  width: 100%;
+  background-color: var(--black);
+  border-radius: 50px;
+  box-shadow: 0px 10px 30px #292929;
+  margin-top: 40px;
+}
+
+.faq-container {
+  max-width: 600px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.faq-garis {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  display: block;
+  cursor: pointer;
+  padding: 10px 0;
+  color: #fff;
+}
+
+.faq-question:hover {
+  color: var(--1);
+}
+
+.faq-answer {
+  max-height: 0;
+  font-size: x-small;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  color: #b5b2b2;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ .faq-answer {
+  max-height: 500px; /* Sesuaikan sesuai kebutuhan */
+  transition: max-height 0.3s ease-in;
+}
+
+footer {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 350px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.location-garis {
+  border-bottom: 1px solid #000000;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+iframe {
+  margin-top: 20px;
+  width: 300px;
+  height: 200px;
+}
+
+/* media queries */
+/* Tablet */
+/* Mobile */
