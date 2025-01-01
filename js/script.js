@@ -50,8 +50,8 @@ function calculateTotalPrice() {
                     const chickenType = selectedChicken ? selectedChicken.value : null;
 
                     const prices = {
-                         broiler: 20000,
-                         kampung: 50000,
+                         broiler: 35000,
+                         kampung: 80000,
                     };
 
                     const quantity = parseInt(form.querySelector(`.number`).value) || 0;
@@ -78,7 +78,7 @@ function calculateTotalPrice() {
                               input.checked = false;
                          } else if (input.type === 'number') {
                               input.setAttribute('data-order-index', newIndex);
-                              input.value = 1;
+                              input.value = 0;
                          }
                     });
 
@@ -101,7 +101,6 @@ function calculateTotalPrice() {
                } else if (amount < 0 && orderForms.length > 1) {
                     formContainer.removeChild(orderForms[orderForms.length - 1]);
                }
-
                calculateTotalPrice();
           }
 
