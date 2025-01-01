@@ -15,20 +15,26 @@
 
 <body style="width: 400px;">
 
-     
-     <!--slide-->
+<!--slide-->
 <div class="slide2"></div>
 <div class="slide3"></div>
-     
 
 <!-- Navbar -->
-<nav class="navbar-bottom" style="display: flex; flex-direction: row; gap: 20px; font-size: 12px;">
-     <a href="#faq" style="justify-content: center; align-items: center; display: flex; margin-left: 8px;">
+<nav class="navbar-bottom"
+     style="display: flex; align-items: center; height: 60px; background-color: #fff; padding: 0;">
+     <a href="#faq" style="display: flex; justify-content: center; align-items: center; width: 60px; margin-left: 8px;">
           <img src="/img/faq.png" alt="faq" style="width: 40px;">
      </a>
-          <a href="#order" class="isi-form" style="display: flex; justify-content: center; align-items: center; height: 40px; border-radius: 10px; border: 2px solid black; width: 60%; color: #000000;" >Isi Pesanan</a>
-          <button id="show-section-confirm-btn" class="into-whatsapp" style="display: flex; justify-content: center; align-items: center; height: 40px; background-color: #894106; width: 70%; border-radius: 10px; color: white;" >Beli Sekarang</button>
+     <a href="#order" class="isi-form"
+          style="flex: 1; display: flex; justify-content: center; align-items: center; height: 100%; color: #ab790f; text-align: center; font-size: 12px;">
+          Isi Pesanan
+     </a>
+     <button id="show-section-confirm-btn" class="into-whatsapp"
+          style="flex-grow: 1; display: flex; justify-content: center; align-items: center; height: 100%; width: 65px; background-color: var(--1); color: white;">
+          Beli Sekarang
+     </button>
 </nav>
+
 <div id="awalan" style="height: 50px;"></div>
 
 <!--Hero-->
@@ -69,23 +75,24 @@
           <div class="ayam-supplier">
                <div>
                     <p style="color: white;">Ayam Boiler</p>
-                    <img src="img/-_211104171252-545.jpg" alt="boiler-img">
-                    <p style="color: black; font-weight: 600;">40 Rb</p>
+                    <img src="img/ayam-broiler.jpg" alt="boiler-img">
+                    <p style="color: black; font-weight: 600;">35 Rb</p>
+               
                </div>
           <div>
                <p style="color: white;">Ayam Kampung</p>
-               <img src="img/images.jpeg" alt="kampung-img">
-               <p style="color: black; font-weight: 600;">50 Rb</p>
+               <img src="img/ayam-jago.jpeg" alt="kampung-img">
+               <p style="color: black; font-weight: 600;">80 Rb</p>
           </div>
      </div>
 
 <p style="color: #000000; margin-top: 40px; text-align: center;">Gratis ongkir untuk daerah:</p>
-<div class="free-ongkir" style="padding: 10px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; text-align: center; width: auto;">
-     <div class="kelurahan" style="padding-left: 5px; padding-right: 5px; border-radius: 5px;">Curug </div>
-     <div class="kelurahan"style="padding-left: 5px; padding-right: 5px; border-radius: 5px;" >Cisalak pasar</div>
-     <div class="kelurahan" style="padding-left: 5px; padding-right: 5px; border-radius: 5px;">Harjamukti</div>
-     <div class="kelurahan" style="padding-left: 5px; padding-right: 5px; border-radius: 5px;">Sukatani</div>
-     <div class="kelurahan" style="padding-left: 5px; padding-right: 5px; border-radius: 5px;">Sukamaju baru</div>
+<div class="free-ongkir">
+     <div class="kelurahan">Curug</div>
+     <div class="kelurahan">Cisalak pasar</div>
+     <div class="kelurahan">Harjamukti</div>
+     <div class="kelurahan">Sukatani</div>
+     <div class="kelurahan">Sukamaju baru</div>
 </div>   
 </section>
 
@@ -98,70 +105,70 @@
      <div class="choose">
           <div class="pembatas">
                <div class="garis-1" style="background-color: black; width: 260px; height: 1px; margin-top: 5px;"></div>
-               <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>     
+               <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>
           </div>
-          
-          <div class="manipulation-order" data-order-index="1" style="background-color: white; border-radius: 15px; box-shadow: 0px 6px 20px #535252;">
-          <div style="display: flex; flex-direction: row; gap: 20px; justify-content: center; align-items: center; margin-top: 20px;">
-               <div class="jenis-ayam" id="id-jenis">
-                    <div style="display: flex; flex-direction: column; gap: 1px;">
-                         <label class="jenisAyam">
-                              <input type="radio" name="chicken" value="broiler">
-                              <span style="color: black; font-size: 12px; ">Ayam Broiler</span>
-                         </label>
-                         <label class="jenisAyam">
-                              <input type="radio" name="chicken" value="kampung">
-                              <span style="color: black; font-size: 12px; ">Ayam Kampung</span>
-                         </label>
+     
+          <div class="manipulation-order" data-order-index="1">
+               <div class="box-manipulation-jumlah-dan-jenis">
+                    <div class="jenis-ayam" id="id-jenis">
+                         <div style="display: flex; flex-direction: column; gap: 1px;">
+                              <label class="jenisAyam">
+                                   <input type="radio" name="chicken-1" value="broiler">
+                                   <span style="color: black; font-size: 12px;">Ayam Broiler</span>
+                              </label>
+                              <label class="jenisAyam">
+                                   <input type="radio" name="chicken-1" value="kampung">
+                                   <span style="color: black; font-size: 12px;">Ayam Kampung</span>
+                              </label>
+                         </div>
+                    </div>
+     
+                    <div style="display: flex; flex-direction: column;">
+                         <p style="color: #000000; font-size: 12px;">Jumlah ayam</p>
+                         <div class="spinner">
+                              <input type="number" class="number" data-order-index="1" value="1">
+                              <div class="button">
+                                   <button class="increment_jumlah" style="background-color: rgba(127, 255, 212, 0);">
+                                        <span class="arrow arrow-up"></span>
+                                   </button>
+                                   <button class="decrement_jumlah" style="background-color: rgba(127, 255, 212, 0);">
+                                        <span class="arrow arrow-down"></span>
+                                   </button>
+                              </div>
+                         </div>
                     </div>
                </div>
-               <!-- jumlah pesanan -->
-               <div style="display: flex; flex-direction: column;">
-                    <p style="color: #000000; font-size: 12px;">Jumlah ayam</p>
-                    <div class="spinner">
-                         <input type="number" data-order-index="1" id="number" value="1">
-                         <div class="button">
-                              <button  class="increment_btn" onclick="increment()" style="background-color: rgba(127, 255, 212, 0);">
-                                   <span class="arrow arrow-up"></span>
-                              </button>
-                              <button class="decrement_btn" onclick="decrement()" style="background-color: rgba(127, 255, 212, 0);">
-                                   <span class="arrow arrow-down"></span>
-                              </button>
+     
+               <div class="slider-poin">
+                    <p style="color: black; font-size: 12px; margin-bottom: 6px;">Potong</p>
+                    <input type="range" id="id-potong" min="1" max="5" step="1">
+                    <div class="slider-poin-number">
+                         <div><span id="potong-1">1</span></div>
+                         <div><span id="potong-4">4</span></div>
+                         <div><span id="potong-8">8</span></div>
+                         <div><span id="potong-10">10</span></div>
+                         <div><span id="potong-12">12</span></div>
+                    </div>
+               </div>
+     
+               <div class="add-order" id="id-order">
+                    <div style="display: flex; flex-direction: row; gap: 10px; text-align: right;">
+                         <div style="font-size: 12px; color: black;">
+                              <p>Kurangi</p>
+                              <p>kategori</p>
+                         </div>
+                         <button class="decrease-order" onclick="addOrderForm(-1)">-</button>
+                    </div>
+                    <div style="display: flex; flex-direction: row; gap: 10px;">
+                         <button class="increase-order" onclick="addOrderForm(1)">+</button>
+                         <div>
+                              <p style="font-size: 12px; color: black;">Tambah</p>
+                              <p style="font-size: 12px; color: black;">kategori</p>
                          </div>
                     </div>
                </div>
           </div>
-          
-          <div class="slider-poin-1" id="id-potong-1" >
-               <p style="color: black; font-size: 12px; margin-bottom: 6px;">Potong</p>
-               <input type="range" class="slider-1" style="width: 280px;" min="1" max="5" step="1" />
-               <div class="slider-poin-number-1" style="color: black; font-size: 12px;">
-                    <div class="flex justify-center relative"><span class="absolute">1</span></div>
-                    <div class="flex justify-center relative"><span class="absolute">4</span></div>
-                    <div class="flex justify-center relative"><span class="absolute">8</span></div>
-                    <div class="flex justify-center relative"><span class="absolute">10</span></div>
-                    <div class="flex justify-center relative"><span class="absolute">12</span></div>
-               </div>
-          </div>
-          
-          <div class="add-order" id="id-order" style="display: flex; flex-direction: row; gap: 40px; margin-top: 30px; margin-bottom: 20px; justify-content: center; align-items: center;">
-               <div style="display: flex; flex-direction: row; gap: 10px; text-align: right;">
-                    <div>
-                         <p style="font-size: 12px; color: black;">Kurangi</p>
-                         <p style="font-size: 12px; color: black;">kategori</p>
-                    </div>
-                    <button class="decrease-order" onclick="addOrderForm(-1)" style=" display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0); border-radius: 50px; border: 1px solid rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 1.6rem;">-</button>
-               </div>
-               <div style="display: flex; flex-direction: row; gap: 10px;">
-                    <button class="increase-order" onclick="addOrderForm(1)" style="display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; background-color: rgb(0, 0, 0); border-radius: 50px; font-size: 1.6rem; color: #ffffff;">+</button>
-                    <div>
-                         <p style="font-size: 12px; color: black;">Tambah</p>
-                         <p style="font-size: 12px; color: black;">kategori</p>
-                    </div>
-               </div>
-          </div>
-          </div>
-          <div class="output-manipulation-order" style="display: block; "></div>
+          <div class="output-manipulation-order" style="display: block;"></div>
      </div>
      <div class="fill" style="font-size: 12px; width: 100%; margin-top: 20px;">
           <div class="pembatas">
@@ -171,7 +178,7 @@
           <div class="harga">
           <p style="color: black;">Total harga</p>
           </div>
-          <div class="box-total-harga" id="id-total-harga" style="height: 50px; width: 180px; background-color: rgba(0, 0, 0, 0); border: 1px solid black; border-radius: 10px ; color: #000000;"></div>
+          <div class="box-total-harga" id="id-total-harga"></div>
           <div class="hari-jam">
                <div class="hari-antar" style="width: 130px;">
                     <p style="color: black;"> Hari antar</p>
@@ -188,14 +195,10 @@
                <div class="jam-antar">
                     <p style="color: black; margin-top: 13px;">Jam</p>          
                     <div style="position: relative; ">
-                         <button id="time-button"
-                         style="width: 100%; border: 1px solid #000000; border-radius: 10px; padding: 12px; background-color: #ffffff; text-align: left; color: #4a4a4a; cursor: pointer; ">
-                                   07:00
-                              </button>
-                              <div id="time-dropdown"
-                              style="position: absolute; z-index: 10; width: 100%; background-color: white; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); max-height: 12rem; overflow-y: auto; display: none;">
-                              </div>
+                         <button id="time-button">07:00</button>
+                              <div id="time-dropdown"></div>
                          </div>
+
                          <!-- Selected Time -->
                          <div>
                               <span id="selected-time"></span>
@@ -206,38 +209,33 @@
           <div class="catatan-tambahan">
                <p style="color: black;">Catatan tambahan</p>
           </div>
-          <input type="text" class="box-catatan-tambahan" id="id-catatan" style="height: 100px; width: 80%; background-color: rgba(255, 255, 255, 0.805);  border: 1px solid black; border-radius: 10px;">
+          <input type="text" class="box-catatan-tambahan" id="id-catatan">
           
           <div style="display: flex; flex-direction: row;">
                <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-          <div style="display: flex; flex-direction: column; align-items: center;">
-               <div class="nama">
-                         <p style="color: black;">Nama pemesan</p>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                         <div class="nama">
+                              <p style="color: black;">Nama pemesan</p>
+                         </div>
+                         <input class="nama-pemesan" id="id-nama-pemesan" type="text">
                     </div>
-                    <input class="nama-pemesan" id="id-nama-pemesan" type="text"
-                         style="height: 50px; width: 180px; background-color: rgba(255, 255, 255, 0.805); border: 1px solid black; border-radius: 10px; margin-top: 10px;">
-          </div>
-                    <div style="display: flex; justify-content: center; align-items: center; width: 150px; height: 40px; background-color: rgb(0, 0, 0); border-radius: 10px; font-size: 12px; margin-top: 20px;"> Konfirmasi</div>
+                    <button class="box-confirm"> Konfirmasi </button>
                </div>
           </div>
-     </div>     
+     </div>
 </div>
 </section>
-
-
 
 <!-- Modal overlay -->
 <div class="modal-overlay" id="modal-overlay">
      <div class="modal-content">
-          
           <section class="confirm">
                <div>
                     <p style="color: black; font-size: 12px; margin-left: 20px; margin-right: 20px;">
                          Dengan ini kamu dapat memesan lewat whatsapp dengan mudah
                     </p>
                </div>
-               <div class="box-text-confirm" id="id-confirm"
-                    style="margin: 10px; width: 90%; background-color: rgba(0, 0, 0, 0); border: 1px solid black; border-radius: 10px; color: #000000; text-align: left; font-size: 12px;">
+               <div class="box-text-send" id="id-send">
                     <pre>
 
      Halo, saya *[___]*
@@ -256,10 +254,9 @@
 
                     </pre>
                </div>
-               <div style="display: flex; flex-direction: row; width: 90%; justify-content: space-between; align-items: center; ">
-                    <button class="close-btn" id="close-btn" style="display: flex; justify-content: center; align-items: center; height: 40px; background-color: rgb(219, 11, 11); border-radius: 10px; font-size: 12px; margin-top: 20px; gap: 5px; color: white;">Tutup</button>
-                    <a href="https://wa.me/6289653531029?text=Halo,%20salam%20kenal" id="id-whatsapp"
-                         style="display: flex; justify-content: center; align-items: center; width: 150px; height: 40px; background-color: rgb(8, 148, 3); border-radius: 10px; font-size: 12px; margin-top: 20px; gap: 5px; color: white;">
+               <div class="close-and-send">
+                    <button class="close-send-btn" id="close-send-btn">Tutup</button>
+                    <a href="https://wa.me/6289653531029?text=Halo,%20salam%20kenal" id="id-send-whatsapp">
                          <img src="/img/whatsapp.svg" alt="whatsapp" style="width: 30px; right: 10px;"> Kirim
                     </a>
                </div>
@@ -268,9 +265,6 @@
 </div>
 
 
-<div id="section-container">
-     <!-- Section akan ditambahkan di sini -->
-</div>
 <!--Frequenty Asked Question-->
 <section class="faq" id="faq">
 <div class="faq-container">

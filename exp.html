@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Order Manipulation</title>
+     <style>
+          .spinner .button button {
+               cursor: pointer;
+          }
+
+          .arrow {
+               display: block;
+               width: 0;
+               height: 0;
+          }
+
+          .arrow-up {
+               border-left: 5px solid transparent;
+               border-right: 5px solid transparent;
+               border-bottom: 8px solid black;
+          }
+
+          .arrow-down {
+               border-left: 5px solid transparent;
+               border-right: 5px solid transparent;
+               border-top: 8px solid black;
+          }
+     </style>
+</head>
+
+<body>
+     <div class="choose">
+          <div class="pembatas">
+               <div class="garis-1" style="background-color: black; width: 260px; height: 1px; margin-top: 5px;"></div>
+               <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>
+          </div>
+
+          <div class="manipulation-order" data-order-index="1">
+               <div class="box-manipulation-jumlah-dan-jenis">
+                    <div class="jenis-ayam" id="id-jenis">
+                         <div style="display: flex; flex-direction: column; gap: 1px;">
+                              <label class="jenisAyam">
+                                   <input type="radio" name="chicken-1" value="broiler">
+                                   <span style="color: black; font-size: 12px;">Ayam Broiler</span>
+                              </label>
+                              <label class="jenisAyam">
+                                   <input type="radio" name="chicken-1" value="kampung">
+                                   <span style="color: black; font-size: 12px;">Ayam Kampung</span>
+                              </label>
+                         </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column;">
+                         <p style="color: #000000; font-size: 12px;">Jumlah ayam</p>
+                         <div class="spinner">
+                              <input type="number" class="number" data-order-index="1" value="1">
+                              <div class="button">
+                                   <button class="increment_jumlah" style="background-color: rgba(127, 255, 212, 0);">
+                                        <span class="arrow arrow-up"></span>
+                                   </button>
+                                   <button class="decrement_jumlah" style="background-color: rgba(127, 255, 212, 0);">
+                                        <span class="arrow arrow-down"></span>
+                                   </button>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+
+               <div class="slider-poin">
+                    <p style="color: black; font-size: 12px; margin-bottom: 6px;">Potong</p>
+                    <input type="range" id="id-potong" min="1" max="5" step="1">
+                    <div class="slider-poin-number">
+                         <div><span id="potong-1">1</span></div>
+                         <div><span id="potong-4">4</span></div>
+                         <div><span id="potong-8">8</span></div>
+                         <div><span id="potong-10">10</span></div>
+                         <div><span id="potong-12">12</span></div>
+                    </div>
+               </div>
+
+               <div class="add-order" id="id-order">
+                    <div style="display: flex; flex-direction: row; gap: 10px; text-align: right;">
+                         <div style="font-size: 12px; color: black;">
+                              <p>Kurangi</p>
+                              <p>kategori</p>
+                         </div>
+                         <button class="decrease-order" onclick="addOrderForm(-1)">-</button>
+                    </div>
+                    <div style="display: flex; flex-direction: row; gap: 10px;">
+                         <button class="increase-order" onclick="addOrderForm(1)">+</button>
+                         <div>
+                              <p style="font-size: 12px; color: black;">Tambah</p>
+                              <p style="font-size: 12px; color: black;">kategori</p>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="output-manipulation-order" style="display: block;"></div>
+          <p id="id-total-harga" style="font-size: 14px; color: black;">Pilih jenis ayam!</p>
+     </div>
+
+     <script>
+          function calculateTotalPrice() {
+               const forms = document.querySelectorAll('.manipulation-order');
+               let totalPrice = 0;
+               forms.forEach((form) => {
+                    const index = form.getAttribute('data-order-index');
+                    const selectedChicken = form.querySelector(`input[name="chicken-${index}"]:checked`);
+                    const chickenType = selectedChicken ? selectedChicken.value : null;
+
+                    const prices = {
+                         broiler: 20000,
+                         kampung: 50000,
+                    };
+
+                    const quantity = parseInt(form.querySelector(`.number`).value) || 0;
+                    const pricePerChicken = prices[chickenType] || 0;
+
+                    totalPrice += pricePerChicken * quantity;
+               });
+
+               document.getElementById('id-total-harga').innerText = `Rp ${totalPrice.toLocaleString()}`;
+          }
+
+          function addOrderForm(amount) {
+               const formContainer = document.querySelector('.output-manipulation-order');
+               const orderForms = document.querySelectorAll('.manipulation-order');
+
+               if (amount > 0) {
+                    const newForm = orderForms[0].cloneNode(true);
+                    const newIndex = orderForms.length + 1;
+                    newForm.setAttribute('data-order-index', newIndex);
+
+                    newForm.querySelectorAll('input').forEach((input) => {
+                         if (input.type === 'radio') {
+                              input.name = `chicken-${newIndex}`;
+                              input.checked = false;
+                         } else if (input.type === 'number') {
+                              input.setAttribute('data-order-index', newIndex);
+                              input.value = 1;
+                         }
+                    });
+
+                    newForm.querySelector('.increment_jumlah').addEventListener('click', function () {
+                         const input = this.closest('.spinner').querySelector('.number');
+                         input.value = parseInt(input.value) + 1;
+                         calculateTotalPrice();
+                    });
+
+                    newForm.querySelector('.decrement_jumlah').addEventListener('click', function () {
+                         const input = this.closest('.spinner').querySelector('.number');
+                         const currentValue = parseInt(input.value);
+                         if (currentValue > 0) {
+                              input.value = currentValue - 1;
+                         }
+                         calculateTotalPrice();
+                    });
+
+                    formContainer.appendChild(newForm);
+               } else if (amount < 0 && orderForms.length > 1) {
+                    formContainer.removeChild(orderForms[orderForms.length - 1]);
+               }
+
+               calculateTotalPrice();
+          }
+
+          document.addEventListener('click', (event) => {
+               if (event.target.classList.contains('increment_jumlah')) {
+                    const input = event.target.closest('.spinner').querySelector('.number');
+                    input.value = parseInt(input.value) + 1;
+                    calculateTotalPrice();
+               }
+
+               if (event.target.classList.contains('decrement_jumlah')) {
+                    const input = event.target.closest('.spinner').querySelector('.number');
+                    const currentValue = parseInt(input.value);
+                    if (currentValue > 0) {
+                         input.value = currentValue - 1;
+                    }
+                    calculateTotalPrice();
+               }
+          });
+
+          document.querySelectorAll('input[name^="chicken"]').forEach((radio) => {
+               radio.addEventListener('change', calculateTotalPrice);
+          });
+
+          document.querySelectorAll('.number').forEach((input) => {
+               input.addEventListener('input', calculateTotalPrice);
+          });
+     </script>
+</body>
+
+</html>

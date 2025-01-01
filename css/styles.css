@@ -91,7 +91,7 @@ body {
   gap: 30px;
   background-color: #ffffff;
   padding: 10px;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
   box-shadow: 0px 7px 20px #292929;
   bottom: 0px;
   transition: left 5s ease;
@@ -289,9 +289,22 @@ body {
   box-shadow: 10px 10px 30px #292929;
 }
 
+.free-ongkir {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+}
+
 .kelurahan {
   height: 30px;
   background-color: #492b08;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
 }
 
 .order {
@@ -304,6 +317,22 @@ body {
   display: block;
   margin-top: 50px;
 }
+
+.manipulation-order {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 6px 20px #535252;
+}
+
+.box-manipulation-jumlah-dan-jenis {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
 .choose {
   display: flex;
   flex-direction: column;
@@ -365,6 +394,38 @@ input[type="radio"]:checked::after {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.add-order {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.decrease-order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  border: 1px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  font-size: 1.6rem;
+}
+.increase-order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50px;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
 
 .spinner {
   display: flex;
@@ -422,7 +483,7 @@ input[type="radio"]:checked::after {
   border-width: 20px 15px 0 15px;
   border-color: rgb(0, 0, 0) transparent transparent transparent;
 }
-.slider-poin-1 {
+.slider-poin {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -432,26 +493,28 @@ input[type="radio"]:checked::after {
   width: 18rem;
 }
 
-.slider-poin-number-1 {
+.slider-poin-number {
   display: flex;
   justify-content: space-between;
   width: 90%;
   padding-left: 10px;
   padding-right: 10px;
+  color: black;
+  font-size: 12px;
 }
 
-.slider-1 {
+#id-potong {
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
   height: 8px;
   background: black; /* Warna track slider */
   border-radius: 5px;
   outline: none;
+  width: 280px;
 }
 
 /* Gaya untuk thumb (handle slider) */
-.slider-1::-webkit-slider-thumb {
+#id-potong::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 16px;
@@ -467,6 +530,14 @@ input[type="radio"]:checked::after {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+.box-total-harga {
+  height: 50px;
+  width: 180px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid black;
+  border-radius: 10px;
+  color: #000000;
 }
 .harga {
   display: flex;
@@ -506,12 +577,49 @@ input[type="radio"]:checked::after {
   align-items: center;
   gap: 10px;
 }
+#time-button {
+  width: 100%;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 12px;
+  background-color: #ffffff;
+  text-align: left;
+  color: #4a4a4a;
+  cursor: pointer;
+}
+#time-dropdown {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 12rem;
+  overflow-y: auto;
+  display: none;
+}
 
 .catatan-tambahan {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.box-catatan-tambahan {
+  height: 100px;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.805);
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.nama-pemesan {
+  height: 50px;
+  width: 180px;
+  background-color: rgba(255, 255, 255, 0.805);
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 .confirm {
@@ -521,6 +629,62 @@ input[type="radio"]:checked::after {
   align-items: center;
   text-align: center;
   margin-top: 10px;
+}
+
+.box-confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  font-size: 12px;
+  margin-top: 20px;
+  color: white;
+}
+.box-text-send {
+  margin: 10px;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid black;
+  border-radius: 10px;
+  color: #000000;
+  text-align: left;
+  font-size: 12px;
+}
+.close-and-send {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-send-btn {
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: rgb(219, 11, 11);
+  border-radius: 10px;
+  font-size: 12px;
+  margin-top: 20px;
+  gap: 5px;
+  color: white;
+  padding: 5px;
+}
+#id-send-whatsapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(8, 148, 3);
+  border-radius: 10px;
+  font-size: 12px;
+  margin-top: 20px;
+  gap: 5px;
+  color: white;
 }
 
 .faq {

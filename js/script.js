@@ -41,102 +41,94 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// jumlah ayam
-        document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("increment")) {
-        const input = event.target.closest(".spinner").querySelector(".number");
-        input.value = parseInt(input.value) + 1;
-        calculateTotalPrice();
-    }
+function calculateTotalPrice() {
+               const forms = document.querySelectorAll('.manipulation-order');
+               let totalPrice = 0;
+               forms.forEach((form) => {
+                    const index = form.getAttribute('data-order-index');
+                    const selectedChicken = form.querySelector(`input[name="chicken-${index}"]:checked`);
+                    const chickenType = selectedChicken ? selectedChicken.value : null;
 
-    if (event.target.classList.contains("decrement")) {
-        const input = event.target.closest(".spinner").querySelector(".number");
-        const currentValue = parseInt(input.value);
-        if (currentValue > 0) {
-            input.value = currentValue - 1;
-        }
-        calculateTotalPrice();
-    }
-});
+                    const prices = {
+                         broiler: 20000,
+                         kampung: 50000,
+                    };
 
+                    const quantity = parseInt(form.querySelector(`.number`).value) || 0;
+                    const pricePerChicken = prices[chickenType] || 0;
 
+                    totalPrice += pricePerChicken * quantity;
+               });
 
-//memanipulasi order
-function addOrderForm(amount) {
-    const formContainer = document.querySelector('.output-manipulation-order');
-    const orderForms = document.querySelectorAll('.manipulation-order');
+               document.getElementById('id-total-harga').innerText = `Rp ${totalPrice.toLocaleString()}`;
+          }
 
-    if (amount > 0) {
-        // Clone elemen pertama
-        const newForm = orderForms[0].cloneNode(true);
-        const newIndex = orderForms.length + 1;
-        newForm.setAttribute('data-order-index', newIndex);
+          function addOrderForm(amount) {
+               const formContainer = document.querySelector('.output-manipulation-order');
+               const orderForms = document.querySelectorAll('.manipulation-order');
 
-        newForm.querySelectorAll('input').forEach((input) => {
-            if (input.type === 'radio') {
-                input.name = `chicken-${newIndex}`;
-            } else if (input.type === 'number') {
-                input.setAttribute('data-order-index', newIndex);
-                input.value = 1;
-            }
-        });
+               if (amount > 0) {
+                    const newForm = orderForms[0].cloneNode(true);
+                    const newIndex = orderForms.length + 1;
+                    newForm.setAttribute('data-order-index', newIndex);
 
-        formContainer.appendChild(newForm);
+                    newForm.querySelectorAll('input').forEach((input) => {
+                         if (input.type === 'radio') {
+                              input.name = `chicken-${newIndex}`;
+                              input.checked = false;
+                         } else if (input.type === 'number') {
+                              input.setAttribute('data-order-index', newIndex);
+                              input.value = 1;
+                         }
+                    });
 
-        // Tambahkan event listener pada tombol increment dan decrement
-        newForm.querySelector(".increment").addEventListener("click", function () {
-            const input = this.closest(".spinner").querySelector(".number");
-            input.value = parseInt(input.value) + 1;
-            calculateTotalPrice();
-        });
+                    newForm.querySelector('.increment_jumlah').addEventListener('click', function () {
+                         const input = this.closest('.spinner').querySelector('.number');
+                         input.value = parseInt(input.value) + 1;
+                         calculateTotalPrice();
+                    });
 
-        newForm.querySelector(".decrement").addEventListener("click", function () {
-            const input = this.closest(".spinner").querySelector(".number");
-            const currentValue = parseInt(input.value);
-            if (currentValue > 0) {
-                input.value = currentValue - 1;
-            }
-            calculateTotalPrice();
-        });
-    } else if (amount < 0 && orderForms.length > 1) {
-        formContainer.removeChild(orderForms[orderForms.length - 1]);
-    }
+                    newForm.querySelector('.decrement_jumlah').addEventListener('click', function () {
+                         const input = this.closest('.spinner').querySelector('.number');
+                         const currentValue = parseInt(input.value);
+                         if (currentValue > 0) {
+                              input.value = currentValue - 1;
+                         }
+                         calculateTotalPrice();
+                    });
 
-    calculateTotalPrice();
-}
+                    formContainer.appendChild(newForm);
+               } else if (amount < 0 && orderForms.length > 1) {
+                    formContainer.removeChild(orderForms[orderForms.length - 1]);
+               }
 
+               calculateTotalPrice();
+          }
 
-          function calculateTotalPrice() {
-               // Ambil jenis ayam yang dipilih
-               const selectedChicken = document.querySelector('input[name="chicken"]:checked');
-               const chickenType = selectedChicken ? selectedChicken.value : null;
-           
-               // Harga per jenis ayam
-               const prices = {
-                   broiler: 20000,
-                   kampung: 50000,
-               };
-           
-               // Ambil jumlah ayam
-               const quantity = parseInt(document.getElementById("number").value) || 0;
-           
-               // Hitung total harga
-               const pricePerChicken = prices[chickenType] || 0;
-               const totalPrice = pricePerChicken * quantity;
-           
-               // Update tampilan total harga
-               document.getElementById("id-total-harga").innerText = 
-                   chickenType ? `Rp ${totalPrice.toLocaleString()}` : "Pilih jenis ayam!";
-           }
-           
-           // Pasang event listener
-           document.querySelectorAll('input[name="chicken"]').forEach((radio) => {
-               radio.addEventListener("click", calculateTotalPrice);
-           });
-           
-           document.getElementById("number").addEventListener("input", calculateTotalPrice);
-           
+          document.addEventListener('click', (event) => {
+               if (event.target.classList.contains('increment_jumlah')) {
+                    const input = event.target.closest('.spinner').querySelector('.number');
+                    input.value = parseInt(input.value) + 1;
+                    calculateTotalPrice();
+               }
 
+               if (event.target.classList.contains('decrement_jumlah')) {
+                    const input = event.target.closest('.spinner').querySelector('.number');
+                    const currentValue = parseInt(input.value);
+                    if (currentValue > 0) {
+                         input.value = currentValue - 1;
+                    }
+                    calculateTotalPrice();
+               }
+          });
+
+          document.querySelectorAll('input[name^="chicken"]').forEach((radio) => {
+               radio.addEventListener('change', calculateTotalPrice);
+          });
+
+          document.querySelectorAll('.number').forEach((input) => {
+               input.addEventListener('input', calculateTotalPrice);
+          });
 
 const timeButton = document.getElementById("time-button");
 const timeDropdown = document.getElementById("time-dropdown");
@@ -190,7 +182,7 @@ document.addEventListener("click", (event) => {
 // Tombol dan elemen modal
 const showButton = document.getElementById("show-section-confirm-btn");
 const modalOverlay = document.getElementById("modal-overlay");
-const closeButton = document.getElementById("close-btn");
+const closeButton = document.getElementById("close-send-btn");
 
 // Fungsi untuk membuka modal
 showButton.addEventListener("click", () => {
