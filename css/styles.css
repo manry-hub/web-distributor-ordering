@@ -777,7 +777,7 @@ input[type="radio"]:checked::after {
 
 .faq-answer {
   max-height: 0;
-  font-size: x-small;
+  font-size: 12px;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   color: #b5b2b2;
@@ -868,24 +868,5 @@ iframe {
 
 /* media queries */
 /* Tablet */
-@media (min-width: 758px) {
-  .slide3 {
-    height: 350px;
-  }
-  .hero .row {
-    flex-direction: row;
-  }
-  .about {
-    margin-top: 150px;
-  }
-  .slide2 {
-    height: 1050px;
-  }
-  .slide1 {
-    height: 550px;
-  }
-  .hero .row p {
-    font-size: 130%;
-  }
-}
+
 /* Dekstop */
