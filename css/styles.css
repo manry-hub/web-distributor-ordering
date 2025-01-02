@@ -60,7 +60,7 @@ body {
 .slide1 {
   position: absolute;
   background-color: var(--4);
-  height: 600px;
+  height: 550px;
   width: 100%;
   padding: 10px;
   border-radius: 0px 0px 90px 90px;
