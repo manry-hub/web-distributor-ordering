@@ -213,7 +213,7 @@ body {
 }
 
 .about .row p {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 @keyframes scroll-left {
@@ -321,7 +321,7 @@ body {
 }
 
 .supplier p {
-  font-size: 18px;
+  font-size: 16px;
   /* Ukuran font paragraf */
   color: #e39b3d;
   /* Warna teks */
@@ -467,7 +467,7 @@ input[type="radio"]:checked::after {
   border-radius: 50px;
   border: 1px solid rgb(0, 0, 0);
   color: rgb(0, 0, 0);
-  font-size: 1.6rem;
+  font-size: 16px;
 }
 .increase-order {
   display: flex;
@@ -477,7 +477,7 @@ input[type="radio"]:checked::after {
   height: 50px;
   background-color: rgb(0, 0, 0);
   border-radius: 50px;
-  font-size: 1.6rem;
+  font-size: 16px;
   color: #ffffff;
 }
 
@@ -492,7 +492,7 @@ input[type="radio"]:checked::after {
   width: 70px;
   height: 50px;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   border: 2px solid #cccccc82;
   border-radius: 15px;
   padding: 5px;
@@ -507,7 +507,7 @@ input[type="radio"]:checked::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .spinner button:active {
@@ -721,7 +721,7 @@ input[type="radio"]:checked::after {
   height: 40px;
   background-color: rgb(219, 11, 11);
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 20px;
   gap: 5px;
   color: white;
@@ -735,7 +735,7 @@ input[type="radio"]:checked::after {
   height: 40px;
   background-color: rgb(8, 148, 3);
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 20px;
   gap: 5px;
   color: white;
@@ -778,7 +778,7 @@ input[type="radio"]:checked::after {
 
 .faq-answer {
   max-height: 0;
-  font-size: 18px;
+  font-size: 14px;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   color: #b5b2b2;
