@@ -107,17 +107,15 @@ body {
 .navbar-bottom {
   cursor: pointer;
   display: flex;
-  position: fixed;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  position: fixed;
+  right: 10px;
   background-color: #ffffff;
-  padding: 0px;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 50%;
   box-shadow: 0px 7px 20px #292929;
-  bottom: 0px;
-  transition: left 5s ease;
-  width: 100%;
+  bottom: 10px;
+  width: 70px;
   height: 70px;
 }
 .into-faq {
