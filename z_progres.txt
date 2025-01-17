@@ -1,0 +1,11 @@
+Design
+Main / layout form order + video tutor
+Account / tinggal rapihin penamaan
+Basket / 0%
+Checkout / tinggal rapihin penamaan
+
+Javascript
+Main / form order
+account / sinkron nama & alamat ke index checkout
+basket / 0%
+Checkout / 0%

@@ -15,32 +15,33 @@
 </head>
 
 <body>
-     
-<nav class="navbar-top">
-<a href="#" class="navbar-top-text" >ayam<span>potong</span> </span>.</a>
-<img src="/img/user.svg" alt="" style="width: 35px; margin-right: 15px;">
-</nav>
+          <nav class="navbar-top">
+               <a href="#" class="navbar-top-text">ayam<span>potong</span> </span>.</a>
+               <a href="account.html" class="transition-link-to-right">
+                    <img src="/img/user.svg" alt="user" style="width: 35px; margin-right: 15px;">
+               </a>
+          </nav>
+          <!-- Navbar -->
+          <a href="cart.html" id="navbar-bottom">
+               <img src="/img/shopping-cart.svg" alt="keranjang"
+                    style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
+               <div
+                    style="width: 25px; height: 25px; border-radius: 50%; background-color: var(--1); position: fixed; right: 20px; bottom: 47px; text-align: center; font-size: 14px">
+                    3
+               </div>
+          </a>
+          
 
 <!--slide-->
 <div class="slide2"></div>
-
-<!-- Navbar -->
-<nav class="navbar-bottom">
-          <img src="/img/shopping-cart.svg" alt="keranjang" style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;"  >
-          <div style="width: 25px; height: 25px; border-radius: 50%; background-color: var(--1); position: fixed; right: 20px; bottom: 47px; text-align: center; font-size: 14px;"> 3
-
-          </div>
-</nav>
-
 <div class="slide3"></div>
-
 <div id="awalan" style="height: 50px;"></div>
 
 <!--Hero-->
 <section class="hero" id="home">
      <div class="row">
           <p class="about-ayam"><span>gaperlu repot</span> keluar <br> rumah lagi</p>
-          <img src="img/Foto_Daging_utama.png" alt="daging-img" class="daging-img" width="200px">
+          <img src="img/daging.png" alt="daging-img" class="daging-img" width="200px">
           <p class="about-ayam">Kami antar sampai <br> rumah <span> tanpa ongkir!</span></p>
      </div>
 </section>
@@ -48,7 +49,7 @@
 <section class="about" id="about">
      <h3>About me</h3>
      <div class="row">
-          <img src="img/logo-brand-ayam.png" alt="logo-img" class="logo-img">
+          <img src="img/logo.png" alt="logo-img" class="logo-img">
           <p class="about-text">Saya adalah distributor yang berfokus pada penyediaan ayam potong
                segar dan berkualitas tinggi untuk
                kebutuhan rumah tangga anda </p>
@@ -94,13 +95,14 @@
 </div>   
 </section>
 
+
 <!--Order-->
 <section class="order" id="order">
      <div class="headline">
           <p style="font-size: 18px; color: black;">Mulai pesan sekarang!</p>
      </div>
 
-     <div class="choose">
+     <div class="image">
           <div class="pembatas">
                <div class="garis-1" style="background-color: black; width: 260px; height: 1px; margin-top: 5px;"></div>
                <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>
@@ -109,37 +111,19 @@
           <div class="manipulation-order" data-order-index="1">
                <div class="box-manipulation-jumlah-dan-jenis">
                     <div class="jenis-ayam" id="id-jenis">
-                         <div style="display: flex; flex-direction: column; gap: 3px;">
-                              <label class="jenisAyam">
-                                   <input type="radio" name="chicken-1" value="broiler">
-                                   <span style="color: black; font-size: 16px;">Ayam Broiler</span>
-                              </label>
-                              <label class="jenisAyam">
-                                   <input type="radio" name="chicken-1" value="kampung">
-                                   <span style="color: black; font-size: 16px;">Ayam Kampung</span>
-                              </label>
-                         </div>
+                         <img src="img/ayam-broiler.jpg" alt="" style="width: 160px; border-radius: 20px;">
                     </div>
      
                     <div style="display: flex; flex-direction: column;">
-                         <p style="color: #000000; font-size: 16px;">Jumlah ayam</p>
-                         <div class="spinner">
-                              <input type="number" class="number" data-order-index="1" value="0">
-                              <div class="button">
-                                   <button class="increment_jumlah" style="background-color: rgba(127, 255, 212, 0);">
-                                        <span class="arrow arrow-up"></span>
-                                   </button>
-                                   <button class="decrement_jumlah" style="background-color: rgba(127, 255, 212, 0);">
-                                        <span class="arrow arrow-down"></span>
-                                   </button>
-                              </div>
-                         </div>
+                         <p style="color: #000000; font-size: 16px;"> Rp 40.000</p>
+                         <div style="color: #000000;">1 Kg</div>
                     </div>
                </div>
+               
      
+               <p style="color: black; font-size: 16px; margin-bottom: 6px; margin-right: 130px;">Potong</p>
                <div class="slider-poin">
-                    <p style="color: black; font-size: 16px; margin-bottom: 6px;">Potong</p>
-                    <input type="range" id="id-potong" min="1" max="5" step="1">
+                    <input id="myRange" class="slider-bar" value="2" max="4" min="0" type="range" style="margin: 10px;">
                     <div class="slider-poin-number">
                          <div><span id="potong-1">1</span></div>
                          <div><span id="potong-4">4</span></div>
@@ -148,120 +132,38 @@
                          <div><span id="potong-12">12</span></div>
                     </div>
                </div>
-     
-               <div class="add-order" id="id-order">
-                    <div style="display: flex; flex-direction: row; gap: 10px; text-align: right;">
-                         <div style="font-size: 12px; color: black;">
-                              <p>Kurangi</p>
-                              <p>kategori</p>
-                         </div>
-                         <button class="decrease-order" onclick="addOrderForm(-1)">-</button>
-                    </div>
-                    <div style="display: flex; flex-direction: row; gap: 10px;">
-                         <button class="increase-order" onclick="addOrderForm(1)">+</button>
-                         <div style="font-size: 12px; color: black;">
-                              <p>Tambah</p>
-                              <p>kategori</p>
-                         </div>
-                    </div>
-               </div>
           </div>
-          <div class="output-manipulation-order" style="display: block;"></div>
-     </div>
-     
-     <div class="fill" style="display: none; font-size: 18px; width: 100%; margin-top: 20px;">
-          <div class="pembatas">
-               <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>
-               <div class="garis-1" style="background-color: black; width: 260px; height: 1px;"></div>
-          </div>
-          <div class="harga">
-          <p style="color: black;">Total harga</p>
-          </div>
-          <div class="box-total-harga" id="id-total-harga"></div>
-          <div class="hari-jam">
-               <div class="hari-antar" style="width: 130px;">
-                    <p style="color: black;"> Hari antar</p>
-                    <select id="delivery-day" id="id-hari" class="my-input-class">
-                         <option value="senin">Senin</option>
-                         <option value="selasa">Selasa</option>
-                         <option value="rabu">Rabu</option>
-                         <option value="kamis">Kamis</option>
-                         <option value="jumat">Jumat</option>
-                         <option value="sabtu">Sabtu</option>
-                         <option value="minggu">Minggu</option>
-                    </select>
-               </div>
-               <div class="jam-antar">
-                    <p style="color: black; margin-top: 13px;">Jam</p>          
-                    <div style="position: relative; ">
-                         <button id="time-button">07:00</button>
-                              <div id="time-dropdown"></div>
-                         </div>
 
-                         <!-- Selected Time -->
-                         <div>
-                              <span id="selected-time"></span>
-                         </div>
-                    </div>
-               </div>
 
-          <div class="catatan-tambahan">
-               <p style="color: black;">Catatan tambahan</p>
-          </div>
-          <input type="text" class="box-catatan-tambahan" id="id-catatan">
+          <div class="manipulation-order" data-order-index="1">
+               <div class="box-manipulation-jumlah-dan-jenis">
+                    <div class="jenis-ayam" id="id-jenis">
+                         <img src="img/ayam-jago.jpeg" alt="" style="width: 160px; border-radius: 20px;">
+                    </div>
           
-          <div style="display: flex; flex-direction: row;">
-               <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-                    <div style="display: flex; flex-direction: column; align-items: center;">
-                         <div class="nama">
-                              <p style="color: black;">Nama pemesan</p>
-                         </div>
-                         <input class="nama-pemesan" id="id-nama-pemesan" type="text">
+                    <div style="display: flex; flex-direction: column;">
+                         <p style="color: #000000; font-size: 16px;"> Rp 40.000</p>
+                         <div style="color: #000000;">1 Kg</div>
                     </div>
-                    <button class="box-confirm"> Konfirmasi </button>
+               </div>
+          
+          
+               <p style="color: black; font-size: 16px; margin-bottom: 6px; margin-right: 130px;">Potong</p>
+               <div class="slider-poin">
+                    <input id="myRange" class="slider-bar" value="2" max="4" min="0" type="range" style="margin: 10px;">
+                    <div class="slider-poin-number">
+                         <div><span id="potong-1">1</span></div>
+                         <div><span id="potong-4">4</span></div>
+                         <div><span id="potong-8">8</span></div>
+                         <div><span id="potong-10">10</span></div>
+                         <div><span id="potong-12">12</span></div>
+                    </div>
                </div>
           </div>
      </div>
-</div>
 </section>
 
-<!-- Modal overlay -->
-<div class="modal-overlay" id="modal-overlay">
-     <div class="modal-content">
-          <section class="confirm">
-               <div>
-                    <p style="color: black; font-size: 16px; margin-left: 20px; margin-right: 20px;">
-                         Dengan ini kamu dapat memesan lewat whatsapp dengan mudah
-                    </p>
-               </div>
-               <div class="box-text-send" id="id-send">
-                    <pre>
 
-     Halo, saya *[___]*
-     memesan ayam potong
-     dengan rincian berikut:
-     * Deskripsi pesanan*
-       - jenis   : [__]
-       - jumlah  : [__]
-       - Dipotong: [__]
-     * Pengantaran*
-       - Hari    : [__]
-       - Jam     : [__]
-     *dengan catatan* "[__]"
-     *Total Harga : [__]*
-     Terimakasih.
-
-                    </pre>
-               </div>
-               <div class="close-and-send">
-                    <button class="close-send-btn" id="close-send-btn">Tutup</button>
-                    <a href="https://wa.me/6289653531029?text=Halo,%20salam%20kenal" id="id-send-whatsapp">
-                         <img src="/img/whatsapp.svg" alt="whatsapp" style="width: 30px; right: 10px;"> Kirim
-                    </a>
-               </div>
-          </section>
-     </div>
-</div>
 
 
 <!--Frequenty Asked Question-->
@@ -315,10 +217,8 @@
      </div>
 </div>
 </footer>
-<button id="show-section-confirm-btn" class="into-whatsapp">
-     Pesan Sekarang
-</button>
 <div style="height: 80px;"></div>
+
 
 <!--javascript-->
 <script src="js/script.js"></script>
