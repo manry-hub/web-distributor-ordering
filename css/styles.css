@@ -392,7 +392,6 @@ body {
 .box-manipulation-jumlah-dan-jenis {
   display: flex;
   flex-direction: row;
-  gap: 10px;
   justify-content: space-between;
   width: 90%;
   align-items: center;
@@ -400,12 +399,95 @@ body {
   text-align: left;
 }
 
-.image {
+.cart-order {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
+}
+
+.button-add-to-cart {
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  transition: all 0.5s ease;
+}
+.button-add-to-cart:hover {
+  background-color: hsl(45, 80%, 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(201, 148, 24) 0px 7px 29px 0px;
+}
+.button-add-to-cart:active {
+  transform: translateY(10px);
+  transition: 100ms;
+}
+
+/* From Uiverse.io by shah1345 */
+.button-choose-weight {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: var(--3);
+  padding: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 4px;
+  border-radius: 0.5em;
+  background: #ffffff00;
+  border: 1px solid var(--3);
+}
+
+.button-choose-weight:active {
+  color: #666;
+}
+
+.button-choose-weight:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button-choose-weight:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: var(--3);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button-choose-weight:hover {
+  color: #ffffff;
+  border: 1px solid var(--3);
+}
+
+.button-choose-weight:hover:before {
+  top: -35%;
+  background-color: var(--3);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button-choose-weight:hover:after {
+  top: -45%;
+  background-color: var(--3);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
 .headline {
@@ -431,9 +513,10 @@ body {
   justify-content: center;
   align-items: center;
   gap: 5px;
-
   width: 260px;
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
 .slider-bar {

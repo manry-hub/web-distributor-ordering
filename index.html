@@ -3,9 +3,10 @@
 
 <head>
      <meta charset="UTF-8">
-     <meta name="viewport" content="width=doevice-width, initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Ayam Potong</title>
      <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
      <!--font-->
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +28,7 @@
                     style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
                <div
                     style="width: 25px; height: 25px; border-radius: 50%; background-color: var(--1); position: fixed; right: 20px; bottom: 47px; text-align: center; font-size: 14px">
-                    3
+                    0
                </div>
           </a>
           
@@ -102,11 +103,11 @@
           <p style="font-size: 18px; color: black;">Mulai pesan sekarang!</p>
      </div>
 
-     <div class="image">
-          <div class="pembatas">
-               <div class="garis-1" style="background-color: black; width: 260px; height: 1px; margin-top: 5px;"></div>
-               <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>
-          </div>
+     <div class="pembatas">
+          <div class="garis-1" style="background-color: black; width: 260px; height: 1px; margin-top: 5px;"></div>
+          <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>
+     </div>
+     <div class="cart-order">
      
           <div class="manipulation-order" data-order-index="1">
                <div class="box-manipulation-jumlah-dan-jenis">
@@ -114,16 +115,17 @@
                          <img src="img/ayam-broiler.jpg" alt="" style="width: 160px; border-radius: 20px;">
                     </div>
      
-                    <div style="display: flex; flex-direction: column;">
-                         <p style="color: #000000; font-size: 16px;"> Rp 40.000</p>
-                         <div style="color: #000000;">1 Kg</div>
+                    <div style="display: flex; flex-direction: column; margin-right: 10px; align-items: center;">
+                         <p style="color: var(--3); font-size: 25px; font-weight: bold;"> 1 Kg</p>
+                         <p style="color: var(--4); font-size: 16px;"> Rp 37.000</p>
+                         
                     </div>
                </div>
                
      
-               <p style="color: black; font-size: 16px; margin-bottom: 6px; margin-right: 130px;">Potong</p>
+               <p style="color: black; font-size: 16px; font-weight: bold; ">Jumlah Potongan</p>
                <div class="slider-poin">
-                    <input id="myRange" class="slider-bar" value="2" max="4" min="0" type="range" style="margin: 10px;">
+                    <input id="myRange" class="slider-bar" value="3" max="5" min="1" type="range" style="margin: 10px;">
                     <div class="slider-poin-number">
                          <div><span id="potong-1">1</span></div>
                          <div><span id="potong-4">4</span></div>
@@ -132,25 +134,37 @@
                          <div><span id="potong-12">12</span></div>
                     </div>
                </div>
+               <div style=" display: flex;  margin-bottom: 10px ;margin-left: 120px; ">
+
+                    <button id="id-add-broiler-to-cart" class="button-add-to-cart"
+                         style=" font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px; "> + add to cart</button>
+               </div>
           </div>
+          
 
 
           <div class="manipulation-order" data-order-index="1">
                <div class="box-manipulation-jumlah-dan-jenis">
                     <div class="jenis-ayam" id="id-jenis">
-                         <img src="img/ayam-jago.jpeg" alt="" style="width: 160px; border-radius: 20px;">
+                         <img src="img/ayam-jago.jpeg" alt="" style="width: 160px; height: 92px; border-radius: 20px;">
                     </div>
           
-                    <div style="display: flex; flex-direction: column;">
-                         <p style="color: #000000; font-size: 16px;"> Rp 40.000</p>
-                         <div style="color: #000000;">1 Kg</div>
+                    <div style="display: flex; flex-direction: column; margin-right: 10px; align-items: center;">
+                         <p style="color: var(--3); font-size: 25px; font-weight: bold;"> 8 Ons</p>
+                         <p style="color: var(--4); font-size: 16px;"> Rp 60.000</p>
                     </div>
                </div>
           
-          
-               <p style="color: black; font-size: 16px; margin-bottom: 6px; margin-right: 130px;">Potong</p>
+               <div style="width: 300px; align-items: end; margin-bottom: 10px;">
+                    <button class="button-choose-weight">8 Ons</button>
+                    <button class="button-choose-weight">1 Kg</button>
+                    <button class="button-choose-weight">1.1 Kg</button>
+                    <button class="button-choose-weight">1.2 Kg</button>
+               </div>
+               
+               <p style="color: black; font-size: 16px; font-weight: bold; ">Jumlah Potongan</p>
                <div class="slider-poin">
-                    <input id="myRange" class="slider-bar" value="2" max="4" min="0" type="range" style="margin: 10px;">
+                    <input id="myRange" class="slider-bar" value="2" max="5" min="1" type="range" style="margin: 10px;">
                     <div class="slider-poin-number">
                          <div><span id="potong-1">1</span></div>
                          <div><span id="potong-4">4</span></div>
@@ -158,6 +172,14 @@
                          <div><span id="potong-10">10</span></div>
                          <div><span id="potong-12">12</span></div>
                     </div>
+               </div>
+               
+               <div style=" display: flex;  margin-bottom: 10px ;margin-left: 120px; ">
+               
+                    <button id="id-add-kampung-to-cart"  class="button-add-to-cart"
+                         style=" font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px; "> +
+                         add to cart</button>
+               
                </div>
           </div>
      </div>
@@ -204,7 +226,7 @@
      </h4>
      <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.63175282875295!2d106.88957486633245!3d-6.387030185295296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69eb5d708700c7%3A0x8678407c8945026f!2sPasar%20Sukatani!5e0!3m2!1sid!2sid!4v1732373392059!5m2!1sid!2sid"
-          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          width="300" height="450" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
           <div>
                <div class="location-garis"></div>
@@ -217,7 +239,7 @@
      </div>
 </div>
 </footer>
-<div style="height: 80px;"></div>
+<div style="height: 60px;"></div>
 
 
 <!--javascript-->

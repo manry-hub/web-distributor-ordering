@@ -46,7 +46,7 @@ p {
 .hari-jam {
   display: flex;
   flex-direction: row;
-  column-gap: 30px;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -55,7 +55,7 @@ p {
   flex-direction: column;
 
   gap: 10px;
-  margin-left: 40px;
+  margin-right: 45px;
 }
 #time-button {
   width: 100%;

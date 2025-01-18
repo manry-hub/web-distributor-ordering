@@ -1,111 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ayam Broiler Card</title>
+  <title>Document</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
+    .order-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
 
-    .card {
-      background-color: #d9d9d9;
-      width: 300px;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+.product-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-    .card .title {
-      background-color: #888888;
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 10px;
-    }
+.product-image {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
 
-    .card .price {
-      background-color: #888888;
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+.product-info h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
 
-    .card .cut {
-      background-color: #e0e0e0;
-      color: black;
-      padding: 5px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
+.product-info p {
+  margin: 5px 0;
+}
 
-    .card .separator {
-      background-color: #888888;
-      height: 5px;
-      border-radius: 3px;
-      margin: 10px 0;
-    }
+.order-details {
+  margin-bottom: 20px;
+}
 
-    .card .weight-label {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-    .card .weight-value {
-      background-color: #888888;
-      color: white;
-      padding: 5px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-      display: inline-block;
-    }
+.quantity-control button {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-    .card .add-to-cart {
-      background-color: #d9d9d9;
-      color: black;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-      text-transform: uppercase;
-      cursor: pointer;
-      border: 1px solid #888888;
-      margin-top: 20px;
-    }
+.quantity-control input {
+  width: 60px;
+  text-align: center;
+}
 
-    .card .add-to-cart:hover {
-      background-color: #c0c0c0;
-    }
+.checkout-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
   </style>
 </head>
-
 <body>
-  <div class="card">
-    <div class="title">Ayam Broiler</div>
-    <div class="price">Harga</div>
-    <div class="cut">Potong</div>
-    <div class="separator"></div>
-    <div class="weight-label">Berat</div>
-    <div class="weight-value">1 Kg</div>
-    <div class="add-to-cart">Tambahkan ke keranjang</div>
+  <div class="order-form">
+    <h1>Keranjang Belanja</h1>
+    <div class="product-item">
+      <img src="ayam-potong.jpg" alt="Ayam Potong" class="product-image">
+      <div class="product-info">
+        <h2>Ayam Potong</h2>
+        <p>Berat: 500g per potong</p>
+        <p>Harga: Rp 30.000 per potong</p>
+      </div>
+    </div>
+  
+    <div class="order-details">
+      <label for="quantity">Berat:</label>
+      <div class="quantity-control">
+        <button id="decrease">-</button>
+        <input type="number" id="quantity" value="1" min="1">
+        <button id="increase">+</button>
+      </div>
+      <p id="total-weight">Total Berat: 500g</p>
+      <p id="total-price">Total Harga: Rp 30.000</p>
+    </div>
+  
+    <button class="checkout-button">Lanjut ke Pembayaran</button>
   </div>
-</body>
+<script>
+  document.getElementById("increase").addEventListener("click", () => {
+      const quantity = document.getElementById("quantity");
+      quantity.value = parseInt(quantity.value) + 1;
+      updateTotals();
+    });
 
+    document.getElementById("decrease").addEventListener("click", () => {
+      const quantity = document.getElementById("quantity");
+      if (quantity.value > 1) {
+        quantity.value = parseInt(quantity.value) - 1;
+        updateTotals();
+      }
+    });
+
+    function updateTotals() {
+      const quantity = parseInt(document.getElementById("quantity").value);
+      const weightPerPiece = 500; // gram
+      const pricePerPiece = 30000; // rupiah
+
+      document.getElementById("total-weight").innerText = `Total Berat: ${(weightPerPiece * quantity) / 1000} kg`;
+      document.getElementById("total-price").innerText = `Total Harga: Rp ${pricePerPiece * quantity}`;
+    }
+
+</script>
+</body>
 </html>
