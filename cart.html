@@ -11,7 +11,8 @@
      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet">
      <link rel="stylesheet" href="css/styles.css">
-     <link rel="stylesheet" href="css/basket.css">
+     <link rel="stylesheet" href="css/cart.css">
+     
 </head>
 <body>
 <div>
@@ -21,10 +22,114 @@
      <h7 style="color: black; font-size: 24px;"> Keranjang Saya</h7>
 </a>
 
-<nav class="bottom-basket">
-     <div>Total harga</div>
-     <a href="checkout.html"> Checkout </a>
+
+
+
+
+<div class="cart-controls">
+     <label class="container-checkbox"> 
+          <input class="checkbox" type="checkbox" id="checkbox" />
+          <label class="checkbox-label" for="checkbox">
+               <div class="checkbox-container">
+                    <div class="box"></div>
+                    <div class="checkmark">
+                         <div class="tick-container">
+                              <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                   <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
+                              </svg>
+                         </div>
+                    </div>
+               </div>
+          </label>
+          <p style="margin-left: 8px;">Pilih semua</p>
+     </label>
+
+     <div>
+          <img src="img/trash-2.svg" style="width: 25px;" alt="">
+          Hapus
+     </div>
+</div>
+
+<div class="container-cart">
+     
+     <div class="cart-item">
+          <label class="container-checkbox">
+               <input class="checkbox" type="checkbox" id="checkbox" />
+               <label class="checkbox-label" for="checkbox">
+                    <div class="checkbox-container">
+                         <div class="box"></div>
+                         <div class="checkmark">
+                              <div class="tick-container">
+                                   <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                        <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
+                                   </svg>
+                              </div>
+                         </div>
+                    </div>
+               </label>
+
+          </label>
+          <div class="item-info">
+               <h2>Ayam Broiler</h2>
+               <p>Potong 10</p>
+               <p>Rp35.000</p>
+          </div>
+          <div class="item-quantity+weight">
+               <p>7 ons</p>
+               <div class="item-quantity">
+                    <button class="decrease">-</button>
+                    <span class="quantity">1</span>
+                    <button class="increase">+</button>
+               </div>
+          </div>
+     </div>
+     <div class="cart-item">
+          <label class="container-checkbox">
+               <input class="checkbox" type="checkbox" id="checkbox" />
+               <label class="checkbox-label" for="checkbox">
+                    <div class="checkbox-container">
+                         <div class="box"></div>
+                         <div class="checkmark">
+                              <div class="tick-container">
+                                   <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                        <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
+                                   </svg>
+                              </div>
+                         </div>
+                    </div>
+               </label>
+          
+          </label>
+          <div class="item-info">
+               <h2>Ayam Broiler</h2>
+               <p>Potong 8</p>
+               <p>Rp35.000</p>
+          </div>
+          <div class="item-quantity+weight">
+               <p>7 ons</p>
+               <div class="item-quantity">
+                    <button class="decrease">-</button>
+                    <span class="quantity">1</span>
+                    <button class="increase">+</button>
+               </div>
+          </div>
+     </div>
+
+</div>
+
+
+<nav class="bottom-cart">
+     <a class="nav-total-harga">
+          <p> Total pembayaran</p>
+          <p style="color: var(--1);"> Rp. 150.000</p>
+     </a>
+     <a href="checkout.html">
+          <button class="checkout-btn">
+               Checkout
+          </button>
+     </a>
 </nav>
+
 </div>
 <script src="js/script.js"></script>
 </body>

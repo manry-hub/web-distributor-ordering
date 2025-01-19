@@ -1,4 +1,6 @@
-/* From Uiverse.io by kamehame-ha */
+body {
+  background-color: white;
+}
 .coolinput {
   display: flex;
   flex-direction: column;

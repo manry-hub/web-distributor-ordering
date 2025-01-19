@@ -41,31 +41,32 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Tombol dan elemen modal
-const showButton = document.getElementById("show-section-confirm-btn");
-const modalOverlay = document.getElementById("modal-overlay");
-const closeButton = document.getElementById("close-send-btn");
 
-// Fungsi untuk membuka modal
-showButton.addEventListener("click", () => {
-    modalOverlay.style.display = "flex"; // Tampilkan modal
-});
+// tombol jumlah ayam
+document.querySelectorAll('.increase').forEach(button => {
+      button.addEventListener('click', function () {
+        const quantityElement = this.previousElementSibling;
+        let quantity = parseInt(quantityElement.textContent);
+        quantityElement.textContent = quantity + 1;
+      });
+    });
 
-// Fungsi untuk menutup modal
-closeButton.addEventListener("click", () => {
-    modalOverlay.style.display = "none"; // Sembunyikan modal
-});
-
-// Menutup modal jika klik di luar modal-content
-modalOverlay.addEventListener("click", (event) => {
-    if (event.target === modalOverlay) {
-        modalOverlay.style.display = "none";
-    }
-});
+    document.querySelectorAll('.decrease').forEach(button => {
+      button.addEventListener('click', function () {
+        const quantityElement = this.nextElementSibling;
+        let quantity = parseInt(quantityElement.textContent);
+        if (quantity > 1) {
+          quantityElement.textContent = quantity - 1;
+        }
+      });
+    });
 
 
 
 
+
+
+// waktu antar
 const timeButton = document.getElementById("time-button");
 const timeDropdown = document.getElementById("time-dropdown");
 const selectedTimeDisplay = document.getElementById("selected-time");
@@ -116,3 +117,24 @@ document.addEventListener("click", (event) => {
 });
 
 
+// Tombol dan elemen modal
+const showButton = document.getElementById("show-section-confirm-btn");
+const modalOverlay = document.getElementById("modal-overlay");
+const closeButton = document.getElementById("close-send-btn");
+
+// Fungsi untuk membuka modal
+showButton.addEventListener("click", () => {
+    modalOverlay.style.display = "flex"; // Tampilkan modal
+});
+
+// Fungsi untuk menutup modal
+closeButton.addEventListener("click", () => {
+    modalOverlay.style.display = "none"; // Sembunyikan modal
+});
+
+// Menutup modal jika klik di luar modal-content
+modalOverlay.addEventListener("click", (event) => {
+    if (event.target === modalOverlay) {
+        modalOverlay.style.display = "none";
+    }
+});

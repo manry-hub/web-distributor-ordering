@@ -27,12 +27,13 @@ html {
 
 body {
   font-family: "poppins", sans-serif;
-  background-color: white;
+  background-color: #f4f4f4;
   color: #fff;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   width: 100%;
+  max-width: 800px;
 }
 .top-slide {
   height: 70px;
@@ -140,18 +141,6 @@ body {
   width: 35%;
   color: #ab790f;
   text-align: center;
-  font-size: 18px;
-}
-
-#show-section-confirm-btn {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 50%;
-  background-color: var(--1);
-  color: white;
   font-size: 18px;
 }
 
