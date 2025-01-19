@@ -2,7 +2,7 @@ Design
 Main / tinggal video tutor
 Account / done 
 cart / done
-Checkout / tinggal rapihin penamaan 
+Checkout / done
 
 Javascript
 Main / 0%
