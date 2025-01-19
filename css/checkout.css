@@ -1,5 +1,5 @@
 p {
-  font-size: 18px;
+  font-size: 14px;
   color: black;
 }
 
@@ -223,6 +223,8 @@ p {
   padding: 10px;
   border-radius: 10px;
   height: 50px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 h4 {
