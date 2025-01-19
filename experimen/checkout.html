@@ -11,9 +11,8 @@
 
 <body>
      <h1>Keranjang Saya</h1>
-     <button onclick="chooseAll()">Pilih Semua</button>
-     <button onclick="resetAll()">Reset Semua</button>
-     <button onclick="removeCheckedItems()">Hapus Item yang Dipilih</button>
+     <button onclick="toggleSelectAll()" id="toggle-select-all">Pilih Semua</button>
+     
      <button onclick="removeCheckedCarts()">Hapus Keranjang yang Dipilih</button>
      <div id="cart"></div>
      <div class="checkout-footer">
@@ -24,10 +23,10 @@
      <script>
           const cart = JSON.parse(localStorage.getItem('cart')) || [];
           const cartContainer = document.getElementById('cart');
+          let allSelected = false; // Track toggle state
 
           function renderCart() {
                cartContainer.innerHTML = ''; // Reset container
-               let totalHarga = 0;
 
                cart.forEach((item, index) => {
                     const itemElement = document.createElement('div');
@@ -71,28 +70,20 @@
                document.getElementById('total-harga').innerText = `Rp ${totalHarga}`;
           }
 
-          function chooseAll() {
+          function toggleSelectAll() {
                const checkboxes = document.querySelectorAll('.cart-checkbox');
-               checkboxes.forEach(checkbox => checkbox.checked = true);
+               allSelected = !allSelected;
+
+               checkboxes.forEach(checkbox => checkbox.checked = allSelected);
+
+               document.getElementById('toggle-select-all').innerText = allSelected ? 'Reset Semua' : 'Pilih Semua';
                updateTotal();
           }
 
-          function resetAll() {
-               const checkboxes = document.querySelectorAll('.cart-checkbox');
-               checkboxes.forEach(checkbox => checkbox.checked = false);
-               updateTotal();
-          }
-
-          function removeCheckedItems() {
-               const checkboxes = document.querySelectorAll('.cart-checkbox');
-               const uncheckedCart = cart.filter((_, index) => !checkboxes[index].checked);
-               localStorage.setItem('cart', JSON.stringify(uncheckedCart));
-               renderCart();
-          }
+          
 
           function removeCheckedCarts() {
                const checkboxes = document.querySelectorAll('.cart-checkbox');
-               // Filter out all items that are checked
                for (let i = cart.length - 1; i >= 0; i--) {
                     if (checkboxes[i].checked) {
                          cart.splice(i, 1);
