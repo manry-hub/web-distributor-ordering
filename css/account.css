@@ -9,7 +9,7 @@ body {
 }
 
 .coolinput label.text-nama {
-  font-size: 0.75rem;
+  font-size: 14px;
   color: #dda537;
   font-weight: 700;
   position: relative;
@@ -22,7 +22,7 @@ body {
 
 .coolinput input[type="text"].input {
   padding: 11px 10px;
-  font-size: 0.75rem;
+  font-size: 14px;
   border: 2px #a7a7a6 solid;
   border-radius: 5px;
   background: #ffffff;
@@ -39,7 +39,7 @@ body {
   margin: 20px;
 }
 .coolinput-alamat label.text-nama {
-  font-size: 0.75rem;
+  font-size: 14px;
   color: #dda537;
   font-weight: 700;
   position: relative;
@@ -52,7 +52,7 @@ body {
 
 .coolinput-alamat input[type="text"].input {
   padding: 11px 10px;
-  font-size: 0.75rem;
+  font-size: 14px;
   border: 2px #a7a7a6 solid;
   border-radius: 5px;
   background: #ffffff;
@@ -60,19 +60,4 @@ body {
 
 .coolinput-alamat input[type="text"].input:focus {
   outline: none;
-}
-.hari-antar {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.my-input-class {
-  width: 100%; /* w-full */
-  border: 1px solid #ffffff00; /* border */
-  border-radius: 10px; /* rounded-md */
-  background-color: #ffffff; /* bg-gray-100 */
-  text-align: left; /* text-left */
-  color: #000000; /* text-gray-700 */
 }
