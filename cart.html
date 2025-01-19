@@ -12,20 +12,18 @@
           rel="stylesheet">
      <link rel="stylesheet" href="css/styles.css">
      <link rel="stylesheet" href="css/cart.css">
-     
 </head>
+
 <body>
 <div>
 
-<a href="index.html" class="top-slide">
+<a href="index.html" class="cs-top-page">
      <img src="img/arrow-narrow-left.svg" alt="arrow-left">
      <h7 style="color: black; font-size: 20px;"> Keranjang Saya</h7>
 </a>
 
 
-
-
-
+<!-- select dan remove -->
 <div class="cart-controls">
      <label class="container-checkbox"> 
           <input class="checkbox" type="checkbox" id="checkbox" />
@@ -46,13 +44,12 @@
 
      <div>
           <img src="img/trash-2.svg" style="width: 25px;" alt="">
-          Hapus
      </div>
 </div>
 
 <div class="container-cart">
      
-     <div class="cart-item">
+     <div class="cs-cart-item">
           <label class="container-checkbox">
                <input class="checkbox" type="checkbox" id="checkbox" />
                <label class="checkbox-label" for="checkbox">
@@ -67,15 +64,16 @@
                          </div>
                     </div>
                </label>
-
           </label>
-          <div class="item-info">
+
+          <div class="item-info" id="id-keranjang-1">
                <h2>Ayam Broiler</h2>
-               <p>Potong 10</p>
-               <p>Rp35.000</p>
+               <p>1 kg - <span>Potong 10</span></p>
+               <p>Rp37.000</p>
           </div>
-          <div class="item-quantity+weight">
-               <p>7 ons</p>
+
+          <div id="id-jumlah-ayam-1">
+               <p style="font-size: 12px;">jumlah</p>
                <div class="item-quantity">
                     <button class="decrease">-</button>
                     <span class="quantity">1</span>
@@ -83,7 +81,8 @@
                </div>
           </div>
      </div>
-     <div class="cart-item">
+
+     <div class="cs-cart-item">
           <label class="container-checkbox">
                <input class="checkbox" type="checkbox" id="checkbox" />
                <label class="checkbox-label" for="checkbox">
@@ -98,15 +97,16 @@
                          </div>
                     </div>
                </label>
-          
           </label>
-          <div class="item-info">
+
+          <div class="item-info" id="id-keranjang-2">
                <h2>Ayam Broiler</h2>
-               <p>Potong 8</p>
-               <p>Rp35.000</p>
+               <p>1 kg - <span>Potong 10</span></p>
+               <p>Rp37.000</p>
           </div>
-          <div class="item-quantity+weight">
-               <p>7 ons</p>
+
+          <div id="id-jumlah-ayam-2">
+               <p style="font-size: 12px;">jumlah</p>
                <div class="item-quantity">
                     <button class="decrease">-</button>
                     <span class="quantity">1</span>
@@ -118,13 +118,13 @@
 </div>
 
 
-<nav class="bottom-cart">
-     <a class="nav-total-harga">
+<nav class="cs-bottom-page">
+     <a class="cs-total-harga">
           <p> Total pembayaran</p>
           <p style="color: var(--1);"> Rp. 150.000</p>
      </a>
      <a href="checkout.html">
-          <button class="checkout-btn">
+          <button id="btn-checkout">
                Checkout
           </button>
      </a>

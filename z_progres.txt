@@ -1,8 +1,8 @@
 Design
-Main / video tutor + tinggal rapihin penamaan + font
-Account / tinggal rapihin penamaan + font
-Basket / 0%
-Checkout / tinggal rapihin penamaan + font
+Main / tinggal video tutor
+Account / done 
+cart / done
+Checkout / tinggal rapihin penamaan 
 
 Javascript
 Main / 0%

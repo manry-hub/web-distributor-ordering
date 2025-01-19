@@ -209,14 +209,6 @@ p {
   height: 70px;
 }
 
-.nav-total-harga {
-  color: #292929;
-  font-size: 14px;
-  text-align: right;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
 #show-section-confirm-btn {
   background-color: var(--1);
   color: white;

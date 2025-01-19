@@ -107,17 +107,17 @@
           <div class="garis-1" style="background-color: black; width: 260px; height: 1px; margin-top: 5px;"></div>
           <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>
      </div>
-     <div class="cart-order">
+     <div class="container-cart-order">
      
           <div class="manipulation-order" data-order-index="1">
-               <div class="box-manipulation-jumlah-dan-jenis">
-                    <div class="jenis-ayam" id="id-jenis">
+               <div class="box-gambar-harga-berat">
+                    <div class="jenis-ayam" id="id-jenis-ayam-broiler">
                          <img src="img/ayam-broiler.jpg" alt="" style="width: 160px; border-radius: 20px;">
                     </div>
      
                     <div style="display: flex; flex-direction: column; margin-right: 10px; align-items: center;">
-                         <p style="color: var(--3); font-size: 25px; font-weight: bold;"> 1 Kg</p>
-                         <p style="color: var(--4); font-size: 16px;"> Rp 37.000</p>
+                         <p id="id-berat-broiler-input" style="color: var(--3); font-size: 25px; font-weight: bold;"> 1 Kg</p>
+                         <p id="id-harga-per-ayam-broiler-input"  style="color: var(--4); font-size: 16px;"> Rp 37.000</p>
                          
                     </div>
                </div>
@@ -125,7 +125,7 @@
      
                <p style="color: black; font-size: 16px; font-weight: bold; ">Jumlah Potongan</p>
                <div class="slider-poin">
-                    <input id="myRange" class="slider-bar" value="3" max="5" min="1" type="range" style="margin: 10px;">
+                    <input id="id-potong-broiler-input" class="slider-bar" value="3" max="5" min="1" type="range" style="margin: 10px;">
                     <div class="slider-poin-number">
                          <div><span id="potong-1">1</span></div>
                          <div><span id="potong-4">4</span></div>
@@ -136,24 +136,24 @@
                </div>
                <div style=" display: flex;  margin-bottom: 10px ;margin-left: 60px; ">
 
-                    <button id="id-add-broiler-to-cart" class="button-add-to-cart"
+                    <button id="btn-add-broiler-to-cart" class="button-add-to-cart"
                          style=" font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px; "> + Masukan keranjang</button>
                </div>
           </div>
           
           <div class="manipulation-order" data-order-index="1">
-               <div class="box-manipulation-jumlah-dan-jenis">
-                    <div class="jenis-ayam" id="id-jenis">
+               <div class="box-gambar-harga-berat">
+                    <div class="jenis-ayam" id="id-jenis-ayam-kampung">
                          <img src="img/ayam-jago.jpeg" alt="" style="width: 160px; height: 92px; border-radius: 20px;">
                     </div>
           
                     <div style="display: flex; flex-direction: column; margin-right: 10px; align-items: center;">
-                         <p style="color: var(--3); font-size: 25px; font-weight: bold;"> 8 Ons</p>
-                         <p style="color: var(--4); font-size: 16px;"> Rp 60.000</p>
+                         <p id="id-berat-kampung-output" style="color: var(--3); font-size: 25px; font-weight: bold;" > 8 Ons</p>
+                         <p id="id-harga-per-ayam-kampung-input" style="color: var(--4); font-size: 16px;"> Rp 60.000</p>
                     </div>
                </div>
           
-               <div style="width: 300px; align-items: end; margin-bottom: 10px;">
+               <div id="id-berat-kampung-input" style="width: 300px; align-items: end; margin-bottom: 10px;">
                     <button class="button-choose-weight">8 Ons</button>
                     <button class="button-choose-weight">1 Kg</button>
                     <button class="button-choose-weight">1.1 Kg</button>
@@ -162,7 +162,7 @@
                
                <p style="color: black; font-size: 16px; font-weight: bold; ">Jumlah Potongan</p>
                <div class="slider-poin">
-                    <input id="myRange" class="slider-bar" value="2" max="5" min="1" type="range" style="margin: 10px;">
+                    <input id="id-potong-kampung-input" class="slider-bar" value="2" max="5" min="1" type="range" style="margin: 10px;">
                     <div class="slider-poin-number">
                          <div><span id="potong-1">1</span></div>
                          <div><span id="potong-4">4</span></div>
@@ -173,7 +173,7 @@
                </div>
                
                <div style=" display: flex;  margin-bottom: 10px ;margin-left: 60px; ">
-                    <button id="id-add-kampung-to-cart"  class="button-add-to-cart"
+                    <button id="btn-add-kampung-to-cart"  class="button-add-to-cart"
                          style=" font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px; "> +
                          Masukan keranjang</button>
                </div>

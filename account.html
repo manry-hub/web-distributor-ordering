@@ -17,25 +17,25 @@
 
 <body>
 <div>
-     <a href="index.html" class="top-slide">
-          
-               <img src="img/arrow-narrow-left.svg" alt="arrow-left">
-               <h7 style="color: black; font-size: 20px;"> Account</h7>
-          
-     </a>
-     <div style="display: flex; flex-direction: row; align-items: center;">
-          <img src="img/no-profile.png" alt="no profile" style="width: 130px;">
-          <div class="coolinput">
-               <label for="input" class="text-nama">Nama Lengkap:</label>
-               <input type="text" placeholder="Tulis disini..." name="input" class="input">
-          </div>
+<a href="index.html" class="cs-top-page">
+     <img src="img/arrow-narrow-left.svg" alt="arrow-left">
+     <h7 style="color: black; font-size: 20px;"> Account</h7>
+</a>
+<!-- Input nama -->
+<div style="display: flex; flex-direction: row; align-items: center;">
+     <img src="img/no-profile.png" alt="no profile" style="width: 130px;">
+     <div class="box-nama-input">
+          <label for="input" class="cs-text-input">Nama Lengkap:</label>
+          <input type="text" placeholder="Tulis disini..." name="input" class="input" id="id-nama-input">
      </div>
+</div>
 
-<div class="coolinput-alamat">
-<label for="input" class="text-nama">Kelurahan:</label>
+<!-- input kelurahan -->
+<div class="box-alamat-input">
+<label for="input" class="cs-text-input">Kelurahan:</label>
 <div style="padding: 11px 10px; font-size: 0.75rem; border: 2px #a7a7a6 solid;border-radius: 5px; background: #ffffff;">
-     <div class="hari-antar" style="width: 100%; border: solid white;">
-          <select id="delivery-day" id="id-hari" class="my-input-class">
+     <div class="inner-box-alamat">
+          <select id="id-kelurahan-input" class="cs-kelurahan-input">
                <option value="Cisalak pasar">Cisalak Pasar</option>
                <option value="Curug">Curug</option>
                <option value="Harjamukti">Harjamukti</option>
@@ -46,28 +46,29 @@
      </div>
 </div>
 </div>
-<div class="coolinput-alamat">
-     <label for="input" class="text-nama">Alamat Lengkap:</label>
-     <div
-          style="padding: 11px 10px; font-size: 0.75rem; border: 2px #a7a7a6 solid;border-radius: 5px; background: #ffffff; height: 150px;">
-          <textarea type="text" name="input-alamat-lengkap" id="input-alamat-lengkap" placeholder="(Cth: Nama Jalan, No. Rumah, Blok, Rt, Rw)"></textarea>
+
+<!-- input detail alamat -->
+<div class="box-alamat-input">
+     <label for="input" class="cs-text-input">Alamat Lengkap:</label>
+     <div style="padding: 11px 10px; font-size: 0.75rem; border: 2px #a7a7a6 solid;border-radius: 5px; background: #ffffff; height: 150px;">
+          <textarea type="text" name="input-alamat-lengkap" id="id-lokasi-input" placeholder="(Cth: Nama Jalan, No. Rumah, Blok, Rt, Rw)"></textarea>
      </div>
 </div>
 
+<!-- tombol simpan -->
 <div style="display: flex; justify-content: right;">
-     <button id="simpan-alamat" style="font-size: 18px; padding: 10px; background-color: var(--1); color: rgb(255, 255, 255); border-radius: 10px; margin-right: 20px; display: flex; align-items: center; gap: 3px;"> save <img src="img/save.svg" style="width: 20px;" alt=""></button>
+     <button id="btn-simpan"> save <img src="img/save.svg" style="width: 20px;" alt=""></button>
 </div>
-     
+
+<!-- balik ke checkout-->
 <a href="checkout.html">
-     <button id="kembali-ke-pemesanan" style="position: absolute; bottom: 20px; right: 20px; font-size: 16px; padding: 10px; background-color: var(--3); color: white; border-radius: 10px; display: flex; align-items: center;">Kembali ke pemesanan <img src="img/arrow-narrow-down.svg" alt="arrow-down"></button>
+     <button id="btn-kembali-ke-checkout">Kembali ke pemesanan <img src="img/arrow-narrow-down.svg" alt="arrow-down"></button>
 </a>
 
-<div class="modal">
-
-</div>
+<!-- untuk notif sukses disimpan -->
+<div class="modal"></div>
 
 </div>
      <script src="js/script.js"></script>
 </body>
-
 </html>
