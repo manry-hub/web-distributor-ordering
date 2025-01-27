@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div>
+    <a href="cart.html" class="cs-top-page">
+        <img src="img/arrow-narrow-left.svg" alt="arrow-left">
+        <h7 style="color: black; font-size: 20px;">Checkout</h7>
+    </a>
+
+    <div class="fill" style="font-size: 14px;">
+        <!-- Alamat Pengantaran -->
+        <div class="Alamat-checkout">
+            <h4 style="color: black; margin-left: 20px; margin-bottom: 10px;">Alamat Pengantaran</h4>
+            <div style="display: flex; justify-content: center;">
+                <div class="box-alamat-checkout" id="id-alamat-lengkap-input">
+                    (+) Tambah alamat
+                </div>
+            </div>
+        </div>
+
+        <!-- Hari dan Jam Pengantaran -->
+        <div class="hari-jam">
+            <div class="hari-antar" style="width: 130px;">
+                <h4 style="color: black;">Hari Antar</h4>
+                <select id="delivery-day" class="my-input-class">
+                    <option value="Senin">Senin</option>
+                    <option value="Selasa">Selasa</option>
+                    <option value="Rabu">Rabu</option>
+                    <option value="Kamis">Kamis</option>
+                    <option value="Jumat">Jumat</option>
+                    <option value="Sabtu">Sabtu</option>
+                    <option value="Minggu">Minggu</option>
+                </select>
+            </div>
+
+            <div class="jam-antar">
+                <h4 style="color: black;">Jam Antar</h4>
+                <input type="time" id="delivery-time" class="my-input-class" value="07:00">
+            </div>
+        </div>
+
+        <!-- Catatan Tambahan -->
+        <div class="catatan-tambahan">
+            <h4 style="color: black; margin-left: 20px; margin-bottom: 10px;">Catatan Tambahan</h4>
+            <div style="display: flex; justify-content: center;">
+                <textarea class="box-catatan-tambahan" id="id-catatan-input" placeholder="Tambahkan catatan..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Metode Pembayaran -->
+    <div class="cs-metode-pembayaran">
+        <h4 style="color: black; margin-left: 20px;">Metode Pembayaran</h4>
+        <p style="margin-left: 40px;">COD / Bayar di tempat</p>
+    </div>
+
+    <!-- Rincian Pesanan -->
+    <div id="id-rincian-pesanan">
+        <h4 style="color: black; margin-left: 20px;">Rincian Pesanan</h4>
+        <div id="order-summary" style="margin-left: 40px;"></div>
+    </div>
+
+    <!-- Total Harga dan Tombol Konfirmasi -->
+    <div class="checkout-footer">
+        <div style="display: flex; justify-content: space-between; margin: 20px;">
+            <p>Total Pembayaran</p>
+            <p id="total-payment" style="color: var(--1);">Rp 0</p>
+        </div>
+        <div style="text-align: center;">
+            <button id="confirm-order" onclick="confirmOrder()" style="padding: 10px 20px; background-color: var(--1); color: white; border: none; border-radius: 10px;">
+                Konfirmasi Pesanan
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderSummary = document.getElementById('order-summary');
+    const totalPayment = document.getElementById('total-payment');
+
+    function renderOrderSummary() {
+        let totalPrice = 0;
+        orderSummary.innerHTML = '';
+
+        cart.forEach(item => {
+            const itemRow = document.createElement('div');
+            itemRow.style.display = 'flex';
+            itemRow.style.justifyContent = 'space-between';
+            itemRow.style.marginBottom = '10px';
+
+            itemRow.innerHTML = `
+                <p>${item.name} "${item.weight}" potong ${item.count}</p>
+                <p>x1</p>
+                <p>Rp ${item.price.toLocaleString()}</p>
+            `;
+            orderSummary.appendChild(itemRow);
+
+            totalPrice += item.price * item.count;
+        });
+
+        totalPayment.innerText = `Rp ${totalPrice.toLocaleString()}`;
+    }
+
+    function confirmOrder() {
+        const address = document.getElementById('id-alamat-lengkap-input').innerText;
+        const deliveryDay = document.getElementById('delivery-day').value;
+        const deliveryTime = document.getElementById('delivery-time').value;
+        const notes = document.getElementById('id-catatan-input').value;
+
+        if (!address || address === '(+) Tambah alamat') {
+            alert('Silakan tambahkan alamat pengantaran.');
+            return;
+        }
+
+        if (cart.length === 0) {
+            alert('Keranjang kosong. Tambahkan produk terlebih dahulu.');
+            return;
+        }
+
+        // Simpan pesanan (bisa ditambahkan ke backend jika diperlukan)
+        const order = {
+            cart,
+            address,
+            deliveryDay,
+            deliveryTime,
+            notes,
+        };
+
+        localStorage.setItem('lastOrder', JSON.stringify(order));
+        alert('Pesanan berhasil dikonfirmasi!');
+        localStorage.removeItem('cart');
+        window.location.href = 'index.html'; // Redirect ke halaman utama
+    }
+
+    renderOrderSummary();
+</script>
+</body>
+</html>

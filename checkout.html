@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=doevice-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ayam Potong</title>
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 <!--font-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
      rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/checkout.css">
@@ -23,9 +23,11 @@
      <div class="fill" style=" font-size: 14px;">
           <div class="Alamat-checkout">
                <h4 style="color: black; margin-left: 20px; margin-bottom: 10px;">Alamat Pengantaran</h4>
-               <div style="display: flex; justify-content: center;">
-                    <div class="box-alamat-checkout" id="id-alamat-lengkap-input"> (+) Tambah alamat</div>
-               </div>
+               <a href="account.html">
+                    <div style="display: flex; justify-content: center;">
+                         <div class="box-alamat-checkout" id="id-alamat-lengkap-input"> (+) Tambah alamat</div>
+                    </div>
+               </a>
           </div>
      
           <div class="hari-jam">
@@ -71,15 +73,8 @@
 
      <div id="id-rincian-pesanan">
           <h4 style="color: black; margin-left: 20px;"> Rincian Pesanan</h4>
-          <div style="display: flex; flex-direction: column;">
-               <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <p style="margin-left: 40px;"> broiler " 1 kg " potong 12</p>
-                    <p style="margin-right: 20px;"> x1</p>
-               </div>
-               <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <p style="margin-left: 40px;"> kampung " 8 ons " potong 8</p>
-                    <p style="margin-right: 20px;"> x3</p>
-               </div>
+          <div id="order-details" style="display: flex; flex-direction: column;">
+               <!-- Order details will be inserted here dynamically -->
           </div>
      </div>
 
@@ -88,7 +83,7 @@
           <div style="display: flex; flex-direction: column;">
                <div style="display: flex; flex-direction: row; justify-content: space-between;">
                     <p style="margin-left: 40px;" > Subtotal untuk produk</p>
-                    <p style="margin-right: 20px;" > Rp. 35.000</p>
+                    <p id="subtotal" style="margin-right: 20px;" > Rp. 0</p>
                </div>
                <div style="display: flex; flex-direction: row; justify-content: space-between;">
                     <p style="margin-left: 40px;" > Ongkos kirim</p>
@@ -97,14 +92,21 @@
           </div>
      </div>
 
-
-
+     
 <div class="modal-overlay" id="modal-overlay">
      <div class="modal-content">
+          <button class="close-send-btn" id="close-send-btn">x</button>
+          <div style="height: 80px; background-color: #075F55; border-radius: 20px 20px 0px 0px;display: flex; flex-direction: row; padding: 10px; padding-left: 20px; gap: 20px;">
+          <img src="img/logo.png" alt="" style="width: 60px; height: 60px; background-color: #ffffff; border-radius: 50%;">
+          <Pre>
+<span style="font-weight: bold;">Ayam Potong Antar </span>
+Akun bisnis
+</Pre>
+     </div>
           <section class="confirm">
-               <div>
-                    <p style="color: black; font-size: 16px; margin-left: 20px; margin-right: 20px;">
-                         Dengan ini kamu dapat memesan lewat whatsapp dengan mudah
+               <div style="background-color: rgb(255, 255, 255); width: 320px; border-radius: 15px; padding: 20px; margin-left: 20px; margin-top: 30px; margin-bottom: 20px;">
+                    <p style="color: black; font-size: 16px;">
+                         Halo, dengan ini kamu dapat memesan lewat whatsapp dengan mudah
                     </p>
                </div>
                <div class="box-text-send" id="id-text-send">
@@ -136,22 +138,20 @@
                </pre>
                </div>
                <div class="close-and-send">
-                    <button class="close-send-btn" id="close-send-btn">Tutup</button>
                     <a href="https://wa.me/6289653531029?text=Halo,%20salam%20kenal" id="id-send-whatsapp">
-                         <img src="/img/whatsapp.svg" alt="whatsapp" style="width: 30px; right: 10px;"> Kirim
+                         <img src="./img/whatsapp.svg" alt="whatsapp" style="width: 30px; right: 10px;"> Kirim
                     </a>
                </div>
           </section>
      </div>
 </div>
+
 <div style="height: 120px;"></div>
 
-     
 <nav class="cs-bottom-page">
      <a class="cs-total-harga">
           <p> Total pembayaran</p>
-          <p style="color: var(--1);"> Rp. 150.000</p>
-         
+          <p id="total-payment" style="color: var(--1);"> Rp. 0</p>
      </a>
      <button id="show-section-confirm-btn" class="into-whatsapp">
           Buat Pesanan
@@ -159,7 +159,161 @@
 </nav>
 
 </div>
-     <script src="/js/script.js"></script>
-</div>
+<script src="js/script.js"></script>
+<script>
+     // Ambil data dari localStorage
+     const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+     const orderDetailsContainer = document.getElementById('order-details');
+     const subtotalElement = document.getElementById('subtotal');
+     const totalPaymentElement = document.getElementById('total-payment');
+
+     // manipulasi rincian pesanan
+     function renderOrderDetails() {
+          orderDetailsContainer.innerHTML = ''; // Bersihkan elemen
+          let subtotal = 0;
+
+          if (selectedItems.length === 0) {
+               orderDetailsContainer.innerHTML = '<p>Tidak ada item dalam pesanan.</p>';
+               return;
+          }
+
+          selectedItems.forEach((item) => {
+               const itemElement = document.createElement('div');
+               itemElement.classList.add('order-item');
+               itemElement.innerHTML = `
+               <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <p style="margin-left: 40px;"> ${item.name} " ${item.weight} " dipotong ${item.slash}</p>
+                    <p style="margin-right: 20px;"> x ${item.quantity}</p>
+               </div>`;
+               orderDetailsContainer.appendChild(itemElement);
+
+               subtotal += item.price * item.quantity;
+          });
+
+          subtotalElement.innerText = `Rp. ${subtotal}`;
+          totalPaymentElement.innerText = `Rp. ${subtotal}`;
+     }
+
+     renderOrderDetails();
+
+
+     // alamat
+     function loadAlamatToCheckout() {
+          const savedData = JSON.parse(localStorage.getItem('formData'));
+
+          if (savedData) {
+               // Menampilkan alamat di elemen yang diinginkan
+               const alamatElement = document.getElementById('id-alamat-lengkap-input');
+               alamatElement.innerText = `${savedData.nama}, ${savedData.kelurahan}, ${savedData.alamat}`;
+          }
+     }
+
+     
+     function confirmOrder() {
+          const address = document.getElementById('id-alamat-lengkap-input').innerText;
+          const deliveryDay = document.getElementById('delivery-day').value;
+          const deliveryTime = document.getElementById('delivery-time').value;
+          const notes = document.getElementById('id-catatan-input').value;
+
+          if (!address || address === '(+) Tambah alamat') {
+               alert('Silakan tambahkan alamat pengantaran.');
+               return;
+          }
+
+          if (cart.length === 0) {
+               alert('Keranjang kosong. Tambahkan produk terlebih dahulu.');
+               return;
+          }
+
+          // Simpan pesanan (bisa ditambahkan ke backend jika diperlukan)
+          const order = {
+               cart,
+               address,
+               deliveryDay,
+               deliveryTime,
+               notes,
+          };
+
+          localStorage.setItem('lastOrder', JSON.stringify(order));
+          alert('Pesanan berhasil dikonfirmasi!');
+          localStorage.removeItem('cart');
+          window.location.href = 'index.html'; // Redirect ke halaman utama
+     }
+
+     // waktu antar
+          const timeButton = document.getElementById("time-button");
+          const timeDropdown = document.getElementById("time-dropdown");
+          const selectedTimeDisplay = document.getElementById("selected-time");
+
+          // generate
+          const times = Array.from({ length: 13 }, (_, index) => {
+               const hour = 7 + index; // dari 7 nyampe 19
+               return `${hour.toString().padStart(2, "0")}:00`;
+          });
+
+          // dropdown menu
+          times.forEach((time) => {
+               const timeOption = document.createElement("div");
+               timeOption.textContent = time;
+
+               timeOption.style.padding = "12px";
+               timeOption.style.cursor = "pointer";
+               timeOption.style.color = "#4a4a4a";
+
+               // Add hover effect 
+               timeOption.addEventListener("mouseover", () => {
+                    timeOption.style.backgroundColor = "#e5e7eb";
+               });
+               timeOption.addEventListener("mouseout", () => {
+                    timeOption.style.backgroundColor = "transparent";
+               });
+
+               // Handle click event
+               timeOption.addEventListener("click", () => {
+                    timeButton.textContent = time; // munculin tombol
+                    timeDropdown.style.display = "none"; // sembunyiin dropdown
+               });
+
+               timeDropdown.appendChild(timeOption);
+          });
+
+          // Toggle dropdown yerlihat
+          timeButton.addEventListener("click", (event) => {
+               event.stopPropagation();
+               timeDropdown.style.display = timeDropdown.style.display === "none" || !timeDropdown.style.display ? "block" : "none";
+          });
+
+          // tutup dropdown
+          document.addEventListener("click", (event) => {
+               if (!timeDropdown.contains(event.target)) {
+                    timeDropdown.style.display = "none"; // sembunyiin dropdown
+               }
+          });
+
+     // Jalankan fungsi saat halaman dimuat
+     window.addEventListener('load', loadAlamatToCheckout);
+     
+      // Tombol dan elemen modal
+          const showButton = document.getElementById("show-section-confirm-btn");
+          const modalOverlay = document.getElementById("modal-overlay");
+          const closeButton = document.getElementById("close-send-btn");
+
+          // Fungsi untuk membuka modal
+          showButton.addEventListener("click", () => {
+               modalOverlay.style.display = "flex"; // Tampilkan modal
+          });
+
+          // Fungsi untuk menutup modal
+          closeButton.addEventListener("click", () => {
+               modalOverlay.style.display = "none"; // Sembunyikan modal
+          });
+
+          // Menutup modal jika klik di luar modal-content
+          modalOverlay.addEventListener("click", (event) => {
+               if (event.target === modalOverlay) {
+                    modalOverlay.style.display = "none";
+               }
+          });
+</script>
 </body>
 </html>

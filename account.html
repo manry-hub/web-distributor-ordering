@@ -3,13 +3,13 @@
 
 <head>
      <meta charset="UTF-8">
-     <meta name="viewport" content="width=doevice-width, initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Ayam Potong</title>
-     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+     <link rel="shortcut icon" href="./img/slider.jpg" type="image/x-icon">
      <!--font-->
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
           rel="stylesheet">
      <link rel="stylesheet" href="css/styles.css">
      <link rel="stylesheet" href="css/account.css">
@@ -17,58 +17,102 @@
 
 <body>
 <div>
-<a href="index.html" class="cs-top-page">
-     <img src="img/arrow-narrow-left.svg" alt="arrow-left">
-     <h7 style="color: black; font-size: 20px;"> Account</h7>
-</a>
-<!-- Input nama -->
-<div style="display: flex; flex-direction: row; align-items: center;">
-     <img src="img/no-profile.png" alt="no profile" style="width: 130px;">
-     <div class="box-nama-input">
-          <label for="input" class="cs-text-input">Nama Lengkap:</label>
-          <input type="text" placeholder="Tulis disini..." name="input" class="input" id="id-nama-input">
+     <form action="" id="profileForm">
+          <a href="index.html" class="cs-top-page">
+               <img src="img/arrow-narrow-left.svg" alt="arrow-left">
+               <h7 style="color: black; font-size: 20px;"> Account</h7>
+          </a>
+          <!-- Input nama -->
+          <div style="display: flex; flex-direction: row; align-items: center;">
+               <img src="img/no-profile.png" alt="no profile" style="width: 130px;">
+               <div class="box-nama-input">
+                    <label for="input" class="cs-text-input">Nama Lengkap:</label>
+                    <input type="text" placeholder="Tulis disini..." name="nama" class="input" id="nama">
+               </div>
+          </div>
+          
+          <!-- input kelurahan -->
+          <div class="box-alamat-input">
+               <label for="input" class="cs-text-input">Kelurahan:</label>
+               <div style="padding: 11px 10px; font-size: 0.75rem; border: 2px #a7a7a6 solid;border-radius: 5px; background: #ffffff;">
+                    <div class="inner-box-alamat">
+                         <select name="kelurahan" id="kelurahan" class="cs-kelurahan-input">
+                              <option value="Cisalak pasar">Cisalak Pasar</option>
+                              <option value="Curug">Curug</option>
+                              <option value="Harjamukti">Harjamukti</option>
+                              <option value="Mekarsari">Mekarsari</option>
+                              <option value="Sukatani">Sukatani</option>
+                              <option value="Sukamaju Baru">Sukamaju Baru</option>
+                         </select>
+                    </div>
+               </div>
+          </div>
+          
+          <!-- input detail alamat -->
+          <div class="box-alamat-input">
+               <label for="input" class="cs-text-input">Alamat Lengkap:</label>
+               <div style="padding: 11px 10px; font-size: 0.75rem; border: 2px #a7a7a6 solid;border-radius: 5px; background: #ffffff; height: 150px;">
+                    <textarea name="input-alamat-lengkap" id="id-lokasi-input" placeholder="(Cth: Nama Jalan, No. Rumah, Blok, Rt, Rw)"></textarea>
+               </div>
+          </div>
+          
+          <!-- tombol simpan -->
+          <div style="display: flex; justify-content: right;">
+               <button type="button" id="btn-simpan">Save <img src="img/save.svg" style="width: 20px;" alt=""></button>
+          </div>
+     </form>
+
+     <!-- balik ke checkout-->
+     <a href="checkout.html">
+          <button id="btn-kembali-ke-checkout">Kembali ke pemesanan <img src="img/arrow-narrow-down.svg" alt="arrow-down"></button>
+     </a>
+
+     <!-- untuk notif sukses disimpan -->
+     <div class="modal" id="modal" style="display: none; background: rgba(0, 0, 0, 0.5); padding: 20px; color: white;">
+          Data berhasil disimpan!
      </div>
 </div>
+<script src="js/script.js"></script>
+<script>
+     function saveData() {
+          const formData = {
+               nama: document.getElementById('nama').value,
+               kelurahan: document.getElementById('kelurahan').value,
+               alamat: document.getElementById('id-lokasi-input').value
+          };
 
-<!-- input kelurahan -->
-<div class="box-alamat-input">
-<label for="input" class="cs-text-input">Kelurahan:</label>
-<div style="padding: 11px 10px; font-size: 0.75rem; border: 2px #a7a7a6 solid;border-radius: 5px; background: #ffffff;">
-     <div class="inner-box-alamat">
-          <select id="id-kelurahan-input" class="cs-kelurahan-input">
-               <option value="Cisalak pasar">Cisalak Pasar</option>
-               <option value="Curug">Curug</option>
-               <option value="Harjamukti">Harjamukti</option>
-               <option value="Mekarsari">Mekarsari</option>
-               <option value="Sukatani">Sukatani</option>
-               <option value="Sukamaju Baru">Sukamaju Baru</option>
-          </select>
-     </div>
-</div>
-</div>
+          // Simpan ke localStorage
+          localStorage.setItem('formData', JSON.stringify(formData));
 
-<!-- input detail alamat -->
-<div class="box-alamat-input">
-     <label for="input" class="cs-text-input">Alamat Lengkap:</label>
-     <div style="padding: 11px 10px; font-size: 0.75rem; border: 2px #a7a7a6 solid;border-radius: 5px; background: #ffffff; height: 150px;">
-          <textarea type="text" name="input-alamat-lengkap" id="id-lokasi-input" placeholder="(Cth: Nama Jalan, No. Rumah, Blok, Rt, Rw)"></textarea>
-     </div>
-</div>
+          // Tampilkan notifikasi berhasil
+          const modal = document.getElementById('modal');
+          modal.style.display = 'block';
 
-<!-- tombol simpan -->
-<div style="display: flex; justify-content: right;">
-     <button id="btn-simpan"> save <img src="img/save.svg" style="width: 20px;" alt=""></button>
-</div>
+          // Hilangkan notifikasi setelah 3 detik
+          setTimeout(() => {
+               modal.style.display = 'none';
+          }, 3000);
+     }
 
-<!-- balik ke checkout-->
-<a href="checkout.html">
-     <button id="btn-kembali-ke-checkout">Kembali ke pemesanan <img src="img/arrow-narrow-down.svg" alt="arrow-down"></button>
-</a>
+     // Fungsi untuk memuat data dari localStorage
+     function loadData() {
+          const savedData = JSON.parse(localStorage.getItem('formData'));
 
-<!-- untuk notif sukses disimpan -->
-<div class="modal"></div>
+          if (savedData) {
+               document.getElementById('nama').value = savedData.nama || '';
+               document.getElementById('kelurahan').value = savedData.kelurahan || '';
+               document.getElementById('id-lokasi-input').value = savedData.alamat || '';
+          }
+     }
 
-</div>
-     <script src="js/script.js"></script>
+     // Event listener untuk tombol save
+     document.getElementById('btn-simpan').addEventListener('click', function(event) {
+          event.preventDefault(); // Mencegah reload halaman
+          saveData();
+     });
+
+     // Muat data saat halaman dibuka kembali
+     window.addEventListener('load', loadData);
+</script>
 </body>
 </html>

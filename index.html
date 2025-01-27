@@ -16,28 +16,25 @@
 </head>
 
 <body>
-          <nav class="navbar-top">
+<nav class="navbar-top">
                <a href="#" class="navbar-top-text">ayam<span>potong</span> </span>.</a>
                <a href="account.html" class="transition-link-to-right">
-                    <img src="/img/user.svg" alt="user" style="width: 35px; margin-right: 15px;">
+                    <img src="./img/user.svg" alt="user" style="width: 35px; margin-right: 15px;">
                </a>
-          </nav>
-          <!-- Navbar -->
-          <a href="cart.html" id="navbar-bottom">
-               <img src="/img/shopping-cart.svg" alt="keranjang"
+</nav>
+<a href="cart.html" id="navbar-bottom">
+               <img src="./img/shopping-cart.svg" alt="keranjang"
                     style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
                <div
                     style="width: 25px; height: 25px; border-radius: 50%; background-color: var(--1); position: fixed; right: 20px; bottom: 47px; text-align: center; font-size: 14px">
                     0
                </div>
-          </a>
+</a>
           
-
 <!--slide-->
 <div class="slide2"></div>
 <div class="slide3"></div>
 <div id="awalan" style="height: 50px;"></div>
-
 <!--Hero-->
 <section class="hero" id="home">
      <div class="row">
@@ -95,8 +92,6 @@
      <div class="kelurahan">Sukamaju baru</div>
 </div>   
 </section>
-
-
 <!--Order-->
 <section class="order" id="order">
      <div class="headline">
@@ -108,8 +103,8 @@
           <div class="garis-2" style="background-color: black; width: 160px; height: 1px;"></div>
      </div>
      <div class="container-cart-order">
-     
-          <div class="manipulation-order" data-order-index="1">
+          <div class="manipulation-order" id="product1" data-order-index="1">
+
                <div class="box-gambar-harga-berat">
                     <div class="jenis-ayam" id="id-jenis-ayam-broiler">
                          <img src="img/ayam-broiler.jpg" alt="" style="width: 160px; border-radius: 20px;">
@@ -121,27 +116,27 @@
                          
                     </div>
                </div>
-               
      
                <p style="color: black; font-size: 16px; font-weight: bold; ">Jumlah Potongan</p>
                <div class="slider-poin">
-                    <input id="id-potong-broiler-input" class="slider-bar" value="3" max="5" min="1" type="range" style="margin: 10px;">
-                    <div class="slider-poin-number">
-                         <div><span id="potong-1">1</span></div>
+                    <input id="id-potong-broiler-input" class="slider-bar" value="2" max="4" min="0" type="range" style="margin: 10px;"
+                         oninput="updateBroilerLabel()">
+                    <div class="slider-poin-number" id="broiler-count">
+                         <div><span id="potong-1">0</span></div>
                          <div><span id="potong-4">4</span></div>
                          <div><span id="potong-8">8</span></div>
                          <div><span id="potong-10">10</span></div>
                          <div><span id="potong-12">12</span></div>
                     </div>
                </div>
-               <div style=" display: flex;  margin-bottom: 10px ;margin-left: 60px; ">
-
-                    <button id="btn-add-broiler-to-cart" class="button-add-to-cart"
+               <div style=" display: flex;  margin-bottom: 10px ;margin-left: 60px; margin-top: 10px; ">
+                    <button id="btn-add-broiler-to-cart" class="button-add-to-cart" onclick="addToCart('Ayam Broiler', '1 Kg', 37000, selectedValue)"
                          style=" font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px; "> + Masukan keranjang</button>
                </div>
           </div>
           
-          <div class="manipulation-order" data-order-index="1">
+          
+          <div id="product2" class="manipulation-order" data-order-index="1">
                <div class="box-gambar-harga-berat">
                     <div class="jenis-ayam" id="id-jenis-ayam-kampung">
                          <img src="img/ayam-jago.jpeg" alt="" style="width: 160px; height: 92px; border-radius: 20px;">
@@ -149,22 +144,25 @@
           
                     <div style="display: flex; flex-direction: column; margin-right: 10px; align-items: center;">
                          <p id="id-berat-kampung-output" style="color: var(--3); font-size: 25px; font-weight: bold;" > 8 Ons</p>
-                         <p id="id-harga-per-ayam-kampung-input" style="color: var(--4); font-size: 16px;"> Rp 60.000</p>
+                         <p id="kampung-price" style="color: var(--4); font-size: 16px;"> Rp 60.000</p>
                     </div>
                </div>
           
-               <div id="id-berat-kampung-input" style="width: 300px; align-items: end; margin-bottom: 10px;">
-                    <button class="button-choose-weight">8 Ons</button>
-                    <button class="button-choose-weight">1 Kg</button>
-                    <button class="button-choose-weight">1.1 Kg</button>
-                    <button class="button-choose-weight">1.2 Kg</button>
+               <div class="weight-buttons"  style="width: 300px; align-items: end; margin-bottom: 10px;">
+                    <button class="button-choose-weight" onclick="selectWeight(this, '8 Ons', 60000)" class="active">8 Ons</button>
+                    <button class="button-choose-weight" onclick="selectWeight(this, '9 Ons', 75000)">9 Ons</button>
+                    <button class="button-choose-weight" onclick="selectWeight(this, '1 Kg', 90000)">1 Kg</button>
+                    <button class="button-choose-weight" onclick="selectWeight(this, '1.1 Kg', 100000)">1.1 Kg</button>
+                    <button class="button-choose-weight" onclick="selectWeight(this, '1.2 Kg', 120000)">1.2 Kg</button>
                </div>
                
                <p style="color: black; font-size: 16px; font-weight: bold; ">Jumlah Potongan</p>
                <div class="slider-poin">
-                    <input id="id-potong-kampung-input" class="slider-bar" value="2" max="5" min="1" type="range" style="margin: 10px;">
-                    <div class="slider-poin-number">
-                         <div><span id="potong-1">1</span></div>
+                    <input id="id-potong-kampung-input" class="slider-bar" value="1" max="4" min="0" type="range"
+                         oninput="updateKampungLabel()" style="margin: 10px;">
+
+                    <div class="slider-poin-number" id="kampung-count">
+                         <div><span id="potong-1">0</span></div>
                          <div><span id="potong-4">4</span></div>
                          <div><span id="potong-8">8</span></div>
                          <div><span id="potong-10">10</span></div>
@@ -172,17 +170,14 @@
                     </div>
                </div>
                
-               <div style=" display: flex;  margin-bottom: 10px ;margin-left: 60px; ">
-                    <button id="btn-add-kampung-to-cart"  class="button-add-to-cart"
+               <div style=" display: flex;  margin-bottom: 10px; margin-left: 60px; margin-top: 10px; ">
+                    <button id="btn-add-kampung-to-cart"  class="button-add-to-cart" onclick="addToCart('Ayam Kampung', selectedWeight, selectedPrice, selectedValue)"
                          style=" font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px; "> +
                          Masukan keranjang</button>
                </div>
           </div>
      </div>
 </section>
-
-
-
 
 <!--Frequenty Asked Question-->
 <section class="faq" id="faq">
@@ -237,9 +232,68 @@
 </footer>
 <div style="height: 60px;"></div>
 
-
 <!--javascript-->
 <script src="js/script.js"></script>
-</body>
+<script>
+     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+     let selectedWeight = '8 Ons';
+     let selectedPrice = 60000;
+     let selectedValue = 0; // Nilai awal untuk potongan
+     const potonganValues = [1, 4, 8, 10, 12];
 
+     // tambah keranjang
+     function addToCart(name, weight, price, slash) {
+          console.log(`Adding to cart: ${name}, ${weight}, ${price}, ${slash}`);
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.push({name, weight, price, slash});
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert(`${name} berhasil ditambahkan ke keranjang!`);
+     }
+
+     // broiler
+     function updateBroilerLabel() {
+          const sliderValue = parseInt(document.getElementById('id-potong-broiler-input').value, 10);
+          selectedValue = potonganValues[sliderValue]; // Perbarui nilai selectedValue
+
+          // Sinkronkan visual slider-poin-number
+          const broilerPoints = document.querySelectorAll('#broiler-count span');
+          broilerPoints.forEach((point, index) => {
+          if (index === sliderValue) {
+          point.classList.add('active'); // Tambahkan kelas aktif
+          } else {
+          point.classList.remove('active'); // Hapus kelas aktif
+          }
+          });
+     }
+
+     // kampung
+     function updateKampungLabel() {
+          const sliderValue = parseInt(document.getElementById('id-potong-kampung-input').value, 10);
+          selectedValue = potonganValues[sliderValue]; // Perbarui nilai selectedValue
+
+          // Sinkronkan visual slider-poin-number
+          const kampungPoints = document.querySelectorAll('#kampung-count span');
+          kampungPoints.forEach((point, index) => {
+          if (index === sliderValue) {
+               point.classList.add('active'); // Tambahkan kelas aktif
+          } else {
+               point.classList.remove('active'); // Hapus kelas aktif
+          }
+          });
+     }
+
+     // berat kampung
+     function selectWeight(button, weight, price) {
+          const buttons = document.querySelectorAll('#product2 .weight-buttons button');
+          buttons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          selectedWeight = weight;
+          selectedPrice = price;
+
+          document.getElementById('kampung-price').textContent = `Rp${price.toLocaleString()}`;
+          document.getElementById('id-berat-kampung-output').textContent = `${weight}`;
+     }
+</script>
+</body>
 </html>

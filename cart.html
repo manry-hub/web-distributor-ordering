@@ -1,136 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
-     <meta name="viewport" content="width=doevice-width, initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Ayam Potong</title>
-     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-     <!--font-->
+     <link rel="shortcut icon" href="./img/no-profile.png" type="image/x-icon">
+     <!-- Font -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
+     <!-- Styles -->
      <link rel="stylesheet" href="css/styles.css">
      <link rel="stylesheet" href="css/cart.css">
 </head>
 
 <body>
-<div>
-
-<a href="index.html" class="cs-top-page">
-     <img src="img/arrow-narrow-left.svg" alt="arrow-left">
-     <h7 style="color: black; font-size: 20px;"> Keranjang Saya</h7>
-</a>
-
-
-<!-- select dan remove -->
-<div class="cart-controls">
-     <label class="container-checkbox"> 
-          <input class="checkbox" type="checkbox" id="checkbox" />
-          <label class="checkbox-label" for="checkbox">
-               <div class="checkbox-container">
-                    <div class="box"></div>
-                    <div class="checkmark">
-                         <div class="tick-container">
-                              <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                   <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
-                              </svg>
-                         </div>
-                    </div>
-               </div>
-          </label>
-          <p style="margin-left: 8px;">Pilih semua</p>
-     </label>
-
      <div>
-          <img src="img/trash-2.svg" style="width: 25px;" alt="">
-     </div>
-</div>
+          <a href="index.html" class="cs-top-page">
+               <img src="img/arrow-narrow-left.svg" alt="arrow-left">
+               <h7 style="color: black; font-size: 20px;"> Keranjang Saya</h7>
+          </a>
 
-<div class="container-cart">
-     
-     <div class="cs-cart-item">
-          <label class="container-checkbox">
-               <input class="checkbox" type="checkbox" id="checkbox" />
-               <label class="checkbox-label" for="checkbox">
-                    <div class="checkbox-container">
-                         <div class="box"></div>
-                         <div class="checkmark">
-                              <div class="tick-container">
-                                   <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                        <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
-                                   </svg>
+          <!-- Controls -->
+          <div class="cart-controls">
+               <label class="container-checkbox">
+                    <input type="checkbox" class="checkbox" onclick="toggleSelectAll()" id="toggle-select-all">
+                    <label class="checkbox-label" for="toggle-select-all">
+                         <div class="checkbox-container">
+                              <div class="box"></div>
+                              <div class="checkmark">
+                                   <div class="tick-container">
+                                        <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                             <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
+                                        </svg>
+                                   </div>
                               </div>
                          </div>
-                    </div>
+                    </label>
+                    <p style="margin-left: 8px;">Pilih semua</p>
                </label>
-          </label>
 
-          <div class="item-info" id="id-keranjang-1">
-               <h2>Ayam Broiler</h2>
-               <p>1 kg - <span>Potong 10</span></p>
-               <p>Rp37.000</p>
+               <a onclick="removeCheckedCarts()">
+                    <img src="img/trash-2.svg" style="width: 25px;" alt="Hapus">
+               </a>
           </div>
 
-          <div id="id-jumlah-ayam-1">
-               <p style="font-size: 12px;">jumlah</p>
-               <div class="item-quantity">
-                    <button class="decrease">-</button>
-                    <span class="quantity">1</span>
-                    <button class="increase">+</button>
-               </div>
-          </div>
+          <!-- Cart Items -->
+          <div id="cart"></div>
+
+          <!-- Footer -->
+          <nav class="cs-bottom-page">
+               <a class="cs-total-harga">
+                    <p>Total pembayaran</p>
+                    <p style="color: var(--1);" id="total-harga">Rp. 0</p>
+               </a>
+               <button onclick="checkout()" id="btn-checkout">Checkout</button>
+          </nav>
      </div>
 
-     <div class="cs-cart-item">
-          <label class="container-checkbox">
-               <input class="checkbox" type="checkbox" id="checkbox" />
-               <label class="checkbox-label" for="checkbox">
-                    <div class="checkbox-container">
-                         <div class="box"></div>
-                         <div class="checkmark">
-                              <div class="tick-container">
-                                   <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                        <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
-                                   </svg>
-                              </div>
-                         </div>
+     <script src="js/script.js"></script>
+     <script>
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const cartContainer = document.getElementById('cart');
+          let allSelected = false; // Track toggle state
+
+          // manipulasi keranjang
+          function renderCart() {
+               cartContainer.innerHTML = '';
+
+               cart.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                <div class="container-cart">
+                    <div class="cs-cart-item">
+                        <label class="container-checkbox">
+                            <input onchange="updateTotal()" id="checkbox-${index}" class="checkbox c" type="checkbox">
+                            <label class="checkbox-label" for="checkbox-${index}">
+                                <div class="checkbox-container">
+                                    <div class="box"></div>
+                                    <div class="checkmark">
+                                        <div class="tick-container">
+                                            <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                                <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </label>
+
+                        <div class="item-info">
+                            <h2>${item.name}</h2>
+                            <p>${item.weight} - <span>Potong ${item.slash}</span></p>
+                            <p>Rp ${item.price}</p>
+                        </div>
+
+                        <div>
+                            <p style="font-size: 12px;">Jumlah</p>
+                            <div class="item-quantity">
+                                <button class="decrease">-</button>
+                                <span id="quantity-${index}" class="quantity">1</span>
+                                <button class="increase">+</button>
+                            </div>
+                        </div>
                     </div>
-               </label>
-          </label>
+                </div>`;
+                    cartContainer.appendChild(itemElement);
+               });
 
-          <div class="item-info" id="id-keranjang-2">
-               <h2>Ayam Broiler</h2>
-               <p>1 kg - <span>Potong 10</span></p>
-               <p>Rp37.000</p>
-          </div>
+               document.querySelectorAll('.increase').forEach((button, index) => {
+                    button.addEventListener('click', () => {
+                         const quantityElement = document.getElementById(`quantity-${index}`);
+                         let quantity = parseInt(quantityElement.textContent);
+                         quantity += 1;
+                         quantityElement.textContent = quantity;
+                         updateTotal();
+                    });
+               });
 
-          <div id="id-jumlah-ayam-2">
-               <p style="font-size: 12px;">jumlah</p>
-               <div class="item-quantity">
-                    <button class="decrease">-</button>
-                    <span class="quantity">1</span>
-                    <button class="increase">+</button>
-               </div>
-          </div>
-     </div>
+               document.querySelectorAll('.decrease').forEach((button, index) => {
+                    button.addEventListener('click', () => {
+                         const quantityElement = document.getElementById(`quantity-${index}`);
+                         let quantity = parseInt(quantityElement.textContent);
+                         if (quantity > 1) {
+                              quantity -= 1;
+                              quantityElement.textContent = quantity;
+                              updateTotal();
+                         }
+                    });
+               });
 
-</div>
+               updateTotal();
+          }
+
+          // kalkulasi total pembayaran
+          function updateTotal() {
+               const checkboxes = document.querySelectorAll('.checkbox.c');
+               let totalHarga = 0;
+
+               checkboxes.forEach((checkbox, index) => {
+                    if (checkbox.checked) {
+                         const quantityElement = document.getElementById(`quantity-${index}`);
+                         const quantity = parseInt(quantityElement.textContent);
+                         totalHarga += cart[index].price * quantity;
+                    }
+               });
+
+               document.getElementById('total-harga').innerText = `Rp ${totalHarga}`;
+          }
 
 
-<nav class="cs-bottom-page">
-     <a class="cs-total-harga">
-          <p> Total pembayaran</p>
-          <p style="color: var(--1);"> Rp. 150.000</p>
-     </a>
-     <a href="checkout.html">
-          <button id="btn-checkout">
-               Checkout
-          </button>
-     </a>
-</nav>
+          // fitur centang
+          function toggleSelectAll() {
+               const checkboxes = document.querySelectorAll('.checkbox.c');
+               allSelected = !allSelected;
 
-</div>
-<script src="js/script.js"></script>
+               checkboxes.forEach(checkbox => checkbox.checked = allSelected);
+
+               updateTotal();
+          }
+
+          function removeCheckedCarts() {
+               const checkboxes = document.querySelectorAll('.checkbox.c');
+               for (let i = cart.length - 1; i >= 0; i--) {
+                    if (checkboxes[i].checked) {
+                         cart.splice(i, 1);
+                    }
+               }
+               localStorage.setItem('cart', JSON.stringify(cart));
+               renderCart();
+          }
+
+          function checkout() {
+               const selectedItems = cart.map((item, index) => {
+                    const checkbox = document.getElementById(`checkbox-${index}`);
+                    if (checkbox && checkbox.checked) {
+                         const quantityElement = document.getElementById(`quantity-${index}`);
+                         const quantity = parseInt(quantityElement.textContent);
+                         return { ...item, quantity };
+                    }
+                    return null;
+               }).filter(Boolean);
+
+               if (selectedItems.length === 0) {
+                    alert('Pilih setidaknya satu item untuk checkout.');
+                    return;
+               }
+
+               localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+
+               console.log('=== Selected Items for Checkout ===');
+               selectedItems.forEach((item, index) => {
+                    console.log(`Item ${index + 1}:`);
+                    console.log(`- Name: ${item.name}`);
+                    console.log(`- Berat Ayam: ${item.weight}`);
+                    console.log(`- Potong: ${item.slash}`);
+                    console.log(`- Price: Rp ${item.price}`);
+                    console.log('-----------------------------');
+               });
+
+               window.location.href = 'checkout.html';
+          }
+
+          renderCart();
+     </script>
 </body>
+
 </html>
