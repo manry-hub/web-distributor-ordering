@@ -117,7 +117,7 @@ p {
 .box-text-send {
   margin: 10px;
   margin-right: 20px;
-  width: 300px;
+  width: 200px;
   background-color: #dcf7c5;
   border-radius: 15px;
   color: #000000;
@@ -146,6 +146,7 @@ p {
 .close-and-send {
   float: right;
   margin-right: 20px;
+  font-weight: bold;
 }
 
 #id-send-whatsapp {
