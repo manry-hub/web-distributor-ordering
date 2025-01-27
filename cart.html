@@ -6,12 +6,9 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Ayam Potong</title>
      <link rel="shortcut icon" href="./img/no-profile.png" type="image/x-icon">
-     <!-- Font -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
-     <!-- Styles -->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="css/styles.css">
      <link rel="stylesheet" href="css/cart.css">
 </head>
@@ -39,7 +36,7 @@
                               </div>
                          </div>
                     </label>
-                    <p style="margin-left: 8px;">Pilih semua</p>
+                    <p style="margin-left: 20px;">Pilih semua</p>
                </label>
 
                <a onclick="removeCheckedCarts()">
@@ -98,7 +95,7 @@
                             <p>Rp ${item.price}</p>
                         </div>
 
-                        <div>
+                        <div style="text-align: center;">
                             <p style="font-size: 12px;">Jumlah</p>
                             <div class="item-quantity">
                                 <button class="decrease">-</button>
@@ -157,9 +154,7 @@
           function toggleSelectAll() {
                const checkboxes = document.querySelectorAll('.checkbox.c');
                allSelected = !allSelected;
-
                checkboxes.forEach(checkbox => checkbox.checked = allSelected);
-
                updateTotal();
           }
 

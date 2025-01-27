@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ayam Potong</title>
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-<!--font-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
-     rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/checkout.css">
 </head>
@@ -91,7 +89,7 @@
                </div>
           </div>
      </div>
-
+     
      
 <div class="modal-overlay" id="modal-overlay">
      <div class="modal-content">
@@ -104,13 +102,13 @@ Akun bisnis
 </Pre>
      </div>
           <section class="confirm">
-               <div style="background-color: rgb(255, 255, 255); width: 320px; border-radius: 15px; padding: 20px; margin-left: 20px; margin-top: 30px; margin-bottom: 20px;">
-                    <p style="color: black; font-size: 16px;">
+               <div style="background-color: rgb(255, 255, 255); width: 300px; border-radius: 15px; padding: 20px; margin-left: 20px; margin-top: 30px; margin-bottom: 20px;">
+                    <p style="color: black; font-size: 14px;">
                          Halo, dengan ini kamu dapat memesan lewat whatsapp dengan mudah
                     </p>
                </div>
                <div class="box-text-send" id="id-text-send">
-                    <pre class="scrollable-content">
+                    <pre class="scrollable-content" style="font-size: 14px;">
 
      Halo, saya *[___]*
      memesan ayam potong
@@ -182,7 +180,7 @@ Akun bisnis
                itemElement.classList.add('order-item');
                itemElement.innerHTML = `
                <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <p style="margin-left: 40px;"> ${item.name} " ${item.weight} " dipotong ${item.slash}</p>
+                    <p style="margin-left: 40px;"> ${item.name} "${item.weight}" dipotong ${item.slash}</p>
                     <p style="margin-right: 20px;"> x ${item.quantity}</p>
                </div>`;
                orderDetailsContainer.appendChild(itemElement);
