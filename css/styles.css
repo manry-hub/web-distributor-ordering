@@ -2,9 +2,9 @@
 
 :root {
   --bg: #ffeee6;
-  --1: #dda537;
-  --2: #9e7119;
-  --3: #7d5301;
+  --1: #e7ac37;
+  --2: #af7e1d;
+  --3: #966503;
   --4: #483002;
   --5: #fedc99;
   --grey: #afafaf;
@@ -49,7 +49,7 @@ body {
   align-items: center;
   height: 60px;
   background-color: #ffffff;
-  border-radius: 0px 0px 15px 0px;
+  border-radius: 0px 0px 15px 15px;
   position: fixed;
   width: 100%;
   margin-bottom: 30px;
@@ -121,7 +121,7 @@ body {
   position: fixed;
   background-color: #ffffff;
   box-shadow: 0px 7px 20px #292929;
-  border-radius: 20px 0px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
   bottom: 0px;
   width: 100%;
   height: 60px;
@@ -294,7 +294,7 @@ body {
 }
 
 .supplier .container {
-  margin-bottom: 70px;
+  margin-bottom: 30px;
   /* Membatasi lebar container */
   padding: 20px;
   /* Memberikan sedikit ruang di dalam container */
@@ -366,7 +366,8 @@ body {
   gap: 20px;
   height: auto;
   display: block;
-  margin-top: 50px;
+  margin-top: 200px;
+  margin-bottom: 200px;
 }
 
 .manipulation-order {

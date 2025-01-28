@@ -1,5 +1,5 @@
 Design
-Main / tinggal video tutor + personalisasi cart order
+Main / done
 Account / done 
 cart / done
 Checkout / done
@@ -8,6 +8,18 @@ Javascript
 Main / 100%
 account / 100%
 cart / 100%
-Checkout / time ubah jadi 9.00, 12.00, 15.00, 19.00
+Checkout / 100%
 
 User experience / 50%
+ui di navbottom
+
+animation / 0%
+
+alert centang
+- Masukan keranjang
+- save profil
+
+alert silang
+- keranjangnya kosong
+- profilnya kosong
+- alamatnya kosong

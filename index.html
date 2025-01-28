@@ -19,6 +19,9 @@
 
      <div>
           <a href="cart.html" class="transition-link-to-right">
+               <div id="count-item" style="position: absolute; background-color: var(--1); color: #ffffff; padding-left: 5px; padding-right: 5px; padding-top: 3px; ; border-radius: 50%; margin-left: 25px; font-size: 12;">
+                    0
+               </div>
                <img src="./img/shopping-cart.svg" alt="user" style="width: 35px; margin-right: 15px;">
           </a>
           <a href="account.html" class="transition-link-to-right">
@@ -28,19 +31,19 @@
 </nav>
 
 <nav id="navbar-bottom">
-     <a href="#home">
-          <img src="./img/home.svg" alt="keranjang" style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
+     <a href="#">
+          <img src="./img/home.svg" alt="home" style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
      </a>
 <a href="#truck">
-     <img src="./img/truck.svg" alt="keranjang"
+     <img src="./img/truck.svg" alt="supplier"
           style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
 </a>
-     <a href="#free-ongkir">
-          <img src="./img/shopping-bag.svg" alt="keranjang"
+     <a href="#order">
+          <img src="./img/shopping-bag.svg" alt="order"
                style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
      </a>
      <a href="#faq">
-          <img src="./img/twitch.svg" alt="keranjang"
+          <img src="./img/twitch.svg" alt="faq"
                style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 10px;">
      </a>
 </nav>
@@ -93,7 +96,7 @@
           <div>
                <p style="color: white; font-size: 16px;">Ayam Kampung</p>
                <img src="img/ayam-jago.jpeg" alt="kampung-img">
-               <p style="color: black; font-weight: 600; font-size: 18px;">Rp. 80.000</p>
+               <p style="color: black; font-weight: 600; font-size: 18px;"> > Rp. 80.000</p>
           </div>
      </div>
 
@@ -103,7 +106,7 @@
      <div class="kelurahan">Cisalak pasar</div>
      <div class="kelurahan">Harjamukti</div>
      <div class="kelurahan">Sukatani</div>
-     <div class="kelurahan" id="free-ongkir">Sukamaju baru</div>
+     <div class="kelurahan">Sukamaju baru</div>
 </div>   
 </section>
 <!--Order-->
@@ -192,6 +195,8 @@
      </div>
 </section>
 
+
+
 <!--Frequenty Asked Question-->
 <section class="faq" id="faq">
 <div class="faq-container">
@@ -209,14 +214,14 @@
           <input type="checkbox" id="faq2">
           <label for="faq2" class="faq-question">Bagaimana cara memastikan kualitas ayam yang diterima?</label>
           <div class="faq-answer">
-               Kami hanya menyediakan ayam potong segar yang baru dipotong pagi hari. 
+               Kami hanya menyediakan ayam potong segar yang baru dipotong pagi hari. Maka dari itu, pemesanan dan pengiriman tidak bisa berbarengan dengan hari yang sama.
           </div>
      </div>
      <div class="faq-item">
           <input type="checkbox" id="faq3">
           <label for="faq3" class="faq-question">Mengapa tetap harus memakai whatsapp?</label>
           <div class="faq-answer">
-               Kami tetap membutuhkan whatsapp untuk memastikan lokasi benar sesuai dengan apa adanya dan menjaga data anda tetap aman
+               Kami tetap membutuhkan whatsapp untuk memastikan lokasi benar sesuai dengan apa adanya dan menjaga data anda tetap aman.
           </div>
      </div>
 </div>
@@ -248,12 +253,17 @@
 <!--javascript-->
 <script src="js/script.js"></script>
 <script>
+     
      let cart = JSON.parse(localStorage.getItem('cart')) || [];
      let selectedWeight = '8 Ons';
      let selectedPrice = 60000;
      let selectedValue = 0; // Nilai awal untuk potongan
      const potonganValues = [0, 4, 8, 10, 12];
 
+
+     document.addEventListener('DOMContentLoaded', () => {
+               updateCartCount(); // Memperbarui tampilan jumlah item saat halaman dimuat
+          });
      // tambah keranjang
      function addToCart(name, weight, price, slash) {
           console.log(`Adding to cart: ${name}, ${weight}, ${price}, ${slash}`);
@@ -261,6 +271,7 @@
           cart.push({name, weight, price, slash});
           localStorage.setItem('cart', JSON.stringify(cart));
           alert(`${name} berhasil ditambahkan ke keranjang!`);
+          updateCartCount(); 
      }
 
      // broiler
@@ -307,6 +318,16 @@
           document.getElementById('kampung-price').textContent = `Rp${price.toLocaleString()}`;
           document.getElementById('id-berat-kampung-output').textContent = `${weight}`;
      }
+     // Fungsi untuk memperbarui tampilan jumlah item di keranjang
+          function updateCartCount() {
+               const cart = JSON.parse(localStorage.getItem('cart')) || [];
+               const count = cart.length; // Menghitung jumlah item di keranjang
+               const countItemElement = document.getElementById('count-item');
+
+               if (countItemElement) {
+                    countItemElement.textContent = count; // Menampilkan jumlah item di dalam elemen
+               }
+          }
 </script>
 </body>
 </html>
