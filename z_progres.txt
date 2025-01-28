@@ -8,6 +8,6 @@ Javascript
 Main / 100%
 account / 100%
 cart / 100%
-Checkout / modal
+Checkout / time ubah jadi 9.00, 12.00, 15.00, 19.00
 
 User experience / 50%

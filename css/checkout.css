@@ -147,6 +147,7 @@ p {
 .close-and-send {
   float: right;
   margin-right: 20px;
+  background: none;
   font-weight: bold;
 }
 
