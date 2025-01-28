@@ -9,4 +9,5 @@ Main / 100%
 account / 100%
 cart / 100%
 Checkout / modal
+
 User experience / 50%

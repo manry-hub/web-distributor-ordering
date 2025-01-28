@@ -15,20 +15,36 @@
 
 <body>
 <nav class="navbar-top">
-               <a href="#" class="navbar-top-text">ayam<span>potong</span> </span>.</a>
-               <a href="account.html" class="transition-link-to-right">
-                    <img src="./img/user.svg" alt="user" style="width: 35px; margin-right: 15px;">
-               </a>
+     <a href="#" class="navbar-top-text">ayam<span>potong</span> </span>.</a>
+
+     <div>
+          <a href="cart.html" class="transition-link-to-right">
+               <img src="./img/shopping-cart.svg" alt="user" style="width: 35px; margin-right: 15px;">
+          </a>
+          <a href="account.html" class="transition-link-to-right">
+               <img src="./img/user.svg" alt="user" style="width: 35px; margin-right: 15px;">
+          </a> 
+     </div>
 </nav>
-<a href="cart.html" id="navbar-bottom">
-               <img src="./img/shopping-cart.svg" alt="keranjang"
-                    style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
-               <div
-                    style="width: 25px; height: 25px; border-radius: 50%; background-color: var(--1); position: fixed; right: 20px; bottom: 47px; text-align: center; font-size: 14px">
-                    0
-               </div>
+
+<nav id="navbar-bottom">
+     <a href="#home">
+          <img src="./img/home.svg" alt="keranjang" style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
+     </a>
+<a href="#truck">
+     <img src="./img/truck.svg" alt="keranjang"
+          style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
 </a>
-          
+     <a href="#free-ongkir">
+          <img src="./img/shopping-bag.svg" alt="keranjang"
+               style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
+     </a>
+     <a href="#faq">
+          <img src="./img/twitch.svg" alt="keranjang"
+               style="background-color: rgba(255, 0, 0, 0); margin-right: 10px; margin-top: 5px;">
+     </a>
+</nav>
+               
 <!--slide-->
 <div class="slide2"></div>
 <div class="slide3"></div>
@@ -53,7 +69,7 @@
      <div class="slider">
           <div class="slide-track right" id="slide-track"></div>
           </div>
-     <div class="slider">
+     <div class="slider" id="truck">
           <div class="slide-track left" id="slide-track"></div>
      </div>
 </section>
@@ -82,12 +98,12 @@
      </div>
 
 <p style="color: #000000; margin-top: 40px; text-align: center; font-size: 18px;">Gratis ongkir untuk daerah:</p>
-<div class="free-ongkir">
+<div class="free-ongkir" >
      <div class="kelurahan">Curug</div>
      <div class="kelurahan">Cisalak pasar</div>
      <div class="kelurahan">Harjamukti</div>
      <div class="kelurahan">Sukatani</div>
-     <div class="kelurahan">Sukamaju baru</div>
+     <div class="kelurahan" id="free-ongkir">Sukamaju baru</div>
 </div>   
 </section>
 <!--Order-->
@@ -110,8 +126,7 @@
      
                     <div style="display: flex; flex-direction: column; margin-right: 10px; align-items: center;">
                          <p id="id-berat-broiler-input" style="color: var(--3); font-size: 25px; font-weight: bold;"> 1 Kg</p>
-                         <p id="id-harga-per-ayam-broiler-input"  style="color: var(--4); font-size: 16px;"> Rp 37.000</p>
-                         
+                         <p id="id-harga-per-ayam-broiler-input" style="color: var(--4); font-size: 16px;"> Rp 37.000</p>
                     </div>
                </div>
      
@@ -223,12 +238,12 @@
                Pasar Sukatani, Tapos, Depok, <br> Jawa Barat 16454
           </p>
           <p class="hijau" style="color: rgb(2, 189, 2);">
-               08xx xxx xxx
+               0896 5353 1029
           </p>
      </div>
 </div>
 </footer>
-<div style="height: 60px;"></div>
+<div style="height: 80px;"></div>
 
 <!--javascript-->
 <script src="js/script.js"></script>
