@@ -107,33 +107,10 @@ Akun bisnis
                          Halo, dengan ini kamu dapat memesan lewat whatsapp dengan mudah
                     </p>
                </div>
-               <div class="box-text-send" id="id-text-send">
-                    <pre class="scrollable-content" style="font-size: 14px;">
-
-     Halo, saya *[___]*
-     memesan ayam potong
-     dengan rincian berikut:
-     * Deskripsi pesanan*
-       - jenis   : [__]
-       - jumlah  : [__]
-       - Dipotong: [__]
-     * Pengantaran*
-       - Hari : [__]
-       - Jam  : [__]
-       - alamat  : [__]
-     *dengan catatan* "[__]"
-     *Total Harga : [__]*
-     Terimakasih.
-
-
-
-
-
-
-
-
-
-               </pre>
+               <div class="box-text-send" >
+                    <p class="scrollable-content" id="id-text-send" style="font-size: 14px; ">
+                         <!-- teks akan dimunculkan disini -->
+                    </p>
                </div>
                <div class="close-and-send">
                     <a href="https://wa.me/6289653531029?text=Halo,%20salam%20kenal" id="id-send-whatsapp">
@@ -200,6 +177,9 @@ Akun bisnis
           renderOrderDetails();
 
 
+     
+
+
      // alamat
      function loadAlamatToCheckout() {
           const savedData = JSON.parse(localStorage.getItem('formData'));
@@ -227,7 +207,7 @@ Akun bisnis
                     `*Deskripsi pesanan*\n${orderDescription}\n` +
                     `*Pengantaran*\nHari: ${day}\nJam: ${time} \nAlamat: ${savedData.alamat}, ${savedData.kelurahan}\n\n` +
                     `Dengan catatan: "${notes}"\n` +
-                    `*Total Harga*: ${subtotal}\nTerima kasih.`;
+                    `*Total Harga*: ${subtotal}\n`;
 
                const encodedMessage = encodeURIComponent(message);
                const phoneNumber = '6289653531029';
@@ -237,10 +217,38 @@ Akun bisnis
           });
 
 
+          function renderTextSend() {
+               const address = addressElement.innerText;
+               const day = dayElement.value;
+               const time = timeElement.textContent;
+               const notes = notesElement.value;
+               const subtotal = subtotalElement.innerText;
 
+               let orderDescription = '';
+               selectedItems.forEach(item => {
+                    orderDescription += `${item.quantity} ${item.name} \"${item.weight}\" potong ${item.slash}\n`;
+               });
 
+               const message = `halo, saya ${savedData.nama} pesan ayam potong dengan rincian berikut:\n\n` +
+                    `*Deskripsi pesanan*\n${orderDescription}\n` +
+                    `*Pengantaran*\nHari: ${day}\nJam: ${time} \nAlamat: ${savedData.alamat}, ${savedData.kelurahan}\n\n` +
+                    `dengan catatan: \"${notes}\"\n` +
+                    `*Total Harga*: ${subtotal}\n`;
 
+               // Menampilkan teks di elemen id-text-send
+               const textSendElement = document.getElementById('id-text-send');
+               textSendElement.textContent = message;
+          }
 
+          function initializeTextSendSync() {
+               window.addEventListener('load', renderTextSend);
+               addressElement.addEventListener('input', renderTextSend);
+               dayElement.addEventListener('change', renderTextSend);
+               timeElement.addEventListener('click', renderTextSend);
+               notesElement.addEventListener('input', renderTextSend);
+               renderTextSend();
+          }
+          initializeTextSendSync();
      }
 
      
@@ -321,13 +329,6 @@ Akun bisnis
      });
 
 
-          
-
-     
-
-     
-
-    
 </script>
 </body>
 </html>

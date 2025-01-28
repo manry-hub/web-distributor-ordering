@@ -129,6 +129,7 @@ p {
 }
 .scrollable-content {
   white-space: pre-wrap; /* Supaya teks tetap rapi jika panjang */
+  padding: 15px;
 }
 
 .close-send-btn {
