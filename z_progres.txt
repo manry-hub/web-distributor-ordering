@@ -1,11 +1,12 @@
 Design
-Main / tinggal video tutor
+Main / tinggal video tutor + personalisasi cart order
 Account / done 
 cart / done
 Checkout / done
 
 Javascript
-Main / 0%
-account / 0%
-basket / 0%
-Checkout / 0%
+Main / 100%
+account / 100%
+cart / 100%
+Checkout / modal
+User experience / 50%

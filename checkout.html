@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ayam Potong</title>
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/checkout.css">
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Ayam Potong</title>
+     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="css/styles.css">
+     <link rel="stylesheet" href="css/checkout.css">
 </head>
 <body>
 <div>
@@ -31,7 +31,7 @@
           <div class="hari-jam">
                <div class="hari-antar" style="width: 130px;">
                     <h4 style="color: black;"> Hari antar</h4>
-                    <select id="delivery-day" id="id-hari-antar-input" class="my-input-class">
+                    <select id="id-hari-antar-input" class="my-input-class">
                          <option value="Senin">Senin</option>
                          <option value="Selasa">Selasa</option>
                          <option value="Rabu">Rabu</option>
@@ -143,7 +143,7 @@ Akun bisnis
           </section>
      </div>
 </div>
-
+<button id="send-whatsapp" class="into-whatsapp">Send to WhatsApp</button>
 <div style="height: 120px;"></div>
 
 <nav class="cs-bottom-page">
@@ -165,34 +165,39 @@ Akun bisnis
      const subtotalElement = document.getElementById('subtotal');
      const totalPaymentElement = document.getElementById('total-payment');
 
-     // manipulasi rincian pesanan
+     const addressElement = document.getElementById('id-alamat-lengkap-input');
+     const dayElement = document.getElementById('id-hari-antar-input');
+     const timeElement = document.getElementById('time-button');
+     const notesElement = document.getElementById('id-catatan-input');
+     
+
      function renderOrderDetails() {
-          orderDetailsContainer.innerHTML = ''; // Bersihkan elemen
-          let subtotal = 0;
+               orderDetailsContainer.innerHTML = '';
+               let subtotal = 0;
 
-          if (selectedItems.length === 0) {
-               orderDetailsContainer.innerHTML = '<p>Tidak ada item dalam pesanan.</p>';
-               return;
-          }
+               if (selectedItems.length === 0) {
+                    orderDetailsContainer.innerHTML = '<p>Tidak ada item dalam pesanan.</p>';
+                    return;
+               }
 
-          selectedItems.forEach((item) => {
-               const itemElement = document.createElement('div');
-               itemElement.classList.add('order-item');
-               itemElement.innerHTML = `
+               selectedItems.forEach((item) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('order-item');
+                    itemElement.innerHTML = `
                <div style="display: flex; flex-direction: row; justify-content: space-between;">
                     <p style="margin-left: 40px;"> ${item.name} "${item.weight}" dipotong ${item.slash}</p>
                     <p style="margin-right: 20px;"> x ${item.quantity}</p>
                </div>`;
-               orderDetailsContainer.appendChild(itemElement);
+                    orderDetailsContainer.appendChild(itemElement);
 
-               subtotal += item.price * item.quantity;
-          });
+                    subtotal += item.price * item.quantity;
+               });
 
-          subtotalElement.innerText = `Rp. ${subtotal}`;
-          totalPaymentElement.innerText = `Rp. ${subtotal}`;
-     }
+               subtotalElement.innerText = `Rp. ${subtotal}`;
+               totalPaymentElement.innerText = `Rp. ${subtotal}`;
+          }
 
-     renderOrderDetails();
+          renderOrderDetails();
 
 
      // alamat
@@ -202,116 +207,127 @@ Akun bisnis
           if (savedData) {
                // Menampilkan alamat di elemen yang diinginkan
                const alamatElement = document.getElementById('id-alamat-lengkap-input');
-               alamatElement.innerText = `${savedData.nama}, ${savedData.kelurahan}, ${savedData.alamat}`;
+               alamatElement.innerText = `${savedData.nama}, ${savedData.alamat}, ${savedData.kelurahan}`;
           }
+
+
+          document.getElementById('send-whatsapp').addEventListener('click', () => {
+               const address = addressElement.innerText;
+               const day = dayElement.value;
+               const time = timeElement.textContent;
+               const notes = notesElement.value;
+               const subtotal = subtotalElement.innerText;
+
+               let orderDescription = '';
+               selectedItems.forEach(item => {
+                    orderDescription += `${item.quantity} ${item.name} "${item.weight}" potong ${item.slash}\n`;
+               });
+
+               const message = `halo, saya ${savedData.nama}  pesan ayam potong dengan rincian berikut:\n\n` +
+                    `*Deskripsi pesanan*\n${orderDescription}\n` +
+                    `*Pengantaran*\nHari: ${day}\nJam: ${time} \nAlamat: ${savedData.alamat}, ${savedData.kelurahan}\n\n` +
+                    `Dengan catatan: "${notes}"\n` +
+                    `*Total Harga*: ${subtotal}\nTerima kasih.`;
+
+               const encodedMessage = encodeURIComponent(message);
+               const phoneNumber = '6289653531029';
+               const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+               window.open(whatsappURL, '_blank');
+          });
+
+
+
+
+
+
      }
 
      
-     function confirmOrder() {
-          const address = document.getElementById('id-alamat-lengkap-input').innerText;
-          const deliveryDay = document.getElementById('delivery-day').value;
-          const deliveryTime = document.getElementById('delivery-time').value;
-          const notes = document.getElementById('id-catatan-input').value;
 
-          if (!address || address === '(+) Tambah alamat') {
-               alert('Silakan tambahkan alamat pengantaran.');
-               return;
-          }
-
-          if (cart.length === 0) {
-               alert('Keranjang kosong. Tambahkan produk terlebih dahulu.');
-               return;
-          }
-
-          // Simpan pesanan (bisa ditambahkan ke backend jika diperlukan)
-          const order = {
-               cart,
-               address,
-               deliveryDay,
-               deliveryTime,
-               notes,
-          };
-
-          localStorage.setItem('lastOrder', JSON.stringify(order));
-          alert('Pesanan berhasil dikonfirmasi!');
-          localStorage.removeItem('cart');
-          window.location.href = 'index.html'; // Redirect ke halaman utama
-     }
 
      // waktu antar
-          const timeButton = document.getElementById("time-button");
-          const timeDropdown = document.getElementById("time-dropdown");
-          const selectedTimeDisplay = document.getElementById("selected-time");
+     const timeButton = document.getElementById("time-button");
+     const timeDropdown = document.getElementById("time-dropdown");
+     const selectedTimeDisplay = document.getElementById("selected-time");
 
-          // generate
-          const times = Array.from({ length: 13 }, (_, index) => {
-               const hour = 7 + index; // dari 7 nyampe 19
-               return `${hour.toString().padStart(2, "0")}:00`;
+     // generate
+     const times = Array.from({ length: 13 }, (_, index) => {
+          const hour = 7 + index; // dari 7 nyampe 19
+          return `${hour.toString().padStart(2, "0")}:00`;
+     });
+
+     // dropdown menu
+     times.forEach((time) => {
+          const timeOption = document.createElement("div");
+          timeOption.textContent = time;
+          timeOption.style.padding = "12px";
+          timeOption.style.cursor = "pointer";
+          timeOption.style.color = "#4a4a4a";
+
+          // Add hover effect 
+          timeOption.addEventListener("mouseover", () => {
+               timeOption.style.backgroundColor = "#e5e7eb";
+          });
+          timeOption.addEventListener("mouseout", () => {
+               timeOption.style.backgroundColor = "transparent";
           });
 
-          // dropdown menu
-          times.forEach((time) => {
-               const timeOption = document.createElement("div");
-               timeOption.textContent = time;
-
-               timeOption.style.padding = "12px";
-               timeOption.style.cursor = "pointer";
-               timeOption.style.color = "#4a4a4a";
-
-               // Add hover effect 
-               timeOption.addEventListener("mouseover", () => {
-                    timeOption.style.backgroundColor = "#e5e7eb";
-               });
-               timeOption.addEventListener("mouseout", () => {
-                    timeOption.style.backgroundColor = "transparent";
-               });
-
-               // Handle click event
-               timeOption.addEventListener("click", () => {
-                    timeButton.textContent = time; // munculin tombol
-                    timeDropdown.style.display = "none"; // sembunyiin dropdown
-               });
-
-               timeDropdown.appendChild(timeOption);
+          // Handle click event
+          timeOption.addEventListener("click", () => {
+               timeButton.textContent = time; // munculin tombol
+               timeDropdown.style.display = "none"; // sembunyiin dropdown
           });
 
-          // Toggle dropdown yerlihat
-          timeButton.addEventListener("click", (event) => {
-               event.stopPropagation();
-               timeDropdown.style.display = timeDropdown.style.display === "none" || !timeDropdown.style.display ? "block" : "none";
-          });
+          timeDropdown.appendChild(timeOption);
+     });
 
-          // tutup dropdown
-          document.addEventListener("click", (event) => {
-               if (!timeDropdown.contains(event.target)) {
-                    timeDropdown.style.display = "none"; // sembunyiin dropdown
-               }
-          });
+     // Toggle dropdown yerlihat
+     timeButton.addEventListener("click", (event) => {
+          event.stopPropagation();
+          timeDropdown.style.display = timeDropdown.style.display === "none" || !timeDropdown.style.display ? "block" : "none";
+     });
+
+     // tutup dropdown
+     document.addEventListener("click", (event) => {
+          if (!timeDropdown.contains(event.target)) {
+               timeDropdown.style.display = "none"; // sembunyiin dropdown
+          }
+     });
 
      // Jalankan fungsi saat halaman dimuat
      window.addEventListener('load', loadAlamatToCheckout);
      
       // Tombol dan elemen modal
-          const showButton = document.getElementById("show-section-confirm-btn");
-          const modalOverlay = document.getElementById("modal-overlay");
-          const closeButton = document.getElementById("close-send-btn");
+     const showButton = document.getElementById("show-section-confirm-btn");
+     const modalOverlay = document.getElementById("modal-overlay");
+     const closeButton = document.getElementById("close-send-btn");
 
-          // Fungsi untuk membuka modal
-          showButton.addEventListener("click", () => {
-               modalOverlay.style.display = "flex"; // Tampilkan modal
-          });
+     // Fungsi untuk membuka modal
+     showButton.addEventListener("click", () => {
+          modalOverlay.style.display = "flex"; // Tampilkan modal
+     });
 
-          // Fungsi untuk menutup modal
-          closeButton.addEventListener("click", () => {
-               modalOverlay.style.display = "none"; // Sembunyikan modal
-          });
+     // Fungsi untuk menutup modal
+     closeButton.addEventListener("click", () => {
+          modalOverlay.style.display = "none"; // Sembunyikan modal
+     });
 
-          // Menutup modal jika klik di luar modal-content
-          modalOverlay.addEventListener("click", (event) => {
-               if (event.target === modalOverlay) {
-                    modalOverlay.style.display = "none";
-               }
-          });
+     // Menutup modal jika klik di luar modal-content
+     modalOverlay.addEventListener("click", (event) => {
+          if (event.target === modalOverlay) {
+               modalOverlay.style.display = "none";
+          }
+     });
+
+
+          
+
+     
+
+     
+
+    
 </script>
 </body>
 </html>

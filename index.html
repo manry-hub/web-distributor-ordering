@@ -117,7 +117,7 @@
      
                <p style="color: black; font-size: 16px; font-weight: bold; ">Jumlah Potongan</p>
                <div class="slider-poin">
-                    <input id="id-potong-broiler-input" class="slider-bar" value="2" max="4" min="0" type="range" style="margin: 10px;"
+                    <input id="id-potong-broiler-input" class="slider-bar" value="0" max="4" min="0" type="range" style="margin: 10px;"
                          oninput="updateBroilerLabel()">
                     <div class="slider-poin-number" id="broiler-count">
                          <div><span id="potong-1">0</span></div>
@@ -156,7 +156,7 @@
                
                <p style="color: black; font-size: 16px; font-weight: bold; ">Jumlah Potongan</p>
                <div class="slider-poin">
-                    <input id="id-potong-kampung-input" class="slider-bar" value="1" max="4" min="0" type="range"
+                    <input id="id-potong-kampung-input" class="slider-bar" value="0" max="4" min="0" type="range"
                          oninput="updateKampungLabel()" style="margin: 10px;">
 
                     <div class="slider-poin-number" id="kampung-count">
@@ -237,7 +237,7 @@
      let selectedWeight = '8 Ons';
      let selectedPrice = 60000;
      let selectedValue = 0; // Nilai awal untuk potongan
-     const potonganValues = [1, 4, 8, 10, 12];
+     const potonganValues = [0, 4, 8, 10, 12];
 
      // tambah keranjang
      function addToCart(name, weight, price, slash) {
