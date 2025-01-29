@@ -747,7 +747,7 @@ iframe {
   transition: all 0.5s ease;
   border: 1px solid #8ff849;
   color: #7eb22b;
-  background: linear-gradient(#a6f8491a, #7cce561a);
+  background: linear-gradient(#efffdcf3, #c8ffad);
 }
 
 .error-button-green {
@@ -786,7 +786,7 @@ iframe {
 #keranjang-berhasil {
   display: none;
   position: fixed;
-  top: 13%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
