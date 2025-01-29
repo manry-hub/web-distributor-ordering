@@ -140,7 +140,7 @@ body {
   background-color: var(--1);
   padding: 20px;
   border-radius: 50%;
-  right: 44%;
+  right: 50%;
   display: flex; /* Use flexbox for easy centering */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
