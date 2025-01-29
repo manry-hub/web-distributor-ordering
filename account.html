@@ -66,13 +66,47 @@
           <button id="btn-kembali-ke-checkout">Kembali ke pemesanan <img src="img/arrow-narrow-down.svg" alt="arrow-down"></button>
      </a>
 
-     <!-- untuk notif sukses disimpan -->
-     <div class="modal" id="modal" style="display: none; background: rgba(0, 0, 0, 0.5); padding: 20px; color: white;">
-          Data berhasil disimpan!
-     </div>
+     
 </div>
+
+<div class="error-container-green" id="profil-berhasil-disimpan">
+     <button type="button" aria-label="close-error" class="error-button-green">
+          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+               stroke-linejoin="round" class="close-icon" xmlns="http://www.w3.org/2000/svg">
+               <path d="M18 6 6 18"></path>
+               <path d="m6 6 12 12"></path>
+          </svg>
+     </button>
+     <p class="error-message">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               class="feather feather-check-circle">
+               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+               <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+          <path d="M12 9v4"></path>
+          <path d="M12 17h.01"></path>
+          </svg>
+          Profil berhasil disimpan
+     </p>
+</div>
+
+
 <script src="js/script.js"></script>
 <script>
+     function showAlert() {
+               let alertBox = document.getElementById("profil-berhasil-disimpan");
+               alertBox.style.display = "block"; // Tampilkan alert
+
+               setTimeout(function () {
+                    alertBox.style.display = "none"; // Sembunyikan alert setelah 2 detik
+               }, 4000);
+          }
+
+          function hideAlert() {
+               document.getElementById("profil-berhasil-disimpan").style.display = "none";
+          }
      function saveData() {
           const formData = {
                nama: document.getElementById('nama').value,
@@ -83,14 +117,7 @@
           // Simpan ke localStorage
           localStorage.setItem('formData', JSON.stringify(formData));
 
-          // Tampilkan notifikasi berhasil
-          const modal = document.getElementById('modal');
-          modal.style.display = 'block';
-
-          // Hilangkan notifikasi setelah 3 detik
-          setTimeout(() => {
-               modal.style.display = 'none';
-          }, 3000);
+          showAlert()
      }
 
      // Fungsi untuk memuat data dari localStorage

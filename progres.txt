@@ -10,16 +10,8 @@ account / 100%
 cart / 100%
 Checkout / 100%
 
-
 ui di navbottom
 cartnya gerak kalo ada item yang ditambah
 
-
-alert centang
-- Masukan keranjang
-- save profil
-
 alert silang
-- keranjangnya kosong
-- profilnya belum lengkap
-- alamatnya kosong
+- alamatnya kosong if

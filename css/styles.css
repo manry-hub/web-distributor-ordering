@@ -1,5 +1,4 @@
 /* pointer select*/
-
 :root {
   --bg: #ffeee6;
   --1: #e7ac37;
@@ -637,6 +636,7 @@ footer {
   justify-content: center;
   text-align: center;
 }
+
 .location-garis {
   border-bottom: 1px solid #000000;
   padding: 10px 0;
@@ -714,7 +714,7 @@ iframe {
   transition: all 0.5s ease;
   border: 1px solid #f85149;
   color: #b22b2b;
-  background: linear-gradient(#f851491a, #f851491a);
+  background: linear-gradient(#ffe3e2d5, #ffaaa4ec);
 }
 
 .error-button-red {
@@ -747,7 +747,7 @@ iframe {
   transition: all 0.5s ease;
   border: 1px solid #8ff849;
   color: #7eb22b;
-  background: linear-gradient(#efffdcf3, #c8ffad);
+  background: linear-gradient(#fffffff3, #e8ffdd);
 }
 
 .error-button-green {
@@ -791,7 +791,29 @@ iframe {
   transform: translate(-50%, -50%);
 }
 
+#profil-berhasil-disimpan {
+  display: none;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#isi-keranjang-dahulu {
+  display: none;
+  position: fixed;
+  top: 21%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#lengkapi-alamat-terlebih-dahulu {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 /* media queries */
 /* Tablet */
-
 /* Dekstop */

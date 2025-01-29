@@ -55,8 +55,36 @@
                     <p>Total pembayaran</p>
                     <p style="color: var(--1);" id="total-harga">Rp. 0</p>
                </a>
-               <button onclick="checkout()" id="btn-checkout">Checkout</button>
+               <button onclick="checkout()" id="btn-checkout ">Checkout</button>
           </nav>
+     </div>
+
+
+
+
+     <div class="error-container-red" id="isi-keranjang-dahulu">
+          <button type="button" aria-label="close-error" class="error-button-red">
+               <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                    stroke-linejoin="round" class="close-icon" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+               </svg>
+          </button>
+          <p class="error-message">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-alert-triangle">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                    </path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+               </svg>
+               <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+               <path d="M12 9v4"></path>
+               <path d="M12 17h.01">
+                    </pat>
+                    Isi keranjang terlebih dahulu
+          </p>
      </div>
 
 
@@ -172,6 +200,19 @@
                renderCart();
           }
 
+          function showAlert() {
+                    let alertBox = document.getElementById("isi-keranjang-dahulu");
+                    alertBox.style.display = "block"; // Tampilkan alert
+
+                    setTimeout(function () {
+                         alertBox.style.display = "none"; // Sembunyikan alert setelah 2 detik
+                    }, 4000);
+               }
+
+               function hideAlert() {
+                    document.getElementById("isi-keranjang-dahulu").style.display = "none";
+               }
+
           function checkout() {
                const selectedItems = cart.map((item, index) => {
                     const checkbox = document.getElementById(`checkbox-${index}`);
@@ -184,7 +225,7 @@
                }).filter(Boolean);
 
                if (selectedItems.length === 0) {
-                    alert('Pilih setidaknya satu item untuk checkout.');
+                    showAlert()
                     return;
                }
 
