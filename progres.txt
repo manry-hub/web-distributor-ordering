@@ -11,7 +11,4 @@ cart / 100%
 Checkout / 100%
 
 ui di navbottom
-cartnya gerak kalo ada item yang ditambah
-
-alert silang
-- alamatnya kosong if
+itu ngalang ngalangin 
