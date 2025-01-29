@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Bottom Navbar with FAB</title>
+     <link rel="stylesheet" href="styles.css">
+     <style>
+          body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #fff;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+}
+
+.nav-item {
+  flex: 1;
+  text-align: center;
+  color: #ccc;
+  font-size: 12px;
+}
+
+.nav-item i {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.nav-item span {
+  font-size: 12px;
+}
+
+.fab {
+  position: fixed;
+  float: center;
+  width: 70px;
+  height: 70px;
+  bottom: 30px;
+  left: 50%;
+  z-index: 99999;
+}
+
+#fab-button {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#fab-button:hover,
+#fab-button:focus {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+#fab-button:active {
+  transform: translateY(-12px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Tambahkan rongga di bawah FAB */
+.navbar::before {
+  content: '';
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: scaleY(-1);
+  
+  width: 90px;
+  height: 45px;
+  background-color: #121212; /* Warna latar belakang */
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  z-index: 0;
+}
+
+
+     </style>
+</head>
+
+<body>
+     <div class="navbar">
+          <div class="nav-item">
+               <i class="icon">🏠</i>
+               <span>Home</span>
+          </div>
+
+          <div class="nav-item">
+               <i class="icon">🔍</i>
+               <span>Search</span>
+          </div>
+
+          <div class="fab">
+               <button id="fab-button">+</button>
+          </div>
+
+          <div class="nav-item">
+               <i class="icon">👤</i>
+               <span>Profile</span>
+          </div>
+
+          <div class="nav-item">
+               <i class="icon">⚙️</i>
+               <span>Settings</span>
+          </div>
+     </div>
+
+     <script >
+          document.getElementById("fab-button").addEventListener("click", () => {
+                    const fab = document.querySelector(".fab:after");
+                    fab.style.animation = "expand-circle 0.4s ease";
+                    alert("FAB clicked!");
+               });
+     </script>
+</body>
+
+</html>
