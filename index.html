@@ -163,7 +163,7 @@
                     </div>
                </div>
                <div style=" display: flex;  margin-bottom: 10px ;margin-left: 60px; margin-top: 10px; ">
-                    <button id="btn-add-broiler-to-cart" class="button-add-to-cart" onclick="addToCart('Ayam Broiler', '1 Kg', 37000, selectedValue)"
+                    <button id="btn-add-broiler-to-cart" class="button-add-to-cart" onclick="addToCart('Ayam Broiler', '1 Kg', 37000, selectedValue)" 
                          style=" font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px; "> + Masukan keranjang</button>
                </div>
           </div>
@@ -212,7 +212,9 @@
      </div>
 </section>
 
+<button onclick="showAlert()">Tampilkan Alert</button>
 
+</div>
 
 <!--Frequenty Asked Question-->
 <section class="faq" id="faq">
@@ -267,6 +269,31 @@
 </footer>
 <div style="height: 100px;"></div>
 
+
+<div class="error-container-green" id="keranjang-berhasil">
+     <button type="button" aria-label="close-error" class="error-button-green" onclick="hideAlert()">
+          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+               stroke-linejoin="round" class="close-icon" xmlns="http://www.w3.org/2000/svg">
+               <path d="M18 6 6 18"></path>
+               <path d="m6 6 12 12"></path>
+          </svg>
+     </button>
+     <p class="error-message">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               class="feather feather-check-circle">
+               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+               <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+          <path d="M12 9v4"></path>
+          <path d="M12 17h.01"></path>
+          </svg>
+          Keranjang berhasil ditambahkan
+     </p>
+</div>
+
+
 <!--javascript-->
 <script src="js/script.js"></script>
 <script>
@@ -287,7 +314,7 @@
           const cart = JSON.parse(localStorage.getItem('cart')) || [];
           cart.push({name, weight, price, slash});
           localStorage.setItem('cart', JSON.stringify(cart));
-          alert(`${name} berhasil ditambahkan ke keranjang!`);
+          showAlert()
           updateCartCount(); 
      }
 
@@ -345,6 +372,22 @@
                     countItemElement.textContent = count; // Menampilkan jumlah item di dalam elemen
                }
           }
+
+
+
+
+          function showAlert() {
+                    let alertBox = document.getElementById("keranjang-berhasil");
+                    alertBox.style.display = "block"; // Tampilkan alert
+
+                    setTimeout(function () {
+                         alertBox.style.display = "none"; // Sembunyikan alert setelah 2 detik
+                    }, 4000);
+               }
+
+               function hideAlert() {
+                    document.getElementById("keranjang-berhasil").style.display = "none";
+               }
 </script>
 </body>
 </html>
