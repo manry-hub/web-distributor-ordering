@@ -1,3 +1,21 @@
+document.querySelectorAll('.transition-link-to-right').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault(); // Mencegah tautan langsung membuka halaman
+        const target = this.href; // Mendapatkan URL target
+        const container = document.querySelector('.slide-animation');
+
+        // Tambahkan kelas untuk efek transisi
+        container.classList.add('slide-out-left');
+
+        // Tunggu transisi selesai sebelum pindah halaman
+        setTimeout(() => {
+            window.location.href = target;
+        }, 500); // Waktu harus sama dengan CSS transition
+    });
+});
+
+
+
 // slider
 const imageNames = ["sliderr.png",
      "sliderr.png",

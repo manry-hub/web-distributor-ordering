@@ -35,6 +35,7 @@ body {
   width: 100%;
   max-width: 800px;
 }
+
 .cs-top-page {
   height: 70px;
   display: flex;
@@ -126,12 +127,19 @@ body {
   height: 60px;
 }
 
+.hover-navtom {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.feather-logo:hover {
+  color: var(--1);
+}
+
 .floating-cart {
   position: fixed;
   background-color: var(--1);
   padding: 20px;
   border-radius: 50%;
-  width: 50px;
   right: 44%;
   display: flex; /* Use flexbox for easy centering */
   justify-content: center; /* Center horizontally */
@@ -250,10 +258,8 @@ body {
   overflow: hidden;
   position: relative;
   width: 100%;
-  /* You can adjust or delete this line */
 }
 
-/* RULES: calc(${width of slide-item + margin left + margin right}px * ${(total slide)*2}) */
 .slide-track {
   display: flex;
   width: calc(280px * 8);
@@ -261,12 +267,10 @@ body {
 
 .slide-track.left {
   animation: scroll-left 12s linear infinite;
-  /* You can set the time to any number of seconds */
 }
 
 .slide-track.right {
   animation: scroll-right 12s linear infinite;
-  /* You can set the time to any number of seconds */
 }
 
 .slide-item {
@@ -274,7 +278,6 @@ body {
   margin-bottom: 40px;
   border-radius: 20px;
   transition: transform 0.5s, box-shadow 0.5s;
-  /* Added transition for smooth effect */
 }
 
 .slide-item:hover {
@@ -293,7 +296,6 @@ body {
   }
 }
 
-/* Styling untuk section Supplier */
 .supplier {
   margin-top: 130px;
   justify-content: center;

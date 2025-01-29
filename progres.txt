@@ -10,10 +10,10 @@ account / 100%
 cart / 100%
 Checkout / 100%
 
-User experience / 50%
 ui di navbottom
+cartnya gerak kalo ada item yang ditambah
 
-animation / 0%
+
 
 alert centang
 - Masukan keranjang
