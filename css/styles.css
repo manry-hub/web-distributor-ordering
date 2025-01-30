@@ -133,7 +133,7 @@ body {
   rotate: 90deg;
   left: 45%;
   position: fixed;
-  bottom: 40px;
+  bottom: -5px;
 }
 
 .hover-navtom {
