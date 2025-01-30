@@ -53,22 +53,22 @@
 
 
           <!-- Footer -->
-          <nav class="cs-bottom-page">
-               <label class="container-checkbox" style="position: fixed; left: 30px;">
-                    <input type="checkbox" class="checkbox" onclick="toggleSelectAll()" id="toggle-select-all-top" >
-                    <label class="checkbox-label" for="toggle-select-all-top">
-                         <div class="checkbox-container">
-                              <div class="box"></div>
-                              <div class="checkmark">
-                                   <div class="tick-container">
-                                        <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                             <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
-                                        </svg>
-                                   </div>
+          <label class="container-checkbox" style="position: fixed; left: 30px; bottom: 20px; z-index: 1005;">
+               <input type="checkbox" class="checkbox" onclick="toggleSelectAll()" id="toggle-select-all-top" >
+               <label class="checkbox-label" for="toggle-select-all-top">
+                    <div class="checkbox-container">
+                         <div class="box"></div>
+                         <div class="checkmark">
+                              <div class="tick-container">
+                                   <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                        <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
+                                   </svg>
                               </div>
                          </div>
-                    </label>
+                    </div>
                </label>
+          </label>
+          <nav class="cs-bottom-page">
                <a class="cs-total-harga">
                     <p>Total pembayaran</p>
                     <p style="color: var(--1);" id="total-harga">Rp. 0</p>
