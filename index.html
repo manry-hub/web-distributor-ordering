@@ -14,7 +14,7 @@
 </head>
 
 <body>
-     <nav class="navbar-top">
+<nav class="navbar-top">
      <a href="#" class="navbar-top-text">ayam<span>potong</span> </span>.</a>
 
      <div>
@@ -28,9 +28,10 @@
                <img src="./img/user.svg" alt="user" style="width: 35px; margin-right: 15px;">
           </a> 
      </div>
-     </nav>
+</nav>
 
 <nav id="navbar-bottom">
+     <img src="img/nav-tom.png" alt="" class="nav-tom-img">
      <a href="#" class="hover-navtom" >
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" color="black"
                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-logo">
@@ -278,40 +279,76 @@
 <div style="height: 100px;"></div>
 
 
-<div class="error-container-green" id="keranjang-berhasil">
-     <button type="button" aria-label="close-error" class="error-button-green" onclick="hideAlert()">
-          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
-               stroke-linejoin="round" class="close-icon" xmlns="http://www.w3.org/2000/svg">
-               <path d="M18 6 6 18"></path>
-               <path d="m6 6 12 12"></path>
-          </svg>
-     </button>
-     <p class="error-message">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-               class="feather feather-check-circle">
-               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-               <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
-          <path d="M12 9v4"></path>
-          <path d="M12 17h.01"></path>
-          </svg>
-          Keranjang berhasil ditambahkan
-     </p>
-</div>
 
 
+<div id="notification-container-index" class="notification-container-index"></div>
 <!--javascript-->
 <script src="js/script.js"></script>
 <script>
-     
+     document.querySelectorAll('.transition-link-to-right').forEach(link => {
+               link.addEventListener('click', function (e) {
+                    e.preventDefault(); // Mencegah tautan langsung membuka halaman
+                    const target = this.href; // Mendapatkan URL target
+                    const container = document.querySelector('.slide-animation');
+
+                    // Tambahkan kelas untuk efek transisi
+                    container.classList.add('slide-out-left');
+
+                    // Tunggu transisi selesai sebelum pindah halaman
+                    setTimeout(() => {
+                         window.location.href = target;
+                    }, 500); // Waktu harus sama dengan CSS transition
+               });
+          });
+
+          // slider
+          const imageNames = ["sliderr.png",
+               "sliderr.png",
+               "sliderr.png",
+               "sliderr.png"];
+          const sliderItems = imageNames.concat(imageNames);
+          const sliders = document.querySelectorAll(".slide-track");
+
+          sliders.forEach((slider, index) => {
+               slider.innerHTML = ""; // Kosongkan isi slider sebelum menambahkan gambar
+               sliderItems.forEach((sliderItem) => {
+                    const img = document.createElement("img");
+                    img.src = "./img/" + sliderItem;
+                    img.className = "slide-item";
+                    slider.appendChild(img);
+               });
+          });
+
+          document.addEventListener("DOMContentLoaded", function () {
+               const boxes = document.querySelectorAll(".slide1, .slide2, .slide3");
+
+               const observer = new IntersectionObserver(
+                    (entries, observer) => {
+                         // Cek setiap entry (elemen) yang terlihat di viewport
+                         entries.forEach(entry => {
+                              if (entry.isIntersecting) {
+                                   // Ketika elemen terlihat, beri class 'visible' untuk animasi
+                                   entry.target.classList.add("visible");
+                                   // Setelah elemen pertama selesai muncul, baru bisa memantau elemen berikutnya
+                                   observer.unobserve(entry.target);
+                              }
+                         });
+                    },
+                    { threshold: 0.1 } // Elemen dianggap terlihat jika 10% masuk viewport
+               );
+
+               // Pantau setiap elemen
+               boxes.forEach((box, index) => {
+                    // Setelah elemen pertama terlihat, pantau elemen berikutnya
+                    observer.observe(box);
+               });
+          });
+
      let cart = JSON.parse(localStorage.getItem('cart')) || [];
      let selectedWeight = '8 Ons';
      let selectedPrice = 60000;
      let selectedValue = 0; // Nilai awal untuk potongan
      const potonganValues = [0, 4, 8, 10, 12];
-
 
      document.addEventListener('DOMContentLoaded', () => {
                updateCartCount(); // Memperbarui tampilan jumlah item saat halaman dimuat
@@ -381,20 +418,23 @@
                }
           }
 
-
-
-
           function showAlert() {
-                    let alertBox = document.getElementById("keranjang-berhasil");
-                    alertBox.style.display = "block"; // Tampilkan alert
-
-                    setTimeout(function () {
-                         alertBox.style.display = "none"; // Sembunyikan alert setelah 2 detik
-                    }, 4000);
+                    const container = document.getElementById('notification-container-index');
+                    const notification = document.createElement('div');
+                    notification.className = 'error-container-green-index';
+                    notification.innerHTML = `
+               <button type="button" aria-label="close-error" class="error-button-green-index" onclick="hideAlert(this)">
+                    ✖
+               </button>
+               <p class="error-message">Keranjang berhasil ditambahkan</p>
+          `;
+                    container.appendChild(notification);
+                    setTimeout(() => hideAlert(notification), 4000);
                }
 
-               function hideAlert() {
-                    document.getElementById("keranjang-berhasil").style.display = "none";
+               function hideAlert(element) {
+                    element.classList.add('hidden');
+                    setTimeout(() => element.remove(), 500);
                }
 </script>
 </body>

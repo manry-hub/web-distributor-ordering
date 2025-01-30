@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +11,6 @@
      <link rel="stylesheet" href="css/styles.css">
      <link rel="stylesheet" href="css/cart.css">
 </head>
-
 <body>
      <div>
           <a href="index.html" class="cs-top-page">
@@ -47,10 +45,30 @@
           <!-- Cart Items -->
           <div id="cart"></div>
 
+
+
           <div style="height: 200px;"></div>
+          
+
+
 
           <!-- Footer -->
           <nav class="cs-bottom-page">
+               <label class="container-checkbox" style="position: fixed; left: 30px;">
+                    <input type="checkbox" class="checkbox" onclick="toggleSelectAll()" id="toggle-select-all-top" >
+                    <label class="checkbox-label" for="toggle-select-all-top">
+                         <div class="checkbox-container">
+                              <div class="box"></div>
+                              <div class="checkmark">
+                                   <div class="tick-container">
+                                        <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                             <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
+                                        </svg>
+                                   </div>
+                              </div>
+                         </div>
+                    </label>
+               </label>
                <a class="cs-total-harga">
                     <p>Total pembayaran</p>
                     <p style="color: var(--1);" id="total-harga">Rp. 0</p>
@@ -60,9 +78,7 @@
      </div>
 
 
-
-
-     <div class="error-container-red" id="isi-keranjang-dahulu">
+     <div class="error-container-red" id="isi-keranjang-dahulu" onclick="hideAlert()">
           <button type="button" aria-label="close-error" class="error-button-red">
                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
                     stroke-linejoin="round" class="close-icon" xmlns="http://www.w3.org/2000/svg">
@@ -90,9 +106,15 @@
 
      <script src="js/script.js"></script>
      <script>
+
+          
           const cart = JSON.parse(localStorage.getItem('cart')) || [];
           const cartContainer = document.getElementById('cart');
           let allSelected = false; // Track toggle state
+
+          function formatRupiah(angka) {
+                    return angka.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }).replace(',00', '');
+               }
 
           // manipulasi keranjang
           function renderCart() {
@@ -123,7 +145,7 @@
                         <div class="item-info">
                             <h2>${item.name}</h2>
                             <p>${item.weight} - <span>Potong ${item.slash}</span></p>
-                            <p>Rp ${item.price}</p>
+                            <p>${formatRupiah(item.price)}</p>
                         </div>
 
                         <div style="text-align: center;">
@@ -166,19 +188,21 @@
 
           // kalkulasi total pembayaran
           function updateTotal() {
-               const checkboxes = document.querySelectorAll('.checkbox.c');
-               let totalHarga = 0;
+                    const checkboxes = document.querySelectorAll('.checkbox.c');
+                    let totalHarga = 0;
 
-               checkboxes.forEach((checkbox, index) => {
-                    if (checkbox.checked) {
-                         const quantityElement = document.getElementById(`quantity-${index}`);
-                         const quantity = parseInt(quantityElement.textContent);
-                         totalHarga += cart[index].price * quantity;
-                    }
-               });
+                    checkboxes.forEach((checkbox, index) => {
+                         if (checkbox.checked) {
+                              const quantityElement = document.getElementById(`quantity-${index}`);
+                              const quantity = parseInt(quantityElement.textContent);
+                              totalHarga += cart[index].price * quantity;
+                         }
+                    });
 
-               document.getElementById('total-harga').innerText = `Rp ${totalHarga}`;
-          }
+                    document.getElementById('total-harga').innerText = formatRupiah(totalHarga);
+               }
+
+
 
 
           // fitur centang
@@ -186,6 +210,9 @@
                const checkboxes = document.querySelectorAll('.checkbox.c');
                allSelected = !allSelected;
                checkboxes.forEach(checkbox => checkbox.checked = allSelected);
+               document.getElementById('toggle-select-all-top').checked = allSelected;
+document.getElementById('toggle-select-all').checked = allSelected;
+
                updateTotal();
           }
 
@@ -200,17 +227,12 @@
                renderCart();
           }
 
-          function showAlert() {
-                    let alertBox = document.getElementById("isi-keranjang-dahulu");
-                    alertBox.style.display = "block"; // Tampilkan alert
-
-                    setTimeout(function () {
-                         alertBox.style.display = "none"; // Sembunyikan alert setelah 2 detik
-                    }, 4000);
+               function showAlert() {
+                    document.getElementById('isi-keranjang-dahulu').classList.add('show');
+                    setTimeout(hideAlert, 4000);
                }
-
                function hideAlert() {
-                    document.getElementById("isi-keranjang-dahulu").style.display = "none";
+                    document.getElementById('isi-keranjang-dahulu').classList.remove('show');
                }
 
           function checkout() {
@@ -243,6 +265,8 @@
 
                window.location.href = 'checkout.html';
           }
+
+          
 
           renderCart();
      </script>

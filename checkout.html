@@ -114,7 +114,7 @@ Akun bisnis
                     </p>
                </div>
                <button id="send-whatsapp" class="close-and-send">
-                    <a href="https://wa.me/6289653531029?text=Halo,%20salam%20kenal" id="id-send-whatsapp">
+                    <a id="id-send-whatsapp">
                          <img src="./img/whatsapp.svg" alt="whatsapp" style="width: 30px; right: 10px;"> Kirim
                     </a>
                </button>
@@ -132,11 +132,10 @@ Akun bisnis
           Buat Pesanan
      </button>
 </nav>
-
 </div>
 
 
-<div class="error-container-red" id="lengkapi-alamat-terlebih-dahulu">
+<div class="error-container-red" id="lengkapi-alamat-terlebih-dahulu" onclick="hideAlert()">
      <button type="button" aria-label="close-error" class="error-button-red">
           <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
                stroke-linejoin="round" class="close-icon" xmlns="http://www.w3.org/2000/svg">
@@ -172,6 +171,10 @@ Akun bisnis
      const dayElement = document.getElementById('id-hari-antar-input');
      const timeElement = document.getElementById('time-button');
      const notesElement = document.getElementById('id-catatan-input');
+
+     function formatRupiah(angka) {
+               return angka.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }).replace(',00', '');
+          }
      
 
      function renderOrderDetails() {
@@ -196,8 +199,8 @@ Akun bisnis
                     subtotal += item.price * item.quantity;
                });
 
-               subtotalElement.innerText = `Rp. ${subtotal}`;
-               totalPaymentElement.innerText = `Rp. ${subtotal}`;
+               subtotalElement.innerText = `${formatRupiah(subtotal)}`;
+               totalPaymentElement.innerText = `${formatRupiah(subtotal)}`;
           }
 
           renderOrderDetails();
@@ -216,16 +219,11 @@ Akun bisnis
                alamatElement.innerText = `${savedData.nama}, ${savedData.alamat}, ${savedData.kelurahan}`;
           }
           function showAlert() {
-               let alertBox = document.getElementById("lengkapi-alamat-terlebih-dahulu");
-               alertBox.style.display = "block"; // Tampilkan alert
-
-               setTimeout(function () {
-                    alertBox.style.display = "none"; // Sembunyikan alert setelah 2 detik
-               }, 4000);
+               document.getElementById('lengkapi-alamat-terlebih-dahulu').classList.add('show');
+               setTimeout(hideAlert, 4000);
           }
-
           function hideAlert() {
-               document.getElementById("lengkapi-alamat-terlebih-dahulu").style.display = "none";
+               document.getElementById('lengkapi-alamat-terlebih-dahulu').classList.remove('show');
           }
 
  
@@ -248,7 +246,7 @@ Akun bisnis
                const message = `halo, saya ${savedData.nama}  pesan ayam potong dengan rincian berikut:\n\n` +
                     `*Deskripsi pesanan*\n${orderDescription}\n` +
                     `*Pengantaran*\nHari: ${day}\nJam: ${time} \nAlamat: ${savedData.alamat}, ${savedData.kelurahan}\n\n` +
-                    `Dengan catatan: "${notes}"\n` +
+                    `${notes}"\n` +
                     `*Total Harga*: ${subtotal}\n`;
 
                const encodedMessage = encodeURIComponent(message);
@@ -274,14 +272,12 @@ Akun bisnis
                const message = `halo, saya ${savedData.nama} pesan ayam potong dengan rincian berikut:\n\n` +
                     `*Deskripsi pesanan*\n${orderDescription}\n` +
                     `*Pengantaran*\nHari: ${day}\nJam: ${time} \nAlamat: ${savedData.alamat}, ${savedData.kelurahan}\n\n` +
-                    `dengan catatan: \"${notes}\"\n` +
+                    `${notes}\n` +
                     `*Total Harga*: ${subtotal}\n`;
 
                // Menampilkan teks di elemen id-text-send
                const textSendElement = document.getElementById('id-text-send');
                textSendElement.textContent = message;
-
-               
           }
 
           function initializeTextSendSync() {
@@ -378,6 +374,12 @@ Akun bisnis
                timeDropdown.style.display = "none"; // sembunyiin dropdown
           }
      });
+
+     // Tambahkan event listener untuk tombol send-whatsapp
+          document.getElementById('send-whatsapp').addEventListener('click', function () {
+               localStorage.removeItem('cart'); // Hapus data keranjang
+               renderCart(); // Perbarui tampilan agar kosong
+          });
 
      // Jalankan fungsi saat halaman dimuat
      window.addEventListener('load', loadAlamatToCheckout);

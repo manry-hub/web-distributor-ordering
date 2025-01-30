@@ -1,142 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Bottom Navbar with FAB</title>
-     <link rel="stylesheet" href="styles.css">
-     <style>
-          body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #fff;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: aqua;
+        }
+        .floating-cart {
+  position: fixed;
+  background-color: #000000;
+  padding: 20px;
+  border-radius: 50%;
+  right: 42%;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  bottom: 30px;
 }
 
-.navbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+.hover-navtom {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+        .cavity-div {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            background: #6699cc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+
+#navbar-bottom {
+    position: relative;
+    overflow: hidden;
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
+  padding-right: 20px;
+  padding-left: 20px;
   align-items: center;
-  background-color: #333;
-  padding: 10px 0;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  overflow: hidden;
-}
-
-.nav-item {
-  flex: 1;
-  text-align: center;
-  color: #ccc;
-  font-size: 12px;
-}
-
-.nav-item i {
-  display: block;
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-
-.nav-item span {
-  font-size: 12px;
-}
-
-.fab {
   position: fixed;
-  float: center;
-  width: 70px;
-  height: 70px;
-  bottom: 30px;
-  left: 50%;
-  z-index: 99999;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-radius: 20px 20px 0px 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
 }
-
-#fab-button {
-  position: relative;
-  width: 70px;
-  height: 70px;
-  background-color: #e91e63;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 24px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+#navbar-bottom::before {
+content: "";
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: #f0f0f000;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-#fab-button:hover,
-#fab-button:focus {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-}
-
-#fab-button:active {
-  transform: translateY(-12px);
-  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.4);
-}
-
-/* Tambahkan rongga di bawah FAB */
-.navbar::before {
-  content: '';
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: scaleY(-1);
-  
-  width: 90px;
-  height: 45px;
-  background-color: #121212; /* Warna latar belakang */
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-  z-index: 0;
-}
-
-
-     </style>
+    </style>
 </head>
-
 <body>
-     <div class="navbar">
-          <div class="nav-item">
-               <i class="icon">🏠</i>
-               <span>Home</span>
-          </div>
-
-          <div class="nav-item">
-               <i class="icon">🔍</i>
-               <span>Search</span>
-          </div>
-
-          <div class="fab">
-               <button id="fab-button">+</button>
-          </div>
-
-          <div class="nav-item">
-               <i class="icon">👤</i>
-               <span>Profile</span>
-          </div>
-
-          <div class="nav-item">
-               <i class="icon">⚙️</i>
-               <span>Settings</span>
-          </div>
-     </div>
-
-     <script >
-          document.getElementById("fab-button").addEventListener("click", () => {
-                    const fab = document.querySelector(".fab:after");
-                    fab.style.animation = "expand-circle 0.4s ease";
-                    alert("FAB clicked!");
-               });
-     </script>
+    <nav id="navbar-bottom">
+        <a href="#" class="hover-navtom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" color="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                class="feather-logo">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <a href="#order" class="hover-navtom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" color="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                class="feather-logo">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+        </a>
+        <div style="width: 70px;"> </div>
+        <a href="cart.html" class="floating-cart">
+            <img src="../img/shopping-cart white.svg" alt="">
+        </a>
+        <a href="#faq" class="hover-navtom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" color="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                class="feather-logo">
+                <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"></path>
+            </svg>
+        </a>
+        <a href="https://wa.me/6289653531029" class="hover-navtom">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 48 48">
+                <path fill="#fff"
+                    d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6	C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z">
+                </path>
+                <path fill="#fff"
+                    d="M4.9,43.8c-0.1,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.3-0.1-0.5L7,33.5c-1.6-2.9-2.5-6.2-2.5-9.6	C4.5,13.2,13.3,4.5,24,4.5c5.2,0,10.1,2,13.8,5.7c3.7,3.7,5.7,8.6,5.7,13.8c0,10.7-8.7,19.5-19.5,19.5c-3.2,0-6.3-0.8-9.1-2.3	L5,43.8C5,43.8,4.9,43.8,4.9,43.8z">
+                </path>
+                <path fill="#cfd8dc"
+                    d="M24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3	L4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5 M24,43L24,43L24,43 M24,43L24,43L24,43 M24,4L24,4C13,4,4,13,4,24	c0,3.4,0.8,6.7,2.5,9.6L3.9,43c-0.1,0.3,0,0.7,0.3,1c0.2,0.2,0.4,0.3,0.7,0.3c0.1,0,0.2,0,0.3,0l9.7-2.5c2.8,1.5,6,2.2,9.2,2.2	c11,0,20-9,20-20c0-5.3-2.1-10.4-5.8-14.1C34.4,6.1,29.4,4,24,4L24,4z">
+                </path>
+                <path fill="#40c351"
+                    d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8	l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z">
+                </path>
+                <path fill="#fff" fill-rule="evenodd"
+                    d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0	s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3	c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9	c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8	c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </a>
+    </nav>
 </body>
-
 </html>
