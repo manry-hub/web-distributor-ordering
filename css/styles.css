@@ -129,11 +129,10 @@ body {
 }
 
 .nav-tom-img {
-  width: 50%;
-  rotate: 90deg;
-  left: 45%;
   position: fixed;
-  bottom: -50%;
+  width: 105%;
+  bottom: -4px;
+  left: -11px;
 }
 
 .hover-navtom {
@@ -141,6 +140,7 @@ body {
   margin-top: 5px;
   z-index: 1002;
 }
+
 .feather-logo:hover {
   color: var(--1);
 }
@@ -151,9 +151,9 @@ body {
   padding: 20px;
   border-radius: 50%;
   right: 42%;
-  display: flex; /* Use flexbox for easy centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   bottom: 30px;
 }
 
