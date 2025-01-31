@@ -101,7 +101,7 @@ p {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1020;
 }
 
 /* Modal box */
@@ -159,6 +159,7 @@ p {
   width: 200px;
   height: 60px;
   background-color: rgb(8, 148, 3);
+  box-shadow: rgb(8, 148, 3) 0px 7px 29px 0px;
   font-size: 16px;
   margin-top: 20px;
   gap: 5px;
