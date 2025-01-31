@@ -131,7 +131,7 @@ body {
 .nav-tom-img {
   position: fixed;
   width: 108%;
-  bottom: -2px;
+  bottom: 2px;
   left: -15px;
 }
 
