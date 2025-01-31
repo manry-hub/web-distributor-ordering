@@ -116,7 +116,7 @@ body {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  padding-right: 20px;
+  padding-right: 5px;
   padding-left: 20px;
   align-items: center;
   position: fixed;
@@ -132,7 +132,7 @@ body {
   position: fixed;
   width: 108%;
   bottom: -2px;
-  left: -13px;
+  left: -15px;
 }
 
 .hover-navtom {
@@ -150,7 +150,7 @@ body {
   background-color: var(--1);
   padding: 20px;
   border-radius: 50%;
-  right: 42%;
+  right: 41%;
   display: flex;
   justify-content: center;
   align-items: center;
