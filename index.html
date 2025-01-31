@@ -5,6 +5,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Ayam Potong</title>
+     <link rel="manifest" href="/manifest.json">
      <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -283,7 +284,7 @@
 
 <div id="notification-container-index" class="notification-container-index"></div>
 <!--javascript-->
-<script src="js/script.js"></script>
+<script src="/service-worker.js"></script>
 <script>
      document.querySelectorAll('.transition-link-to-right').forEach(link => {
                link.addEventListener('click', function (e) {
