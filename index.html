@@ -182,9 +182,6 @@
                </div>
           </div>
 
-
-
-          
           <div id="product3" class="manipulation-order" data-order-index="3">
                <div class="box-gambar-harga-berat">
                     <div class="jenis-ayam" id="id-jenis-ayam-fillet">
@@ -208,7 +205,7 @@
           
                <div style="display: flex; margin-bottom: 10px; margin-left: 60px; margin-top: 10px;">
                     <button id="btn-add-fillet-to-cart" class="button-add-to-cart"
-                         onclick="addFilletToCart('Ayam Fillet', selectedWeightFillet , 55000)"
+                         onclick="addToCart('Ayam Fillet', selectedWeightFillet , 55000, 20)"
                          style="font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px;">
                          + Masukan keranjang 
                     </button>
@@ -404,15 +401,7 @@
           showAlert()
           updateCartCount(); 
      }
-     // tambah keranjang
-     function addFilletToCart(name, weight, price) {
-          console.log(`Adding to cart: ${name}, ${weight}, ${price}`);
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          cart.push({name, weight, price});
-          localStorage.setItem('cart', JSON.stringify(cart));
-          showAlert()
-          updateCartCount(); 
-     }
+     
 
      // broiler
      function updateBroilerLabel() {
@@ -446,17 +435,25 @@
           });
      }
 
-     let selectedWeightFillet = 1; // Berat awal dalam kg
+     
+          let selectedWeightFillet = "1 Kg"; // Berat awal dalam format string
 
-          function updateWeightFillet(change) {
-               const weightDisplay = document.getElementById('weight-display-fillet');
+               function updateWeightFillet(change) {
+                    const weightDisplay = document.getElementById('weight-display-fillet');
 
-               // Update berat
-               selectedWeightFillet = Math.max(1, Math.min(selectedWeightFillet + change, 10)); // Batas berat 1 kg hingga 10 kg
+                    // Ekstrak angka dari string berat saat ini
+                    let currentWeight = parseInt(selectedWeightFillet.split(" ")[0]); // Ambil angka dari "1 Kg"
 
-               // Perbarui tampilan berat
-               weightDisplay.textContent = `${selectedWeightFillet} Kg`;
-          }
+                    // Update berat
+                    currentWeight = Math.max(1, Math.min(currentWeight + change, 10)); // Batas berat 1 kg hingga 10 kg
+
+                    // Perbarui nilai berat dengan format "Kg"
+                    selectedWeightFillet = `${currentWeight} Kg`;
+
+                    // Perbarui tampilan berat
+                    weightDisplay.textContent = selectedWeightFillet;
+               }
+
 
 
 
@@ -472,6 +469,8 @@
           document.getElementById('kampung-price').textContent = `Rp${price.toLocaleString()}`;
           document.getElementById('id-berat-kampung-output').textContent = `${weight}`;
      }
+
+     
      // Fungsi untuk memperbarui tampilan jumlah item di keranjang
           function updateCartCount() {
                const cart = JSON.parse(localStorage.getItem('cart')) || [];
