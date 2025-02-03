@@ -1,14 +1,3 @@
-Design
-Main / done
-Account / done 
-cart / done
-Checkout / done
-
-Javascript
-Main / 100%
-account / 100%
-cart / 100%
-Checkout / 100%
-
-ui di navbottom
-itu ngalang ngalangin 
+perubahan parameter pada item fillet
+item.name, item.weight, item.price    . tidak perlu ada item.slash
+ini juga berlaku pada cart dalam tampilan karna
