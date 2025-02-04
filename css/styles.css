@@ -138,12 +138,23 @@ body {
 .hover-navtom {
   margin-right: 10px;
   margin-top: 7px;
+  background: #00000000;
 }
 
 .feather-logo:hover {
   color: var(--1);
 }
-
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 .floating-cart {
   position: fixed;
   background-color: var(--1);
@@ -155,6 +166,7 @@ body {
   align-items: center;
   bottom: 30px;
   box-shadow: rgb(201, 148, 24) 0px 0px 20px 0px;
+  animation: floating 3s ease-in-out infinite;
 }
 
 .into-faq {

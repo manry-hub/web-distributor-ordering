@@ -32,32 +32,35 @@
 </nav>
 <img src="img/navtom.png" alt="" class="nav-tom-img">
 <nav id="navbar-bottom">
-     <a href="#" class="hover-navtom" >
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" color="black" 
-               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-logo">
+     <button class="hover-navtom" onclick="location.href='#'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" color="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+               class="feather-logo">
                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
-     </a>
-     <a href="#order" class="hover-navtom" >
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" color="black"
-               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-logo">
+     </button>
+     <button class="hover-navtom" onclick="location.href='#order'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" color="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+               class="feather-logo">
                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                <line x1="3" y1="6" x2="21" y2="6"></line>
                <path d="M16 10a4 4 0 0 1-8 0"></path>
           </svg>
-     </a>
-     <div style="width: 70px;"> </div>
-     <a href="cart.html" class="floating-cart">
+     </button>
+     <div style="width: 70px;"></div>
+     <button class="floating-cart" onclick="location.href='cart.html'">
           <img src="img/shopping-cart white.svg" alt="">
-     </a>
-     <a href="#faq" class="hover-navtom" >
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" color="black"
-               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-logo">
+     </button>
+     <button class="hover-navtom" onclick="location.href='#faq'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" color="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+               class="feather-logo">
                <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"></path>
           </svg>
-     </a>
-     <a href="https://wa.me/6289653531029" class="hover-navtom">
+     </button>
+     <button class="hover-navtom" onclick="location.href='https://wa.me/6289653531029'">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 48 48">
                <path fill="#fff"
                     d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6	C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z">
@@ -75,7 +78,7 @@
                     d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0	s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3	c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9	c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8	c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z"
                     clip-rule="evenodd"></path>
           </svg>
-     </a>
+          </a>
 </nav>
 
 <!--slide-->
@@ -177,7 +180,7 @@
                     </div>
                </div>
                <div style=" display: flex;  margin-bottom: 10px ;margin-left: 60px; margin-top: 10px; ">
-                    <button id="btn-add-broiler-to-cart" class="button-add-to-cart" onclick="addToCart('Ayam Broiler', '1 Kg', 37000, selectedValue)" 
+                    <button id="btn-add-broiler-to-cart" class="button-add-to-cart" onclick="addToCart('Ayam Broiler', '1 Kg', 37000, selectedValueBroiler)" 
                          style=" font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px; "> + Masukan keranjang</button>
                </div>
           </div>
@@ -205,17 +208,12 @@
           
                <div style="display: flex; margin-bottom: 10px; margin-left: 60px; margin-top: 10px;">
                     <button id="btn-add-fillet-to-cart" class="button-add-to-cart"
-                         onclick="addToCart('Ayam Fillet', selectedWeightFillet , 55000, 20)"
+                         onclick="addToCart('Ayam Fillet', selectedWeightFillet , 55000, 0)"
                          style="font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px;">
                          + Masukan keranjang 
                     </button>
                </div>
           </div>
-
-
-
-
-
 
 
 
@@ -259,7 +257,7 @@
           
                <div style=" display: flex;  margin-bottom: 10px; margin-left: 60px; margin-top: 10px; ">
                     <button id="btn-add-kampung-to-cart" class="button-add-to-cart"
-                         onclick="addToCart('Ayam Kampung', selectedWeight, selectedPrice, selectedValue)"
+                         onclick="addToCart('Ayam Kampung', selectedWeight, selectedPrice, selectedValueKampung)"
                          style=" font-size: 18px; padding: 10px; background-color: var(--1); color: white; border-radius: 10px; ">
                          +
                          Masukan keranjang</button>
@@ -384,122 +382,91 @@
           });
 
      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-     let selectedWeight = '8 Ons';
-     let selectedPrice = 60000;
-     let selectedValue = 0; // Nilai awal untuk potongan
-     const potonganValues = [0, 4, 8, 10, 12];
+          let selectedWeight = '8 Ons';
+          let selectedPrice = 60000;
+          let selectedValueBroiler = 0; // Nilai awal untuk potongan broiler
+          let selectedValueKampung = 0; // Nilai awal untuk potongan kampung
+          const potonganValues = [0, 4, 8, 10, 12];
 
-     document.addEventListener('DOMContentLoaded', () => {
+          document.addEventListener('DOMContentLoaded', () => {
                updateCartCount(); // Memperbarui tampilan jumlah item saat halaman dimuat
           });
-     // tambah keranjang
-     function addToCart(name, weight, price, slash) {
-          console.log(`Adding to cart: ${name}, ${weight}, ${price}, ${slash}`);
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          cart.push({name, weight, price, slash});
-          localStorage.setItem('cart', JSON.stringify(cart));
-          showAlert()
-          updateCartCount(); 
-     }
-     
 
-     // broiler
-     function updateBroilerLabel() {
-          const sliderValue = parseInt(document.getElementById('id-potong-broiler-input').value, 10);
-          selectedValue = potonganValues[sliderValue]; // Perbarui nilai selectedValue
-
-          // Sinkronkan visual slider-poin-number
-          const broilerPoints = document.querySelectorAll('#broiler-count span');
-          broilerPoints.forEach((point, index) => {
-          if (index === sliderValue) {
-          point.classList.add('active'); // Tambahkan kelas aktif
-          } else {
-          point.classList.remove('active'); // Hapus kelas aktif
+          function addToCart(name, weight, price, slash) {
+               console.log(`Adding to cart: ${name}, ${weight}, ${price}, ${slash}`);
+               const cart = JSON.parse(localStorage.getItem('cart')) || [];
+               cart.push({ name, weight, price, slash });
+               localStorage.setItem('cart', JSON.stringify(cart));
+               showAlert();
+               updateCartCount();
           }
-          });
-     }
 
-     // kampung
-     function updateKampungLabel() {
-          const sliderValue = parseInt(document.getElementById('id-potong-kampung-input').value, 10);
-          selectedValue = potonganValues[sliderValue]; // Perbarui nilai selectedValue
+          // broiler
+          function updateBroilerLabel() {
+               const sliderValue = parseInt(document.getElementById('id-potong-broiler-input').value, 10);
+               selectedValueBroiler = potonganValues[sliderValue];
 
-          // Sinkronkan visual slider-poin-number
-          const kampungPoints = document.querySelectorAll('#kampung-count span');
-          kampungPoints.forEach((point, index) => {
-          if (index === sliderValue) {
-               point.classList.add('active'); // Tambahkan kelas aktif
-          } else {
-               point.classList.remove('active'); // Hapus kelas aktif
+               // Sinkronkan visual slider-poin-number
+               const broilerPoints = document.querySelectorAll('#broiler-count span');
+               broilerPoints.forEach((point, index) => {
+                    point.classList.toggle('active', index === sliderValue);
+               });
           }
-          });
-     }
 
-     
-          let selectedWeightFillet = "1 Kg"; // Berat awal dalam format string
+          // kampung
+          function updateKampungLabel() {
+               const sliderValue = parseInt(document.getElementById('id-potong-kampung-input').value, 10);
+               selectedValueKampung = potonganValues[sliderValue];
 
-               function updateWeightFillet(change) {
-                    const weightDisplay = document.getElementById('weight-display-fillet');
+               // Sinkronkan visual slider-poin-number
+               const kampungPoints = document.querySelectorAll('#kampung-count span');
+               kampungPoints.forEach((point, index) => {
+                    point.classList.toggle('active', index === sliderValue);
+               });
+          }
 
-                    // Ekstrak angka dari string berat saat ini
-                    let currentWeight = parseInt(selectedWeightFillet.split(" ")[0]); // Ambil angka dari "1 Kg"
+          let selectedWeightFillet = "1 Kg";
+          function updateWeightFillet(change) {
+               const weightDisplay = document.getElementById('weight-display-fillet');
+               let currentWeight = parseInt(selectedWeightFillet.split(" ")[0]);
+               currentWeight = Math.max(1, Math.min(currentWeight + change, 10));
+               selectedWeightFillet = `${currentWeight} Kg`;
+               weightDisplay.textContent = selectedWeightFillet;
+          }
 
-                    // Update berat
-                    currentWeight = Math.max(1, Math.min(currentWeight + change, 10)); // Batas berat 1 kg hingga 10 kg
+          function selectWeight(button, weight, price) {
+               document.querySelectorAll('#product2 .weight-buttons button').forEach(btn => btn.classList.remove('active'));
+               button.classList.add('active');
+               selectedWeight = weight;
+               selectedPrice = price;
+               document.getElementById('kampung-price').textContent = `Rp${price.toLocaleString()}`;
+               document.getElementById('id-berat-kampung-output').textContent = weight;
+          }
 
-                    // Perbarui nilai berat dengan format "Kg"
-                    selectedWeightFillet = `${currentWeight} Kg`;
-
-                    // Perbarui tampilan berat
-                    weightDisplay.textContent = selectedWeightFillet;
-               }
-
-
-
-
-     // berat kampung
-     function selectWeight(button, weight, price) {
-          const buttons = document.querySelectorAll('#product2 .weight-buttons button');
-          buttons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-
-          selectedWeight = weight;
-          selectedPrice = price;
-
-          document.getElementById('kampung-price').textContent = `Rp${price.toLocaleString()}`;
-          document.getElementById('id-berat-kampung-output').textContent = `${weight}`;
-     }
-
-     
-     // Fungsi untuk memperbarui tampilan jumlah item di keranjang
           function updateCartCount() {
                const cart = JSON.parse(localStorage.getItem('cart')) || [];
-               const count = cart.length; // Menghitung jumlah item di keranjang
                const countItemElement = document.getElementById('count-item');
-
                if (countItemElement) {
-                    countItemElement.textContent = count; // Menampilkan jumlah item di dalam elemen
+                    countItemElement.textContent = cart.length;
                }
           }
 
           function showAlert() {
-                    const container = document.getElementById('notification-container-index');
-                    const notification = document.createElement('div');
-                    notification.className = 'error-container-green-index';
-                    notification.innerHTML = `
-               <button type="button" aria-label="close-error" class="error-button-green-index" onclick="hideAlert(this)">
-                    ✖
-               </button>
+               const container = document.getElementById('notification-container-index');
+               const notification = document.createElement('div');
+               notification.className = 'error-container-green-index';
+               notification.innerHTML = `
+               <button type="button" aria-label="close-error" class="error-button-green-index" onclick="hideAlert(this)">✖</button>
                <p class="error-message">Keranjang berhasil ditambahkan</p>
-          `;
-                    container.appendChild(notification);
-                    setTimeout(() => hideAlert(notification), 4000);
-               }
+               `;
+               container.appendChild(notification);
+               setTimeout(() => hideAlert(notification), 4000);
+          }
 
-               function hideAlert(element) {
-                    element.classList.add('hidden');
-                    setTimeout(() => element.remove(), 500);
-               }
+          function hideAlert(element) {
+               element.classList.add('hidden');
+               setTimeout(() => element.remove(), 500);
+          }
 </script>
 </body>
 </html>

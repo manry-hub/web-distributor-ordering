@@ -190,9 +190,12 @@ Akun bisnis
                selectedItems.forEach((item) => {
                     const itemElement = document.createElement('div');
                     itemElement.classList.add('order-item');
+                    // Hapus teks "Potong" jika item.slash bernilai 0
+                    const potongText =
+                         item.slash && item.slash !== 0 ? `- <span> potong ${item.slash}</span>` : "";
                     itemElement.innerHTML = `
                <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <p style="margin-left: 40px;"> ${item.name} "${item.weight}" dipotong ${item.slash}</p>
+                    <p style="margin-left: 40px;"> ${item.name} "${item.weight}" ${potongText}</p>
                     <p style="margin-right: 20px;"> x ${item.quantity}</p>
                </div>`;
                     orderDetailsContainer.appendChild(itemElement);
@@ -227,9 +230,7 @@ Akun bisnis
                document.getElementById('lengkapi-alamat-terlebih-dahulu').classList.remove('show');
           }
 
- 
 
-          
 
 
           document.getElementById('send-whatsapp').addEventListener('click', () => {
@@ -241,7 +242,9 @@ Akun bisnis
 
                let orderDescription = '';
                selectedItems.forEach(item => {
-                    orderDescription += `${item.quantity} ${item.name} "${item.weight}" potong ${item.slash}\n`;
+                    const potongText =
+                         item.slash && item.slash !== 0 ? `- <span> potong ${item.slash}</span>` : "";
+                    orderDescription += `${item.quantity} ${item.name} "${item.weight}" ${potongText}\n`;
                });
 
                const message = `halo, saya ${savedData.nama}  pesan ayam potong dengan rincian berikut:\n\n` +
@@ -264,10 +267,13 @@ Akun bisnis
                const time = timeElement.textContent;
                const notes = notesElement.value;
                const subtotal = subtotalElement.innerText;
+               
 
                let orderDescription = '';
                selectedItems.forEach(item => {
-                    orderDescription += `${item.quantity} ${item.name} \"${item.weight}\" potong ${item.slash}\n`;
+                    const potongText =
+                         item.slash && item.slash !== 0 ? `- <span> potong ${item.slash}</span>` : "";
+                    orderDescription += `${item.quantity} ${item.name} \"${item.weight}\" ${potongText}\n`;
                });
 
                const message = `halo, saya ${savedData.nama} pesan ayam potong dengan rincian berikut:\n\n` +

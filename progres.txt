@@ -1,3 +1,1 @@
-perubahan parameter pada item fillet
-cart sudah. tidak ada kata potong 20
-checkout belum. bagian tampilan, whatsapp modal, dan whatsapp
+done.

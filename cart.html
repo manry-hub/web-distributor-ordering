@@ -105,97 +105,97 @@
      </div>
 
 <script src="/service-worker.js"></script>
-     <script>
+<script>
          
-                    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-                    const cartContainer = document.getElementById("cart");
-                    let allSelected = false; // Track toggle state
+     const cart = JSON.parse(localStorage.getItem("cart")) || [];
+     const cartContainer = document.getElementById("cart");
+     let allSelected = false; // Track toggle state
 
-                    function formatRupiah(angka) {
-    return angka
-                    .toLocaleString("id-ID", {style: "currency", currency: "IDR" })
-                    .replace(",00", "");
-}
+     function formatRupiah(angka) {
+          return angka
+          .toLocaleString("id-ID", {style: "currency", currency: "IDR" })
+          .replace(",00", "");
+     }
 
-                    // Manipulasi keranjang
-                    function renderCart() {
-                         cartContainer.innerHTML = "";
+     // Manipulasi keranjang
+     function renderCart() {
+          cartContainer.innerHTML = "";
 
     cart.forEach((item, index) => {
-        const itemElement = document.createElement("div");
-                    itemElement.className = "cart-item";
+          const itemElement = document.createElement("div");
+          itemElement.className = "cart-item";
 
-                    // Hapus teks "Potong" jika item.slash bernilai 20
-                    const potongText =
-                    item.slash && item.slash !== 20 ? `- <span>Potong ${item.slash}</span>` : "";
+          // Hapus teks "Potong" jika item.slash bernilai 0
+          const potongText =
+          item.slash && item.slash !== 0 ? `- <span>Potong ${item.slash}</span>` : "";
 
-                    itemElement.innerHTML = `
-                    <div class="container-cart">
-                         <div class="cs-cart-item">
-                              <label class="container-checkbox">
-                                   <input onchange="updateTotal()" id="checkbox-${index}" class="checkbox c" type="checkbox">
-                                        <label class="checkbox-label" for="checkbox-${index}">
-                                             <div class="checkbox-container">
-                                                  <div class="box"></div>
-                                                  <div class="checkmark">
-                                                       <div class="tick-container">
-                                                            <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                                                 <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
-                                                            </svg>
-                                                       </div>
-                                                  </div>
+          itemElement.innerHTML = `
+          <div class="container-cart">
+               <div class="cs-cart-item">
+                    <label class="container-checkbox">
+                         <input onchange="updateTotal()" id="checkbox-${index}" class="checkbox c" type="checkbox">
+                              <label class="checkbox-label" for="checkbox-${index}">
+                                   <div class="checkbox-container">
+                                        <div class="box"></div>
+                                        <div class="checkmark">
+                                             <div class="tick-container">
+                                                  <svg class="tickmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                                       <path class="tickmark-check" fill="none" d="M14 27l8 8 16-16"></path>
+                                                  </svg>
                                              </div>
-                                        </label>
-                              </label>
-
-                              <div class="item-info">
-                                   <h2>${item.name}</h2>
-                                   <p>${item.weight} ${potongText}</p>
-                                   <p>${formatRupiah(item.price)}</p>
-                              </div>
-
-                              <div style="text-align: center;">
-                                   <p style="font-size: 12px;">Jumlah</p>
-                                   <div class="item-quantity">
-                                        <button class="decrease">-</button>
-                                        <span id="quantity-${index}" class="quantity">1</span>
-                                        <button class="increase">+</button>
+                                        </div>
                                    </div>
-                              </div>
+                              </label>
+                    </label>
+
+                    <div class="item-info">
+                         <h2>${item.name}</h2>
+                         <p>${item.weight} ${potongText}</p>
+                         <p>${formatRupiah(item.price)}</p>
+                    </div>
+
+                    <div style="text-align: center;">
+                         <p style="font-size: 12px;">Jumlah</p>
+                         <div class="item-quantity">
+                              <button class="decrease">-</button>
+                              <span id="quantity-${index}" class="quantity">1</span>
+                              <button class="increase">+</button>
                          </div>
-                    </div>`;
-                    cartContainer.appendChild(itemElement);
+                    </div>
+               </div>
+          </div>`;
+          cartContainer.appendChild(itemElement);
     });
 
     document.querySelectorAll(".increase").forEach((button, index) => {
-                         button.addEventListener("click", () => {
-                              const quantityElement = document.getElementById(`quantity-${index}`);
-                              let quantity = parseInt(quantityElement.textContent);
-                              quantity += 1;
-                              quantityElement.textContent = quantity;
-                              updateTotal();
-                         });
+          button.addEventListener("click", () => {
+               const quantityElement = document.getElementById(`quantity-${index}`);
+               let quantity = parseInt(quantityElement.textContent);
+               quantity += 1;
+               quantityElement.textContent = quantity;
+               updateTotal();
+          });
     });
 
     document.querySelectorAll(".decrease").forEach((button, index) => {
-                         button.addEventListener("click", () => {
-                              const quantityElement = document.getElementById(`quantity-${index}`);
-                              let quantity = parseInt(quantityElement.textContent);
-                              if (quantity > 1) {
-                                   quantity -= 1;
-                                   quantityElement.textContent = quantity;
-                                   updateTotal();
-                              }
-                         });
+          button.addEventListener("click", () => {
+               const quantityElement = document.getElementById(`quantity-${index}`);
+               let quantity = parseInt(quantityElement.textContent);
+               if (quantity > 1) {
+                    quantity -= 1;
+                    quantityElement.textContent = quantity;
+                    updateTotal();
+               }
+          });
     });
 
-                    updateTotal();
+     updateTotal();
 }
 
-                    // Kalkulasi total pembayaran
-                    function updateTotal() {
-    const checkboxes = document.querySelectorAll(".checkbox.c");
-                    let totalHarga = 0;
+     // Kalkulasi total pembayaran
+     function updateTotal() {
+          const checkboxes = document.querySelectorAll(".checkbox.c");
+          let totalHarga = 0;
 
     checkboxes.forEach((checkbox, index) => {
         if (checkbox.checked) {
@@ -205,42 +205,41 @@
         }
     });
 
-                    document.getElementById("total-harga").innerText = formatRupiah(totalHarga);
+     document.getElementById("total-harga").innerText = formatRupiah(totalHarga);
 }
 
-                    // Fitur centang
-                    function toggleSelectAll() {
-    const checkboxes = document.querySelectorAll(".checkbox.c");
-                    allSelected = !allSelected;
-    checkboxes.forEach((checkbox) => (checkbox.checked = allSelected));
-                    document.getElementById("toggle-select-all-top").checked = allSelected;
-                    document.getElementById("toggle-select-all").checked = allSelected;
-
-                    updateTotal();
+     // Fitur centang
+     function toggleSelectAll() {
+     const checkboxes = document.querySelectorAll(".checkbox.c");
+     allSelected = !allSelected;
+     checkboxes.forEach((checkbox) => (checkbox.checked = allSelected));
+     document.getElementById("toggle-select-all-top").checked = allSelected;
+     document.getElementById("toggle-select-all").checked = allSelected;
+     updateTotal();
 }
 
-                    function removeCheckedCarts() {
-    const checkboxes = document.querySelectorAll(".checkbox.c");
-    for (let i = cart.length - 1; i >= 0; i--) {
+     function removeCheckedCarts() {
+     const checkboxes = document.querySelectorAll(".checkbox.c");
+     for (let i = cart.length - 1; i >= 0; i--) {
         if (checkboxes[i].checked) {
-                         cart.splice(i, 1);
+          cart.splice(i, 1);
         }
-    }
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    renderCart();
+     }
+     localStorage.setItem("cart", JSON.stringify(cart));
+     renderCart();
 }
 
-                    function showAlert() {
-                         document.getElementById("isi-keranjang-dahulu").classList.add("show");
-                    setTimeout(hideAlert, 4000);
-}
-                    function hideAlert() {
-                         document.getElementById("isi-keranjang-dahulu").classList.remove("show");
-}
+     function showAlert() {
+          document.getElementById("isi-keranjang-dahulu").classList.add("show");
+          setTimeout(hideAlert, 4000);
+     }
+     function hideAlert() {
+          document.getElementById("isi-keranjang-dahulu").classList.remove("show");
+     }
 
-                    function checkout() {
-    const selectedItems = cart
-        .map((item, index) => {
+     function checkout() {
+          const selectedItems = cart
+          .map((item, index) => {
             const checkbox = document.getElementById(`checkbox-${index}`);
                     if (checkbox && checkbox.checked) {
                 const quantityElement = document.getElementById(`quantity-${index}`);
@@ -256,16 +255,16 @@
                     return;
     }
 
-                    localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+     localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
 
-                    console.log("=== Selected Items for Checkout ===");
-    selectedItems.forEach((item, index) => {
-                         console.log(`Item ${index + 1}:`);
-                    console.log(`- Name: ${item.name}`);
-                    console.log(`- Berat Ayam: ${item.weight}`);
-                    console.log(`- Potong: ${item.slash}`);
-                    console.log(`- Price: Rp ${item.price}`);
-        console.log("-----------------------------");
+     console.log("=== Selected Items for Checkout ===");
+     selectedItems.forEach((item, index) => {
+     console.log(`Item ${index + 1}:`);
+     console.log(`- Name: ${item.name}`);
+     console.log(`- Berat Ayam: ${item.weight}`);
+     console.log(`- Potong: ${item.slash}`);
+     console.log(`- Price: Rp ${item.price}`);
+     console.log("-----------------------------");
     });
 
     window.location.href = "checkout.html";
@@ -274,6 +273,6 @@
 renderCart();
          
 
-     </script>
+</script>
 </body>
 </html>
