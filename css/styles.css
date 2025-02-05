@@ -530,6 +530,20 @@ body {
   align-items: center;
 }
 
+#notification {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 .pembatas {
   display: flex;
   flex-direction: column;

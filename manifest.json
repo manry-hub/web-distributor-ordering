@@ -1,6 +1,6 @@
 {
-    "short_name": "Ayam Potong",
-    "name": "My Progressive Web App",
+    "short_name": "Pesan Ayam",
+    "name": "Aplikasi Pesan Ayam",
     "icons": [
         {
             "src": "/icons/icon-72x72.png",

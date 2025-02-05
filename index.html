@@ -264,7 +264,17 @@
           </div>
      </div>
 </section>
-
+<div id="notification"
+     style="display: none; position: fixed; bottom: 140px; left: 20px; width: 200px; background-color: #ffffffe1; color: rgb(29, 145, 25); text-align: left; padding: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); z-index: 1000; border-radius: 15px;">
+     <div style=" padding-left: 20px; padding-top: 20px; padding-bottom: 20px; position: relative; font-size: 14px;">
+          <span>Download aplikasi kami agar lebih mudah</span>
+          <button id="closeNotification"
+               style="position: absolute; top: 5px; right: 8px; background: none; border: none; font-size: 16px; cursor: pointer;">&times;</button>
+     </div>
+     <button id="installButton"
+          style="margin-left: 20px; background-color: rgb(47, 187, 42); color: #ffffff; border: none; padding: 5px 10px; cursor: pointer; border-radius: 15px; box-shadow: rgb(118, 214, 94) 0px 0px 20px 0px; font-size: 14px;">Use
+          the app</button>
+</div>
 <!--Frequenty Asked Question-->
 <section class="faq" id="faq">
 <div class="faq-container">
@@ -466,6 +476,34 @@
                element.classList.add('hidden');
                setTimeout(() => element.remove(), 500);
           }
+         document.getElementById('closeNotification').addEventListener('click', () => {
+               document.getElementById('notification').style.display = 'none';
+          });
+
+          window.addEventListener('appinstalled', (event) => {
+               console.log('Aplikasi sudah diinstal');
+               document.getElementById('notification').style.display = 'none';
+          });
+
+          window.addEventListener('beforeinstallprompt', (event) => {
+               event.preventDefault();
+               const notification = document.getElementById('notification');
+               const installButton = document.getElementById('installButton');
+
+               notification.style.display = 'block';
+
+               installButton.addEventListener('click', () => {
+                    event.prompt();
+                    notification.style.display = 'none';
+               });
+          });
+
+          window.addEventListener('load', () => {
+               if (window.matchMedia('(display-mode: standalone)').matches) {
+                    console.log('Aplikasi sudah diinstal');
+                    document.getElementById('notification').style.display = 'none';
+               }
+          });
 </script>
 </body>
 </html>
