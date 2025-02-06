@@ -192,21 +192,27 @@
      updateTotal();
 }
 
-     // Kalkulasi total pembayaran
      function updateTotal() {
-          const checkboxes = document.querySelectorAll(".checkbox.c");
-          let totalHarga = 0;
+               const checkboxes = document.querySelectorAll(".checkbox.c");
+               let totalHarga = 0;
+               let allChecked = true; 
 
-    checkboxes.forEach((checkbox, index) => {
-        if (checkbox.checked) {
-            const quantityElement = document.getElementById(`quantity-${index}`);
-                    const quantity = parseInt(quantityElement.textContent);
-                    totalHarga += cart[index].price * quantity;
-        }
-    });
+               checkboxes.forEach((checkbox, index) => {
+                    if (checkbox.checked) {
+                         const quantityElement = document.getElementById(`quantity-${index}`);
+                         const quantity = parseInt(quantityElement.textContent);
+                         totalHarga += cart[index].price * quantity;
+                    } else {
+                         allChecked = false; 
+                    }
+               });
 
-     document.getElementById("total-harga").innerText = formatRupiah(totalHarga);
-}
+               document.getElementById("total-harga").innerText = formatRupiah(totalHarga);
+
+               document.getElementById("toggle-select-all").checked = allChecked;
+               document.getElementById("toggle-select-all-top").checked = allChecked;
+          }
+
 
      // Fitur centang
      function toggleSelectAll() {
