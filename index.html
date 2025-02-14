@@ -481,11 +481,11 @@
                element.classList.add('hidden');
                setTimeout(() => element.remove(), 500);
           }
-         document.getElementById('closeNotification').addEventListener('click', () => {
+          document.getElementById('closeNotification').addEventListener('click', () => {
                document.getElementById('notification').style.display = 'none';
           });
 
-          window.addEventListener('appinstalled', (event) => {
+          window.addEventListener('appinstalled', () => {
                console.log('Aplikasi sudah diinstal');
                document.getElementById('notification').style.display = 'none';
           });
@@ -495,20 +495,29 @@
                const notification = document.getElementById('notification');
                const installButton = document.getElementById('installButton');
 
-               notification.style.display = 'block';
-
                installButton.addEventListener('click', () => {
                     event.prompt();
                     notification.style.display = 'none';
                });
+
+               // Tampilkan notifikasi setelah 5 detik
+               setTimeout(() => {
+                    notification.style.display = 'block';
+               }, 5000);
           });
 
           window.addEventListener('load', () => {
                if (window.matchMedia('(display-mode: standalone)').matches) {
                     console.log('Aplikasi sudah diinstal');
                     document.getElementById('notification').style.display = 'none';
+               } else {
+                    // Pastikan notifikasi tetap muncul setelah 5 detik jika belum diinstal
+                    setTimeout(() => {
+                         document.getElementById('notification').style.display = 'block';
+                    }, 5000);
                }
           });
+
 </script>
 </body>
 </html>
